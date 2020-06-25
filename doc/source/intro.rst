@@ -16,8 +16,6 @@ Here are some helpful pointers regarding the creation of the autodocs:
 
 * Also, any script being documented need to include a `if __name__ == '__main__'`
 
-.. todo:: Fix this issue!
-
 
 Current modules
 ----------------

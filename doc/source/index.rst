@@ -16,9 +16,9 @@ Welcome to FELLOW_project's documentation!
    ODESSA_docs/ODESSA_dir
    MODTRAN_docs/MODTRAN_dir
 
-.. helloworld::
 
-.. todolist::
+
+
 
 
 Indices and tables
