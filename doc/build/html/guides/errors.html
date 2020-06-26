@@ -38,7 +38,9 @@
 
     
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Guide to EMADE Code Structure" href="emadeCode.html" />
+    <link rel="prev" title="Guides" href="../guides.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -84,9 +86,21 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">This is an introduction to my documentation!</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../guides.html">Guides</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Common Emade Errors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ssl-connection-error">SSL Connection Error</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raise-ioerror-not-a-gzipped-file">raise IOError, ‘Not a gzipped file’</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#from-numpy-lib-arraypad-import-validate-lengths-importerror-cannot-import-name-validate-lengths">from numpy.lib.arraypad import _validate_lengths ImportError: cannot import name ‘_validate_lengths’</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#errno-8-nodename-nor-servname-provided-or-not-known">[Errno 8] nodename nor servname provided, or not known</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="emadeCode.html">Guide to EMADE Code Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xmlInput.html">Guide to XML Emade Input</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -132,6 +146,8 @@
   <ul class="wy-breadcrumbs">
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../guides.html">Guides</a> &raquo;</li>
         
       <li>Common Emade Errors</li>
     
@@ -189,58 +205,49 @@ should be tested on other setups.</p>
 </div>
 <div class="section" id="raise-ioerror-not-a-gzipped-file">
 <span id="id3"></span><h2>raise IOError, ‘Not a gzipped file’<a class="headerlink" href="#raise-ioerror-not-a-gzipped-file" title="Permalink to this headline">¶</a></h2>
-<div class="line-block">
-<div class="line">‘’’ Description: <a href="#id4"><span class="problematic" id="id5">*</span></a>’
-:: Typically this occurs when a user tries running emade or a unit
-test for emade for the first time. The file being referred to is not a
-.gz file.
-<a href="#id6"><span class="problematic" id="id7">*</span></a>’ Cause: <a href="#id8"><span class="problematic" id="id9">*</span></a>’
-:: The normal cause of this error is that git-lfs was not properly
-installed/configured. This means that cloning emade pulled the
-pointers to all .gz files instead of the actual files.
-<a href="#id10"><span class="problematic" id="id11">*</span></a>’ Solution: ‘’’</div>
-<div class="line">:: <strong>1.</strong> Install git-lfs (Add Instructions here soon)</div>
-</div>
-<blockquote>
-<div><p><strong>2.</strong> In a command prompt, cd to the emade directory
-<strong>3.</strong> Run “git fetch origin –all”
-<strong>4.</strong> Run “git merge/rebase” (run git merge if you wish to keep
-any edits you have made, otherwise run git rebase)</p>
-</div></blockquote>
+<dl class="simple">
+<dt><strong>Description:</strong></dt><dd><p>Typically this occurs when a user tries running emade or a unit test for emade for the first time. The file being referred to is not a .gz file.</p>
+</dd>
+<dt><strong>Cause:</strong></dt><dd><p>The normal cause of this error is that git-lfs was not properly installed/configured. This means that cloning emade pulled the pointers to all .gz files instead of the actual files.</p>
+</dd>
+<dt><strong>Solution:</strong></dt><dd><ol class="arabic simple">
+<li><p>Install git-lfs (Add Instructions here soon)</p></li>
+<li><p>In a command prompt, cd to the emade directory</p></li>
+<li><p>Run “git fetch origin –all”</p></li>
+<li><p>Run “git merge/rebase” (run git merge if you wish to keep any edits you have made, otherwise run git rebase)</p></li>
+</ol>
+</dd>
+</dl>
 </div>
 <div class="section" id="from-numpy-lib-arraypad-import-validate-lengths-importerror-cannot-import-name-validate-lengths">
-<span id="id12"></span><h2>from numpy.lib.arraypad import _validate_lengths ImportError: cannot import name ‘_validate_lengths’<a class="headerlink" href="#from-numpy-lib-arraypad-import-validate-lengths-importerror-cannot-import-name-validate-lengths" title="Permalink to this headline">¶</a></h2>
-<div class="line-block">
-<div class="line">‘’’ Description: ‘’’</div>
-<div class="line">:: Typically happens when and older version of scikit-image is
-installed. ‘’’ Cause: ‘’’</div>
-<div class="line">:: Emade requires scikit-image 0.14.2</div>
-</div>
-<div class="line-block">
-<div class="line">‘’’ Solution: ‘’’ Make sure scikit-image 0.14.2 is installed</div>
-<div class="line">:: <strong>1.</strong> If you already have scikit-image installed with pip, Run the
-command “pip uninstall scikit-image”</div>
-</div>
-<blockquote>
-<div><p><strong>2.</strong> conda insall scikit-image-0.14.2</p>
-</div></blockquote>
+<span id="id4"></span><h2>from numpy.lib.arraypad import _validate_lengths ImportError: cannot import name ‘_validate_lengths’<a class="headerlink" href="#from-numpy-lib-arraypad-import-validate-lengths-importerror-cannot-import-name-validate-lengths" title="Permalink to this headline">¶</a></h2>
+<dl class="simple">
+<dt><strong>Description:</strong></dt><dd><p>Typically happens when and older version of scikit-image is installed.</p>
+</dd>
+<dt><strong>Cause:</strong></dt><dd><p>Emade requires scikit-image 0.14.2</p>
+</dd>
+<dt><strong>Solution:</strong></dt><dd><p>Make sure scikit-image 0.14.2 is installed</p>
+<ol class="arabic simple">
+<li><p>If you already have scikit-image installed with pip, run <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">uninstall</span> <span class="pre">scikit-image</span></code></p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">insall</span> <span class="pre">scikit-image-0.14.2</span></code></p></li>
+</ol>
+</dd>
+</dl>
 </div>
 <div class="section" id="errno-8-nodename-nor-servname-provided-or-not-known">
-<span id="id13"></span><h2>[Errno 8] nodename nor servname provided, or not known<a class="headerlink" href="#errno-8-nodename-nor-servname-provided-or-not-known" title="Permalink to this headline">¶</a></h2>
-<div class="line-block">
-<div class="line">‘’’ Description: ‘’’</div>
-<div class="line">:: Occurs on newer MacOS ‘’’ Cause: ‘’’</div>
-<div class="line">:: Computer name is not recognized as localhost</div>
-</div>
-<div class="line-block">
-<div class="line">‘’’ Solution: ‘’’ Look at your /etc/hosts file and see if your host
-name is there</div>
-<div class="line">:: <strong>1.</strong> Find your computer name (can be done using
-scoop.gethostname()</div>
-</div>
-<blockquote>
-<div><p><strong>2.</strong> sudo vim /etc/hosts and insert 127.0.0.1</p>
-</div></blockquote>
+<span id="id5"></span><h2>[Errno 8] nodename nor servname provided, or not known<a class="headerlink" href="#errno-8-nodename-nor-servname-provided-or-not-known" title="Permalink to this headline">¶</a></h2>
+<dl class="simple">
+<dt><strong>Description:</strong></dt><dd><p>Occurs on newer MacOS</p>
+</dd>
+<dt><strong>Cause:</strong></dt><dd><p>Computer name is not recognized as localhost</p>
+</dd>
+<dt><strong>Solution:</strong></dt><dd><p>Look at your /etc/hosts file and see if your host name is there</p>
+<ol class="arabic simple">
+<li><p>Find your computer name (can be done using scoop.gethostname()</p></li>
+<li><p>sudo vim /etc/hosts and insert 127.0.0.1</p></li>
+</ol>
+</dd>
+</dl>
 </div>
 </div>
 
@@ -249,6 +256,15 @@ scoop.gethostname()</div>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="emadeCode.html" class="btn btn-neutral float-right" title="Guide to EMADE Code Structure" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../guides.html" class="btn btn-neutral float-left" title="Guides" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
