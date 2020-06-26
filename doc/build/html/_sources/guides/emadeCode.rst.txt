@@ -1,3 +1,5 @@
+.. _guide_to_emade_code_structure:
+
 Guide to EMADE Code Structure
 =============================
 
@@ -10,8 +12,7 @@ This wiki entry is to help you understand the flow of EMADE source code
 and how you can modify it yourself! In addition to this wiki, files are
 also commented according to Sphinx autodoc'ing standards, which you
 should follow if you add or change code. If you're looking to run your
-first optimization problem with emade, check out the `Guide to XML Emade
-Input`_ or the `GitHub readme`_.
+first optimization problem with emade, check out the :ref:`guide_to_xml_EMADE_input` or the `GitHub readme`_.
 
 .. _xml_input:
 
@@ -82,5 +83,5 @@ database client such as sqlite3. Individuals are passed between the
 master and workers through the database, and each instance of gtMOEP.py
 runs as a separate process so that resource manageme
 
-.. _Guide to XML Emade Input: Guide_to_XML_Emade_Input
+.. _Guide to XML Emade Input: xmlInput.html
 .. _GitHub readme: https://github.gatech.edu/emade/emade
