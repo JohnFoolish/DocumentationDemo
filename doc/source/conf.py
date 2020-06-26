@@ -15,9 +15,6 @@ import sys
 #sys.path.clear()
 sys.path.insert(0, os.path.abspath('.'))
 sys.path.append(os.path.abspath('..\..\src'))
-sys.path.append(os.path.abspath('..\..\..\Python Scripts\ODESSA\odessa\jlc'))
-sys.path.append(os.path.abspath('..\..\..\..\emade\src'))
-sys.path.append(os.path.abspath('..\..\..\Python Scripts\MODTRAN_Programs'))
 sys.path.append(os.path.abspath('.\_ext'))
 
 # -- Project information -----------------------------------------------------
@@ -44,8 +41,6 @@ templates_path = ['_templates']
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
-
-todo_include_todos = True
 
 # -- Options for HTML output -------------------------------------------------
 

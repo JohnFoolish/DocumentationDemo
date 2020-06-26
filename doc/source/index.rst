@@ -13,10 +13,6 @@ Welcome to FELLOW_project's documentation!
    :caption: Contents:
 
    intro
-   ODESSA_docs/ODESSA_dir
-   MODTRAN_docs/MODTRAN_dir
-
-
 
 
 

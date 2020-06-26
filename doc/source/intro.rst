@@ -25,8 +25,6 @@ Current modules
    :caption: Contents:
 
    basic_code
-   :doc:`ODESSA`
-   :doc:`MODTRAN`
 
 .. automodule:: basic_code
    :members:
