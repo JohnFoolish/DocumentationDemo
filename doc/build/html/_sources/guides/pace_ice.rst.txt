@@ -8,9 +8,7 @@ Guide to Using PACE-ICE
 About PACE-ICE
 --------------
 
-PACE is a computing infrastructure that allows us to standardize our
-runs of EMADE and to run them on a more powerful/configurable machine
-than we may have locally.
+PACE is a computing infrastructure that allows us to standardize our runs of EMADE and to run them on a more powerful/configurable machine than we may have locally.
 
 .. _how_to_get_started_with_pace_ice:
 
@@ -20,32 +18,26 @@ How to get started with PACE-ICE
 This has all been tested on PACE-ICE, but similar processes should exist
 for other servers. Make sure you can ssh onto the server with
 
-``ssh USERNAME@pace-ice.pace.gatech.edu``
+.. code-block:: bash
+   
+   ssh USERNAME@pace-ice.pace.gatech.edu
 
-the username is your Georgia Tech username and the password is your
-Georgia Tech password.
+the username is your Georgia Tech username and the password is your Georgia Tech password.
 
 If you're not on Georgia Tech wifi make sure you're using the VPN.
 
--  Use sftp or scp to move your local emade directory to your pace
-   directory
+-  Use sftp or scp to move your local emade directory to your pace directory
 
-   -  Once emade is on pace, you can delete the datasets you don’t need
-      and .git/ directory from the pace version
+   -  Once emade is on pace, you can delete the datasets you don’t need and .git/ directory from the pace version
 
--  Install the packages you need, I made a conda environment called
-   ‘emade2’
--  Specifying the charset can fix some mysql version compatibility
-   issues:
+-  Install the packages you need, I made a conda environment called ``emade2``
+-  Specifying the charset can fix some mysql version compatibility issues:
 
-   -  Add "?charset=utf8" to the database strings in “launchEMADE.py”,
-      and “sql_connection_orm_base.py” and seeding if needed
+   -  Add ``?charset=utf8`` to the database strings in ``launchEMADE.py``, and ``sql_connection_orm_base.py`` and seeding if needed
 
--  Remove all references to innodb_lock_wait_timeout since that wasn't
-   supported on pace's version of mysql
+-  Remove all references to ``innodb_lock_wait_timeout`` since that wasn't supported on pace's version of mysql
 
-Follow instructions at https://docs.pace.gatech.edu/software/mysql/ to
-get mysql set up
+Follow instructions at https://docs.pace.gatech.edu/software/mysql/ to get mysql set up
 
 For your .my.cnf use:
 
@@ -68,8 +60,7 @@ For your .my.cnf use:
 pbsmysql.pbs:
 ~~~~~~~~~~~~~
 
--  Basically the same as provided on pace's documentation but with the
-   added innodb_lock_wait_timeout
+-  Basically the same as provided on pace's documentation but with the added ``innodb_lock_wait_timeout``
 -  We set it manually whereas before emade set it at runtime
 
 .. code-block:: none
@@ -86,8 +77,7 @@ pbsmysql.pbs:
 **runEmade.pbs**
 ~~~~~~~~~~~~~~~~
 
--  cd's into emade's directory, loads the conda environment, and starts
-   emade with your xml file
+-  cd's into emade's directory, loads the conda environment, and starts emade with your xml file
 
 .. code-block:: none
 
@@ -113,39 +103,25 @@ pbsmysql.pbs:
    #python src/GPFramework/seeding_from_file.py templates/input_summaries.xml summary_seed
    #uncomment above line and comment the first python line if you want to seed your db
 
--  If there are other mysql servers running you may need to specify a
-   port (multiple mysql servers can't run on the same port):
+-  If there are other mysql servers running you may need to specify a port (multiple mysql servers can't run on the same port):
 
-   -  Add \`port=3306\` (or some other port number) to your .my.cnf file
-      in the line before mysqld_safe
+   -  Add ``port=3306`` (or some other port number) to your ``.my.cnf`` file in the line before ``mysqld_safe``
 
--  Run \`qsub pbsmysql.pbs\`
+-  Run ``qsub pbsmysql.pbs``
 
-   -  Once it is running, use qstat to find the number id off your job
-      and qstat -n to find the node it is running on, e.g.
-      rich133-c32-10-r
+   -  Once it is running, use qstat to find the number id off your job and ``qstat -n`` to find the node it is running on, e.g. ``rich133-c32-10-r``
 
-      -  If you modified your port, make this
-         rich133-c32-10-r:PORTNUMBER
+      -  If you modified your port, make this ``rich133-c32-10-r:PORTNUMBER``
 
-   -  Change the template file you’re using for emade so the host is
-      that address
-   -  Create the databases and users you need by ssh’ing into that node,
-      \`ssh rich133-c32-10-r\` and running mysql
+   -  Change the template file you’re using for emade so the host is that address
+   -  Create the databases and users you need by ssh’ing into that node, ``ssh rich133-c32-10-r`` and running mysql
 
-      -  Note: you made need to run \`mysql -u root\` or something along
-         those lines to make changes to databases, as you’ll need root
-         privileges
-      -  Note 2: For your users make sure you make the host “%”, meaning
-         a wildcard that will allow you to connect using that user from
-         other locations
-      -  Note 3: If you want to check if your setup is correct: type in
-         select user, host, password from mysql.user;
+      -  Note: you made need to run ``mysql -u root`` or something along those lines to make changes to databases, as you’ll need root privileges
+      -  Note 2: For your users make sure you make the host ``%``, meaning a wildcard that will allow you to connect using that user from other locations
+      -  Note 3: If you want to check if your setup is correct: type in ``select user, host, password from mysql.user;``
 
-         -  This will show all users and hosts and their respective
-            passwords. You need to make sure that you have a user 'root'
-            with host '%'
-         -  E.g. “user”@“%”
+         -  This will show all users and hosts and their respective passwords. You need to make sure that you have a user ``root`` with host ``%``
+         -  E.g. ``user@%``
 
 -  You should be all set up!
--  Run \`qsub runEMADE.pbs\` and start looking for results!
+-  Run ``qsub runEMADE.pbs`` and start looking for results!

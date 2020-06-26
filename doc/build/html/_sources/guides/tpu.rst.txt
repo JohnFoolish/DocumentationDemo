@@ -79,10 +79,12 @@ your interface to move data in and out of your Cloud VM:
    THIS IS COMPLETELY FINISHED.**
 
    -  If the files are too large to upload all at once, set up git-lfs
-      by running the following 2 commands in a Cloud Shell
+      by running the following commands in a Cloud Shell
 
-      -  ``curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash``
-      -  ``sudo apt-get install git-lfs``
+      .. code-block:: bash
+
+        curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+        sudo apt-get install git-lfs
 
    -  Now clone from github and copy to an empty bucket using
       ``gsutil -m cp -r [git_folder] [bucket_link]``
@@ -116,7 +118,9 @@ Shell <https://console.cloud.google.com/?cloudshell=true>`__ window.
 2. Type the following into your Cloud Shell, to check
 your ``ctpu`` configuration do the following.
 
-``ctpu print-config``
+.. code-block:: bash
+
+  ctpu print-config
 
 You should see a message like this:
 
@@ -284,12 +288,16 @@ this quickstart
 
 1. If still connected, disconnect from the Compute Engine VM:
 
-``(vm)$ exit``
+.. code-block:: bash
+
+  (vm)$ exit
 
 2. Run the following command to delete your Compute Engine VM and your
 Cloud TPU:
 
-``$ ctpu delete``
+.. code-block:: bash
+
+  $ ctpu delete
 
 3. Run ``ctpu status`` to make sure you have no instances allocated to
 avoid unnecessary charges for TPU usage. The deletion might take several
@@ -307,7 +315,9 @@ allocated instances:
 this tutorial, use the ``gsutil`` command to delete it.
 Replace ``YOUR-BUCKET-NAME`` with the name of your Cloud Storage bucket:
 
-``$ gsutil rm -r gs://YOUR-BUCKET-NAME``
+.. code-block:: bash
+
+  $ gsutil rm -r gs://YOUR-BUCKET-NAME
 
 This is not necessary every time, as you can keep your bucket alive at a
 very low cost. This will save time in future uses as you will not have
@@ -362,7 +372,9 @@ run the following commands:
 
 Python3-dev is not set up, so you must install it with the command
 
-``sudo apt-get install python3-dev``
+.. code-block:: bash
+
+  sudo apt-get install python3-dev
 
 **cv2 Import Errors**
 
@@ -372,11 +384,9 @@ things to try:
 1. Older versions of opencv-python have less dependencies, so you can
 try reverting to version 3.3.0.9
 
--  There are other distros with less dependencies, like
-   opencv-python-headless which may help
+  * There are other distros with less dependencies, like opencv-python-headless which may help
 
 2. If you can't get around installing extra libraries, then you will
 have to install whatever the error says you are missing
 
--  For example ``ImportError: libgthread-2.2.so.0 ...`` means you need
-   to run the command ``sudo apt-get install libglib2.0-0``
+  * For example ``ImportError: libgthread-2.2.so.0 ...`` means you need to run the command ``sudo apt-get install libglib2.0-0``

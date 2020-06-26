@@ -206,7 +206,7 @@
 you may be able to disable SSL Completely depending on your database
 configuration. Otherwise, some success has been met by forcing the
 PyMySQL driver by changing connection URLs to read
-“mysql+pymysql://DBIP”. However, pymysql may be causing timeouts, and
+<code class="docutils literal notranslate"><span class="pre">mysql+pymysql://DBIP</span></code>. However, pymysql may be causing timeouts, and
 should be tested on other setups.</p>
 </div>
 <div class="section" id="raise-ioerror-not-a-gzipped-file">
@@ -219,8 +219,8 @@ should be tested on other setups.</p>
 <dt><strong>Solution:</strong></dt><dd><ol class="arabic simple">
 <li><p>Install git-lfs (Add Instructions here soon)</p></li>
 <li><p>In a command prompt, cd to the emade directory</p></li>
-<li><p>Run “git fetch origin –all”</p></li>
-<li><p>Run “git merge/rebase” (run git merge if you wish to keep any edits you have made, otherwise run git rebase)</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">fetch</span> <span class="pre">origin</span> <span class="pre">--all</span></code></p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge/rebase</span></code> (run git merge if you wish to keep any edits you have made, otherwise run git rebase)</p></li>
 </ol>
 </dd>
 </dl>
@@ -235,7 +235,7 @@ should be tested on other setups.</p>
 <dt><strong>Solution:</strong></dt><dd><p>Make sure scikit-image 0.14.2 is installed</p>
 <ol class="arabic simple">
 <li><p>If you already have scikit-image installed with pip, run <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">uninstall</span> <span class="pre">scikit-image</span></code></p></li>
-<li><p>Run <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">insall</span> <span class="pre">scikit-image-0.14.2</span></code></p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">scikit-image-0.14.2</span></code></p></li>
 </ol>
 </dd>
 </dl>
@@ -249,7 +249,7 @@ should be tested on other setups.</p>
 </dd>
 <dt><strong>Solution:</strong></dt><dd><p>Look at your /etc/hosts file and see if your host name is there</p>
 <ol class="arabic simple">
-<li><p>Find your computer name (can be done using scoop.gethostname()</p></li>
+<li><p>Find your computer name (can be done using <code class="docutils literal notranslate"><span class="pre">scoop.gethostname()</span></code>)</p></li>
 <li><p>sudo vim /etc/hosts and insert 127.0.0.1</p></li>
 </ol>
 </dd>

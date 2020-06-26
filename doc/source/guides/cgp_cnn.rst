@@ -117,16 +117,8 @@ FAQ
 ---
 
 #. Does CGP-CNN work with GPU optimization?
-
-Yes. In the beginning of the run, CGP-CNN will output whether it has
-detected and is using GPU optimization.
-
+	Yes. In the beginning of the run, CGP-CNN will output whether it has detected and is using GPU optimization.
 #. How does CGP-CNN deal with very large networks?
-
-If the system runs out of a memory limit/time limit that is set in
-configuration.py, the individual is killed and assigned a bad fitness.
-
+	If the system runs out of a memory limit/time limit that is set in configuration.py, the individual is killed and assigned a bad fitness.
 #. Can you save the dominant deep network structure after it is trained?
-
-Yes. But the code for this is in the armemade branch of emade under the
-CGPFramework, and hasn't yet been checked into the CGP-CNN repository.
+	Yes. But the code for this is in the armemade branch of emade under the CGPFramework, and hasn't yet been checked into the CGP-CNN repository.

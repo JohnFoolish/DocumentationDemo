@@ -245,7 +245,9 @@ client, like PuTTY. Note that you will need to use the -i flag with both
 ssh and scp to provide your local key—which you must download from the
 AWS console—for access to AWS. The user for an Amazon Linux instance is
 always ec2-user. For example:</p>
-<p><code class="docutils literal notranslate"><span class="pre">scp -r -i CERTIFICATE.pem LOCALDIRTOPUSH ec2-user&#64;REMOTEURLFROMAWSCONSOLE:PATHTOPUSHTO</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp -r -i CERTIFICATE.pem LOCALDIRTOPUSH ec2-user@REMOTEURLFROMAWSCONSOLE:PATHTOPUSHTO
+</pre></div>
+</div>
 <p>Again, this command will only work on Windows after installing PuTTY,
 but comes preinstalled on Linux or macOS.</p>
 </div>
@@ -263,7 +265,9 @@ Note that the -w flag fed into launchGTMOEP.py will run only workers. Two master
 <p>Following the standard install instructions within the README.md file of
 the Git repository should be sufficient to install EMADE with the
 additional prerequisite of a C compiler:</p>
-<p><code class="docutils literal notranslate"><span class="pre">sudo yum install gcc</span></code></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo yum install gcc
+</pre></div>
+</div>
 <p>Additionally, note that conda is designed to never be run as a
 superuser; i.e. never type “sudo conda”.</p>
 </div>

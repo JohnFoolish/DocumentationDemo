@@ -249,7 +249,7 @@ where you will want to add your google cloud credits.</p></li>
 tutorial</a></p>
 <p>In this step, we will create a Cloud Storage bucket, which will serve as
 your interface to move data in and out of your Cloud VM:</p>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p>Sign into your google account, select your project and ensure billing
 is enabled for the project.</p></li>
 <li><p>Go to the <a class="reference external" href="https://console.cloud.google.com/storage/browser">Cloud Storage Page on the GCP
@@ -271,13 +271,13 @@ Console</a></p></li>
 <li><p>Select “Upload Folder” and upload the folder that contains “emade”.
 This process may take few minutes. <strong>DO NOT BEGIN THE NEXT STEP UNTIL
 THIS IS COMPLETELY FINISHED.</strong></p>
-<ul class="simple">
-<li><p>If the files are too large to upload all at once, set up git-lfs
-by running the following 2 commands in a Cloud Shell</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">curl</span> <span class="pre">-s</span> <span class="pre">https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh</span> <span class="pre">|</span> <span class="pre">sudo</span> <span class="pre">bash</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">git-lfs</span></code></p></li>
-</ul>
+<li><p>If the files are too large to upload all at once, set up git-lfs
+by running the following commands in a Cloud Shell</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh <span class="p">|</span> sudo bash
+sudo apt-get install git-lfs
+</pre></div>
+</div>
 </li>
 <li><p>Now clone from github and copy to an empty bucket using
 <code class="docutils literal notranslate"><span class="pre">gsutil</span> <span class="pre">-m</span> <span class="pre">cp</span> <span class="pre">-r</span> <span class="pre">[git_folder]</span> <span class="pre">[bucket_link]</span></code></p></li>
@@ -308,7 +308,9 @@ your Cloud Shell. Follow these steps to set up your TPU:</p>
 Shell</a> window.</p>
 <p>2. Type the following into your Cloud Shell, to check
 your <code class="docutils literal notranslate"><span class="pre">ctpu</span></code> configuration do the following.</p>
-<p><code class="docutils literal notranslate"><span class="pre">ctpu print-config</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ctpu print-config
+</pre></div>
+</div>
 <p>You should see a message like this:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>2018/04/29 05:23:03 WARNING: Setting zone to &quot;us-central1-b&quot;
 ctpu configuration:
@@ -463,10 +465,14 @@ this quickstart</p>
 <ol class="arabic simple">
 <li><p>If still connected, disconnect from the Compute Engine VM:</p></li>
 </ol>
-<p><code class="docutils literal notranslate"><span class="pre">(vm)$ exit</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>vm<span class="o">)</span>$ <span class="nb">exit</span>
+</pre></div>
+</div>
 <p>2. Run the following command to delete your Compute Engine VM and your
 Cloud TPU:</p>
-<p><code class="docutils literal notranslate"><span class="pre">$ ctpu delete</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ctpu delete
+</pre></div>
+</div>
 <p>3. Run <code class="docutils literal notranslate"><span class="pre">ctpu</span> <span class="pre">status</span></code> to make sure you have no instances allocated to
 avoid unnecessary charges for TPU usage. The deletion might take several
 minutes. A response like the one below indicates there are no more
@@ -480,7 +486,9 @@ No instances currently exist.
 <p>4. When you no longer need the Cloud Storage bucket you created during
 this tutorial, use the <code class="docutils literal notranslate"><span class="pre">gsutil</span></code> command to delete it.
 Replace <code class="docutils literal notranslate"><span class="pre">YOUR-BUCKET-NAME</span></code> with the name of your Cloud Storage bucket:</p>
-<p><code class="docutils literal notranslate"><span class="pre">$ gsutil rm -r gs://YOUR-BUCKET-NAME</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gsutil rm -r gs://YOUR-BUCKET-NAME
+</pre></div>
+</div>
 <p>This is not necessary every time, as you can keep your bucket alive at a
 very low cost. This will save time in future uses as you will not have
 to upload emade again. See the Cloud Storage pricing guide for free
@@ -520,22 +528,26 @@ sudo pip install --upgrade oauth2client
 </div>
 <p><strong>psutil Import Errors</strong> (<strong>Note:</strong> only seen after SSH Error 255 fix)</p>
 <p>Python3-dev is not set up, so you must install it with the command</p>
-<p><code class="docutils literal notranslate"><span class="pre">sudo apt-get install python3-dev</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get install python3-dev
+</pre></div>
+</div>
 <p><strong>cv2 Import Errors</strong></p>
 <p>There are several dependencies that could cause this, so here are a few
 things to try:</p>
 <p>1. Older versions of opencv-python have less dependencies, so you can
 try reverting to version 3.3.0.9</p>
-<ul class="simple">
-<li><p>There are other distros with less dependencies, like
-opencv-python-headless which may help</p></li>
+<blockquote>
+<div><ul class="simple">
+<li><p>There are other distros with less dependencies, like opencv-python-headless which may help</p></li>
 </ul>
+</div></blockquote>
 <p>2. If you can’t get around installing extra libraries, then you will
 have to install whatever the error says you are missing</p>
-<ul class="simple">
-<li><p>For example <code class="docutils literal notranslate"><span class="pre">ImportError:</span> <span class="pre">libgthread-2.2.so.0</span> <span class="pre">...</span></code> means you need
-to run the command <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">libglib2.0-0</span></code></p></li>
+<blockquote>
+<div><ul class="simple">
+<li><p>For example <code class="docutils literal notranslate"><span class="pre">ImportError:</span> <span class="pre">libgthread-2.2.so.0</span> <span class="pre">...</span></code> means you need to run the command <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">libglib2.0-0</span></code></p></li>
 </ul>
+</div></blockquote>
 </div>
 </div>
 

@@ -56,7 +56,9 @@ ssh and scp to provide your local key—which you must download from the
 AWS console—for access to AWS. The user for an Amazon Linux instance is
 always ec2-user. For example:
 
-``scp -r -i CERTIFICATE.pem LOCALDIRTOPUSH ec2-user@REMOTEURLFROMAWSCONSOLE:PATHTOPUSHTO``
+.. code-block:: bash
+
+	scp -r -i CERTIFICATE.pem LOCALDIRTOPUSH ec2-user@REMOTEURLFROMAWSCONSOLE:PATHTOPUSHTO
 
 Again, this command will only work on Windows after installing PuTTY,
 but comes preinstalled on Linux or macOS.
@@ -85,7 +87,9 @@ Following the standard install instructions within the README.md file of
 the Git repository should be sufficient to install EMADE with the
 additional prerequisite of a C compiler:
 
-``sudo yum install gcc``
+.. code-block:: none
+
+	sudo yum install gcc
 
 Additionally, note that conda is designed to never be run as a
 superuser; i.e. never type “sudo conda”.

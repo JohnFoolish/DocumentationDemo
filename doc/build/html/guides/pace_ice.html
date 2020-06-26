@@ -203,40 +203,32 @@
 <span id="id1"></span><h1>Guide to Using PACE-ICE<a class="headerlink" href="#guide-to-using-pace-ice" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="about-pace-ice">
 <span id="id2"></span><h2>About PACE-ICE<a class="headerlink" href="#about-pace-ice" title="Permalink to this headline">¶</a></h2>
-<p>PACE is a computing infrastructure that allows us to standardize our
-runs of EMADE and to run them on a more powerful/configurable machine
-than we may have locally.</p>
+<p>PACE is a computing infrastructure that allows us to standardize our runs of EMADE and to run them on a more powerful/configurable machine than we may have locally.</p>
 </div>
 <div class="section" id="how-to-get-started-with-pace-ice">
 <span id="id3"></span><h2>How to get started with PACE-ICE<a class="headerlink" href="#how-to-get-started-with-pace-ice" title="Permalink to this headline">¶</a></h2>
 <p>This has all been tested on PACE-ICE, but similar processes should exist
 for other servers. Make sure you can ssh onto the server with</p>
-<p><code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">USERNAME&#64;pace-ice.pace.gatech.edu</span></code></p>
-<p>the username is your Georgia Tech username and the password is your
-Georgia Tech password.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh USERNAME@pace-ice.pace.gatech.edu
+</pre></div>
+</div>
+<p>the username is your Georgia Tech username and the password is your Georgia Tech password.</p>
 <p>If you’re not on Georgia Tech wifi make sure you’re using the VPN.</p>
 <ul class="simple">
-<li><p>Use sftp or scp to move your local emade directory to your pace
-directory</p>
+<li><p>Use sftp or scp to move your local emade directory to your pace directory</p>
 <ul>
-<li><p>Once emade is on pace, you can delete the datasets you don’t need
-and .git/ directory from the pace version</p></li>
+<li><p>Once emade is on pace, you can delete the datasets you don’t need and .git/ directory from the pace version</p></li>
 </ul>
 </li>
-<li><p>Install the packages you need, I made a conda environment called
-‘emade2’</p></li>
-<li><p>Specifying the charset can fix some mysql version compatibility
-issues:</p>
+<li><p>Install the packages you need, I made a conda environment called <code class="docutils literal notranslate"><span class="pre">emade2</span></code></p></li>
+<li><p>Specifying the charset can fix some mysql version compatibility issues:</p>
 <ul>
-<li><p>Add “?charset=utf8” to the database strings in “launchEMADE.py”,
-and “sql_connection_orm_base.py” and seeding if needed</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">?charset=utf8</span></code> to the database strings in <code class="docutils literal notranslate"><span class="pre">launchEMADE.py</span></code>, and <code class="docutils literal notranslate"><span class="pre">sql_connection_orm_base.py</span></code> and seeding if needed</p></li>
 </ul>
 </li>
-<li><p>Remove all references to innodb_lock_wait_timeout since that wasn’t
-supported on pace’s version of mysql</p></li>
+<li><p>Remove all references to <code class="docutils literal notranslate"><span class="pre">innodb_lock_wait_timeout</span></code> since that wasn’t supported on pace’s version of mysql</p></li>
 </ul>
-<p>Follow instructions at <a class="reference external" href="https://docs.pace.gatech.edu/software/mysql/">https://docs.pace.gatech.edu/software/mysql/</a> to
-get mysql set up</p>
+<p>Follow instructions at <a class="reference external" href="https://docs.pace.gatech.edu/software/mysql/">https://docs.pace.gatech.edu/software/mysql/</a> to get mysql set up</p>
 <p>For your .my.cnf use:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[mysqld]
 datadir=/nv/pace-ice/USERNAME/scratch/db
@@ -257,8 +249,7 @@ socket=/nv/pace-ice/USERNAME/scratch/db/mysqldb.sock
 <div class="section" id="pbsmysql-pbs">
 <h3>pbsmysql.pbs:<a class="headerlink" href="#pbsmysql-pbs" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>Basically the same as provided on pace’s documentation but with the
-added innodb_lock_wait_timeout</p></li>
+<li><p>Basically the same as provided on pace’s documentation but with the added <code class="docutils literal notranslate"><span class="pre">innodb_lock_wait_timeout</span></code></p></li>
 <li><p>We set it manually whereas before emade set it at runtime</p></li>
 </ul>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
@@ -274,8 +265,7 @@ mysqld_safe –innodb_lock_wait_timeout=1000
 <div class="section" id="runemade-pbs">
 <h3><strong>runEmade.pbs</strong><a class="headerlink" href="#runemade-pbs" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>cd’s into emade’s directory, loads the conda environment, and starts
-emade with your xml file</p></li>
+<li><p>cd’s into emade’s directory, loads the conda environment, and starts emade with your xml file</p></li>
 </ul>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#PBS -N emade-nlp-app
 #PBS -l nodes=1:ppn=18
@@ -301,41 +291,27 @@ python src/GPFramework/launchEMADE.py templates/INPUT_XML.xml
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>If there are other mysql servers running you may need to specify a
-port (multiple mysql servers can’t run on the same port):</p>
+<li><p>If there are other mysql servers running you may need to specify a port (multiple mysql servers can’t run on the same port):</p>
 <ul>
-<li><p>Add `port=3306` (or some other port number) to your .my.cnf file
-in the line before mysqld_safe</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">port=3306</span></code> (or some other port number) to your <code class="docutils literal notranslate"><span class="pre">.my.cnf</span></code> file in the line before <code class="docutils literal notranslate"><span class="pre">mysqld_safe</span></code></p></li>
 </ul>
 </li>
-<li><p>Run `qsub pbsmysql.pbs`</p>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">qsub</span> <span class="pre">pbsmysql.pbs</span></code></p>
 <ul>
-<li><p>Once it is running, use qstat to find the number id off your job
-and qstat -n to find the node it is running on, e.g.
-rich133-c32-10-r</p>
+<li><p>Once it is running, use qstat to find the number id off your job and <code class="docutils literal notranslate"><span class="pre">qstat</span> <span class="pre">-n</span></code> to find the node it is running on, e.g. <code class="docutils literal notranslate"><span class="pre">rich133-c32-10-r</span></code></p>
 <ul>
-<li><p>If you modified your port, make this
-rich133-c32-10-r:PORTNUMBER</p></li>
+<li><p>If you modified your port, make this <code class="docutils literal notranslate"><span class="pre">rich133-c32-10-r:PORTNUMBER</span></code></p></li>
 </ul>
 </li>
-<li><p>Change the template file you’re using for emade so the host is
-that address</p></li>
-<li><p>Create the databases and users you need by ssh’ing into that node,
-`ssh rich133-c32-10-r` and running mysql</p>
+<li><p>Change the template file you’re using for emade so the host is that address</p></li>
+<li><p>Create the databases and users you need by ssh’ing into that node, <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">rich133-c32-10-r</span></code> and running mysql</p>
 <ul>
-<li><p>Note: you made need to run `mysql -u root` or something along
-those lines to make changes to databases, as you’ll need root
-privileges</p></li>
-<li><p>Note 2: For your users make sure you make the host “%”, meaning
-a wildcard that will allow you to connect using that user from
-other locations</p></li>
-<li><p>Note 3: If you want to check if your setup is correct: type in
-select user, host, password from mysql.user;</p>
+<li><p>Note: you made need to run <code class="docutils literal notranslate"><span class="pre">mysql</span> <span class="pre">-u</span> <span class="pre">root</span></code> or something along those lines to make changes to databases, as you’ll need root privileges</p></li>
+<li><p>Note 2: For your users make sure you make the host <code class="docutils literal notranslate"><span class="pre">%</span></code>, meaning a wildcard that will allow you to connect using that user from other locations</p></li>
+<li><p>Note 3: If you want to check if your setup is correct: type in <code class="docutils literal notranslate"><span class="pre">select</span> <span class="pre">user,</span> <span class="pre">host,</span> <span class="pre">password</span> <span class="pre">from</span> <span class="pre">mysql.user;</span></code></p>
 <ul>
-<li><p>This will show all users and hosts and their respective
-passwords. You need to make sure that you have a user ‘root’
-with host ‘%’</p></li>
-<li><p>E.g. “user”&#64;“%”</p></li>
+<li><p>This will show all users and hosts and their respective passwords. You need to make sure that you have a user <code class="docutils literal notranslate"><span class="pre">root</span></code> with host <code class="docutils literal notranslate"><span class="pre">%</span></code></p></li>
+<li><p>E.g. <code class="docutils literal notranslate"><span class="pre">user&#64;%</span></code></p></li>
 </ul>
 </li>
 </ul>
@@ -343,7 +319,7 @@ with host ‘%’</p></li>
 </ul>
 </li>
 <li><p>You should be all set up!</p></li>
-<li><p>Run `qsub runEMADE.pbs` and start looking for results!</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">qsub</span> <span class="pre">runEMADE.pbs</span></code> and start looking for results!</p></li>
 </ul>
 </div>
 </div>

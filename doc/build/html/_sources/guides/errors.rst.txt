@@ -12,7 +12,7 @@ If you are on your own machine or install a non-global install of ssh,
 you may be able to disable SSL Completely depending on your database
 configuration. Otherwise, some success has been met by forcing the
 PyMySQL driver by changing connection URLs to read
-“mysql+pymysql://DBIP”. However, pymysql may be causing timeouts, and
+``mysql+pymysql://DBIP``. However, pymysql may be causing timeouts, and
 should be tested on other setups.
 
 .. _raise_ioerror_not_a_gzipped_file:
@@ -27,8 +27,8 @@ raise IOError, 'Not a gzipped file'
 **Solution:**
   1. Install git-lfs (Add Instructions here soon)
   2. In a command prompt, cd to the emade directory
-  3. Run "git fetch origin --all"
-  4. Run "git merge/rebase" (run git merge if you wish to keep any edits you have made, otherwise run git rebase)
+  3. Run ``git fetch origin --all``
+  4. Run ``git merge/rebase`` (run git merge if you wish to keep any edits you have made, otherwise run git rebase)
 
 .. _from_numpy.lib.arraypad_import__validate_lengths_importerror_cannot_import_name__validate_lengths:
 
@@ -43,7 +43,7 @@ from numpy.lib.arraypad import \_validate_lengths ImportError: cannot import nam
   Make sure scikit-image 0.14.2 is installed
 
   1. If you already have scikit-image installed with pip, run ``pip uninstall scikit-image``
-  2. Run ``conda insall scikit-image-0.14.2``
+  2. Run ``conda install scikit-image-0.14.2``
 
 .. _errno_8_nodename_nor_servname_provided_or_not_known:
 
@@ -57,5 +57,5 @@ from numpy.lib.arraypad import \_validate_lengths ImportError: cannot import nam
 **Solution:**
   Look at your /etc/hosts file and see if your host name is there
   
-  1. Find your computer name (can be done using scoop.gethostname()
+  1. Find your computer name (can be done using ``scoop.gethostname()``)
   2. sudo vim /etc/hosts and insert 127.0.0.1

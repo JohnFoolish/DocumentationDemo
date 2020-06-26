@@ -50,7 +50,7 @@ For example, to start the process of classifying stream data, you may
 wish to feed the output of an FFT into a machine learner. Example
 seeding code is included in the SeedingFiles of the main directory.
 
-The syntax is thus:
+The syntax is:
 
 ``python seeding_from_file.py templates/input_file.xml seeding_test_1``
 

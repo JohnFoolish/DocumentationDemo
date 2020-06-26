@@ -302,20 +302,22 @@ in lieu of updating an .xml file for normal emade.</p></li>
 <div class="section" id="faq">
 <h2>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li><p>Does CGP-CNN work with GPU optimization?</p></li>
+<li><dl class="simple">
+<dt>Does CGP-CNN work with GPU optimization?</dt><dd><p>Yes. In the beginning of the run, CGP-CNN will output whether it has detected and is using GPU optimization.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>How does CGP-CNN deal with very large networks?</dt><dd><p>If the system runs out of a memory limit/time limit that is set in configuration.py, the individual is killed and assigned a bad fitness.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Can you save the dominant deep network structure after it is trained?</dt><dd><p>Yes. But the code for this is in the armemade branch of emade under the CGPFramework, and hasn’t yet been checked into the CGP-CNN repository.</p>
+</dd>
+</dl>
+</li>
 </ol>
-<p>Yes. In the beginning of the run, CGP-CNN will output whether it has
-detected and is using GPU optimization.</p>
-<ol class="arabic simple">
-<li><p>How does CGP-CNN deal with very large networks?</p></li>
-</ol>
-<p>If the system runs out of a memory limit/time limit that is set in
-configuration.py, the individual is killed and assigned a bad fitness.</p>
-<ol class="arabic simple">
-<li><p>Can you save the dominant deep network structure after it is trained?</p></li>
-</ol>
-<p>Yes. But the code for this is in the armemade branch of emade under the
-CGPFramework, and hasn’t yet been checked into the CGP-CNN repository.</p>
 </div>
 </div>
 
