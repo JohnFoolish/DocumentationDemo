@@ -1,5 +1,5 @@
-Tutorials
-=========
+Guides
+======
 
 .. only:: html
 
@@ -7,5 +7,6 @@ Tutorials
    :maxdepth: 2
    :caption: Contents:
 
-   tutorials/OneMax
-   tutorials/Preprocessing
+   guides/errors
+   guides/emadeCode
+   guides/xmlInput

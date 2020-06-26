@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Tutorials &mdash; FELLOW_project 0.0.1 documentation</title>
+  <title>Guides &mdash; FELLOW_project 0.0.1 documentation</title>
   
 
   
@@ -39,8 +39,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="OneMax Problem" href="tutorials/OneMax.html" />
-    <link rel="prev" title="basic_code module" href="basic_code.html" /> 
+    <link rel="next" title="Common Emade Errors" href="guides/errors.html" />
+    <link rel="prev" title="Preprocessing Data in EMADE" href="tutorials/Preprocessing.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -88,12 +88,13 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">This is an introduction to my documentation!</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorials</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/OneMax.html">OneMax Problem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/Preprocessing.html">Preprocessing Data in EMADE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Guides</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/errors.html">Common Emade Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/emadeCode.html">Guide to EMADE Code Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/xmlInput.html">Guide to XML Emade Input</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="guides.html">Guides</a></li>
 </ul>
 
             
@@ -140,13 +141,13 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Tutorials</li>
+      <li>Guides</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/tutorials.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/guides.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -183,22 +184,37 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="tutorials">
-<h1>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="guides">
+<h1>Guides<a class="headerlink" href="#guides" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="tutorials/OneMax.html">OneMax Problem</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/OneMax.html#Imports">Imports</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/OneMax.html#Type-Creation">Type Creation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/OneMax.html#Toolbox">Toolbox</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/OneMax.html#Evaluation-Function">Evaluation Function</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/OneMax.html#Genetic-Operators">Genetic Operators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/OneMax.html#Evolving-the-Population">Evolving the Population</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/errors.html">Common Emade Errors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/errors.html#ssl-connection-error">SSL Connection Error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/errors.html#raise-ioerror-not-a-gzipped-file">raise IOError, ‘Not a gzipped file’</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/errors.html#from-numpy-lib-arraypad-import-validate-lengths-importerror-cannot-import-name-validate-lengths">from numpy.lib.arraypad import _validate_lengths ImportError: cannot import name ‘_validate_lengths’</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/errors.html#errno-8-nodename-nor-servname-provided-or-not-known">[Errno 8] nodename nor servname provided, or not known</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="tutorials/Preprocessing.html">Preprocessing Data in EMADE</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/Preprocessing.html#XML-Formatting">XML Formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/emadeCode.html">Guide to EMADE Code Structure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/emadeCode.html#about-this-guide">About this Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/emadeCode.html#xml-input">XML Input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/emadeCode.html#didlaunch-py">didLaunch.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/emadeCode.html#database-tree-evaluator-py">database_tree_evaluator.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/emadeCode.html#data-py">data.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/emadeCode.html#gp-framework-helper-py">gp_framework_helper.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/emadeCode.html#launchgtmoep-py">launchGTMOEP.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/emadeCode.html#gtmoep-py">gtMOEP.py</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guides/xmlInput.html">Guide to XML Emade Input</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/xmlInput.html#objectives">objectives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/xmlInput.html#pyconfig-gridengineparameters">pyConfig/gridEngineParameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/xmlInput.html#dbconfig">dbConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/xmlInput.html#dataset">dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/xmlInput.html#evaluation">evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/xmlInput.html#evolutionparameters">evolutionParameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/xmlInput.html#paretofitness-parentsadult-paretofrontadult">paretoFitness / parentsAdult / paretoFrontAdult</a></li>
 </ul>
 </li>
 </ul>
@@ -213,10 +229,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="tutorials/OneMax.html" class="btn btn-neutral float-right" title="OneMax Problem" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="guides/errors.html" class="btn btn-neutral float-right" title="Common Emade Errors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="basic_code.html" class="btn btn-neutral float-left" title="basic_code module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="tutorials/Preprocessing.html" class="btn btn-neutral float-left" title="Preprocessing Data in EMADE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

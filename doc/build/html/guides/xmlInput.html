@@ -1,0 +1,305 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Guide to XML Emade Input &mdash; FELLOW_project 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Guide to EMADE Code Structure" href="emadeCode.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> FELLOW_project
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">This is an introduction to my documentation!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../guides.html">Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="errors.html">Common Emade Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emadeCode.html">Guide to EMADE Code Structure</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Guide to XML Emade Input</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#objectives">objectives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyconfig-gridengineparameters">pyConfig/gridEngineParameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dbconfig">dbConfig</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dataset">dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluation">evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evolutionparameters">evolutionParameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#paretofitness-parentsadult-paretofrontadult">paretoFitness / parentsAdult / paretoFrontAdult</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">FELLOW_project</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../guides.html">Guides</a> &raquo;</li>
+        
+      <li>Guide to XML Emade Input</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/guides/xmlInput.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="guide-to-xml-emade-input">
+<h1>Guide to XML Emade Input<a class="headerlink" href="#guide-to-xml-emade-input" title="Permalink to this headline">¶</a></h1>
+<p>Emade accepts problem definitions via the XML input fed into
+launchGTMOEP.py. To better understand how your problem definition is
+parsed from the XML and ultimately fed into the main evolutionary loop,
+consult the <a class="reference external" href="Guide_to_EMADE_Code_Structure">Guide to EMADE Code Structure</a>.</p>
+<div class="section" id="objectives">
+<h2>objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">¶</a></h2>
+<p>Emade is capable of handling an arbitrary number of objectives, but all
+of them must be minimization. The weight of the objective function must
+therefore be negative, but it may be a decimal percentage. The
+achievable and goal attributes affect selection, where individuals
+behind the achievable point are not likely to be selected for crossover.
+Lastly, the upper and lower tags are bounds for the calculation of
+hypervolume.</p>
+</div>
+<div class="section" id="pyconfig-gridengineparameters">
+<h2>pyConfig/gridEngineParameters<a class="headerlink" href="#pyconfig-gridengineparameters" title="Permalink to this headline">¶</a></h2>
+<p>These two sections provide the path to Python and other attributes for
+server-side execution. launchGTMOEP.py creates a file in the main
+directory called gridEngineJobSubmit_master_SOMEPROCESSID.sh. This is a
+script to run your problem on a Unix server. If you are running Emade
+locally, this file is unused.</p>
+</div>
+<div class="section" id="dbconfig">
+<h2>dbConfig<a class="headerlink" href="#dbconfig" title="Permalink to this headline">¶</a></h2>
+<p>This section is used if you create a local MySQL database with Emade by
+running the didLaunch.py file without a “-d” flag. If you are using a
+pre-instantiated or remote database, this option is unused.</p>
+</div>
+<div class="section" id="dataset">
+<h2>dataset<a class="headerlink" href="#dataset" title="Permalink to this headline">¶</a></h2>
+<p>This is where you provide both your test and training data. If you
+provide k files for each within the montecarlo subsection, then Emade
+will perform k-fold cross-validation. Note however that you must fold
+the data yourself. You must also specify the type of your data, which
+can be “featuredata”, “streamdata”, “filterdata”, or “imagedata”. These
+labels determine how your data will be read in and fed to classifiers.</p>
+</div>
+<div class="section" id="evaluation">
+<h2>evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">¶</a></h2>
+<p>This section specifies the file that contains methods to evaluate
+individual fitness.</p>
+</div>
+<div class="section" id="evolutionparameters">
+<h2>evolutionParameters<a class="headerlink" href="#evolutionparameters" title="Permalink to this headline">¶</a></h2>
+<p>These are parameters that control the evolutionary loop.</p>
+</div>
+<div class="section" id="paretofitness-parentsadult-paretofrontadult">
+<span id="id1"></span><h2>paretoFitness / parentsAdult / paretoFrontAdult<a class="headerlink" href="#paretofitness-parentsadult-paretofrontadult" title="Permalink to this headline">¶</a></h2>
+<p>These are used to define the output that Emade writes as .txt files.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="emadeCode.html" class="btn btn-neutral float-left" title="Guide to EMADE Code Structure" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, John Lewis Corker
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

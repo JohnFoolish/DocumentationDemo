@@ -14,7 +14,7 @@ Welcome to FELLOW_project's documentation!
 
    intro
    tutorials
-
+   guides
 
 
 
