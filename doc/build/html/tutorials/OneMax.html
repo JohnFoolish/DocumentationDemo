@@ -101,6 +101,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Preprocessing.html">Preprocessing Data in EMADE</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../guides.html">Guides</a></li>
 </ul>
 
             
@@ -527,11 +528,11 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 bit is of type &lt;class &#39;int&#39;&gt; and has value
-1
+0
 ind is of type &lt;class &#39;deap.creator.Individual&#39;&gt; and contains 10 bits
-[0, 1, 1, 0, 1, 0, 1, 0, 0, 0]
+[0, 1, 1, 0, 0, 1, 0, 0, 0, 1]
 pop is of type &lt;class &#39;list&#39;&gt; and contains 3 individuals
-[[1, 0, 0, 0, 0, 0, 1, 0, 1, 1], [0, 1, 0, 1, 0, 1, 0, 1, 1, 1], [1, 0, 0, 1, 0, 1, 0, 1, 0, 0]]
+[[1, 0, 0, 1, 1, 0, 1, 0, 1, 1], [1, 1, 0, 0, 1, 0, 0, 0, 0, 0], [1, 1, 0, 0, 1, 0, 1, 0, 1, 1]]
 </pre></div></div>
 </div>
 </div>
@@ -584,8 +585,8 @@ pop is of type &lt;class &#39;list&#39;&gt; and contains 3 individuals
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[1, 1, 0, 0, 1, 0, 1, 1, 1, 1]
-[1, 1, 0, 0, 1, 1, 1, 1, 1, 1]
+[0, 0, 1, 1, 0, 0, 0, 0, 0, 1]
+[0, 1, 1, 1, 0, 0, 0, 0, 1, 1]
 </pre></div></div>
 </div>
 <p>The operators execute their behaviour on the individuals in place, meaning that if the individual is not copied before modified the old individual is lost. Copying an individual is done with the <code class="docutils literal notranslate"><span class="pre">clone</span></code> function available in every toolbox.</p>
@@ -664,17 +665,17 @@ finished the population contains the individuals from the last generation.</p>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 gen     nevals  avg     min     max
-0       50      4.92    1       9
-1       32      5.86    3       9
-2       27      6.82    4       9
-3       42      7.68    5       9
-4       37      8.2     5       10
-5       35      8.68    7       10
-6       24      8.96    6       10
-7       32      9.38    6       10
-8       39      9.86    8       10
-9       35      9.78    7       10
-10      34      9.82    8       10
+0       50      4.98    1       8
+1       33      6.1     4       8
+2       33      6.84    5       10
+3       29      7.5     6       10
+4       34      8.24    5       10
+5       35      8.62    6       10
+6       33      9.26    8       10
+7       26      9.46    6       10
+8       28      9.7     7       10
+9       32      9.88    7       10
+10      31      9.64    7       10
 Best individual is: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 with fitness: (10.0,)
 </pre></div></div>
@@ -684,15 +685,6 @@ with fitness: (10.0,)
 </div>
 <div class="output_area docutils container">
 <img alt="../_images/tutorials_OneMax_21_1.png" src="../_images/tutorials_OneMax_21_1.png" />
-</div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
-</pre></div>
 </div>
 </div>
 </div>
