@@ -7,3 +7,4 @@ nbsphinx
 ipython
 ipykernel
 jupyter_client
+deap
