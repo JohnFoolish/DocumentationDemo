@@ -1,0 +1,6 @@
+# -*- coding: utf-8 -*-
+numpy 
+matplotlib
+sphinx
+sphinx_rtd_theme
+
