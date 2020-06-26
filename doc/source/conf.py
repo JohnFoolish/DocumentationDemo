@@ -13,10 +13,15 @@
 import os
 import sys
 #sys.path.clear()
-sys.path.insert(0, os.path.abspath('.'))
-sys.path.append(os.path.abspath('..\..\src'))
-sys.path.append(os.path.abspath('.\_ext'))
-
+import platform
+if platform.system() == 'Windows':
+	sys.path.insert(0, os.path.abspath('.'))
+	sys.path.append(os.path.abspath('..\..\src'))
+	sys.path.append(os.path.abspath('.\_ext'))
+else:
+	sys.path.insert(0, os.path.abspath('.'))
+	sys.path.append(os.path.abspath('../../src'))
+	sys.path.append(os.path.abspath('./_ext'))
 # -- Project information -----------------------------------------------------
 
 project = 'FELLOW_project'
