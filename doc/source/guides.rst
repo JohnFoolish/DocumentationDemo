@@ -10,3 +10,9 @@ Guides
    guides/errors
    guides/emadeCode
    guides/xmlInput
+   guides/debug
+   guides/cloud
+   guides/tpu
+   guides/dependencies
+   guides/cgp_cnn
+   guides/pace_ice

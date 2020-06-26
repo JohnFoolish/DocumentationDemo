@@ -1,0 +1,117 @@
+==Guide to Using PACE-ICE==
+
+==About PACE-ICE==
+PACE is a computing infrastructure that allows us to standardize our runs of EMADE and to run them on a more powerful/configurable machine than we may have locally.
+
+==How to get started with PACE-ICE==
+This has all been tested on PACE-ICE, but similar processes should exist for other servers. Make sure you can ssh onto the server with <blockquote>ssh USERNAME@pace-ice.pace.gatech.edu</blockquote>the username is your Georgia Tech username and the password is your Georgia Tech password.
+
+If you're not on Georgia Tech wifi make sure you're using the VPN.
+
+* Use sftp or scp to move your local emade directory to your pace directory
+** Once emade is on pace, you can delete the datasets you don’t need and .git/ directory from the pace version
+* Install the packages you need, I made a conda environment called ‘emade2’
+* Specifying the charset can fix some mysql version compatibility issues:
+** Add "?charset=utf8" to the database strings in “launchEMADE.py”, and “sql_connection_orm_base.py” and seeding if needed
+* Remove all references to innodb_lock_wait_timeout since that wasn't supported on pace's version of mysql
+Follow instructions at <nowiki>https://docs.pace.gatech.edu/software/mysql/</nowiki> to get mysql set up
+
+For your .my.cnf use:
+
+'''[mysqld]'''
+
+'''datadir=/nv/pace-ice/USERNAME/scratch/db'''
+
+'''socket=/nv/pace-ice/USERNAME/scratch/db/mysqldb.sock'''
+
+'''user=USERNAME'''
+
+'''symbolic-links=0'''
+
+'''innodb_lock_wait_timeout=1000'''
+
+'''[mysqld_safe]'''
+
+'''log-error=/nv/pace-ice/USERNAME/scratch/db/mysqldb.log'''
+
+'''pid-file=/nv/pace-ice/USERNAME/scratch/db/mysqldb.pid'''
+
+'''[mysql]'''
+
+'''socket=/nv/pace-ice/USERNAME/scratch/db/mysqldb.sock'''
+* Create PBS scripts to run mysql and emade
+
+=== pbsmysql.pbs: ===
+* Basically the same as provided on pace's documentation but with the added innodb_lock_wait_timeout
+* We set it manually whereas before emade set it at runtime
+'''#!/bin/bash'''
+
+'''#PBS -N mysqldb'''
+
+'''#PBS -q pace-ice'''
+
+'''#PBS -l nodes=1:ppn=1'''
+
+'''#PBS -l walltime=10:00:00'''
+
+'''#PBS -M USERNAME@gatech.edu'''
+
+'''mysqld_safe --innodb_lock_wait_timeout=1000'''
+
+=== '''runEmade.pbs''' ===
+* cd's into emade's directory, loads the conda environment, and starts emade with your xml file
+'''#PBS -N emade-nlp-app'''
+
+'''#PBS -l nodes=1:ppn=18'''
+
+'''#PBS -l pmem= 7gb'''
+
+'''#PBS -l walltime=10:00:00'''
+
+'''#PBS -q pace-ice'''
+
+'''#PBS -j oe'''
+
+'''#PBS -o emadeNLP-App.out'''
+
+'''#PBS -m abe'''
+
+'''#PBS -M USERNAME@gatech.edu'''
+
+'''cd EMADE_DIRECTORY'''
+
+'''echo "Started on `/bin/hostname`"               # prints the name of the node job started on'''
+
+'''module load java/1.8.0_25'''
+
+'''module load openmpi/2.1.1'''
+
+'''module load glib/2.40.0'''
+
+'''module load gcc/4.8.0'''
+
+'''module load anaconda3/2019.03'''
+
+'''conda activate emade2'''
+
+'''echo "STARTING EMADE"'''
+
+'''python src/GPFramework/launchEMADE.py templates/INPUT_XML.xml'''
+
+'''#python src/GPFramework/seeding_from_file.py templates/input_summaries.xml summary_seed'''
+
+'''#uncomment above line and comment the first python line if you want to seed your db'''
+* If there are other mysql servers running you may need to specify a port (multiple mysql servers can't run on the same port):
+** Add `port=3306` (or some other port number) to your .my.cnf file in the line before mysqld_safe
+* Run `qsub pbsmysql.pbs`
+** Once it is running, use qstat to find the number id off your job and qstat -n to find the node it is running on, e.g. rich133-c32-10-r
+*** If you modified your port, make this rich133-c32-10-r:PORTNUMBER
+** Change the template file you’re using for emade so the host is that address
+** Create the databases and users you need by ssh’ing into that node, `ssh rich133-c32-10-r` and running mysql
+*** Note: you made need to run `mysql -u root` or something along those lines to make changes to databases, as you’ll need root privileges
+*** Note 2: For your users make sure you make the host “%”, meaning a wildcard that will allow you to connect using that user from other locations
+*** Note 3: If you want to check if your setup is correct: type in select user, host, password from mysql.user;
+**** This will show all users and hosts and their respective passwords. You need to make sure that you have a user 'root' with host '%'
+**** E.g. “user”@“%”
+* You should be all set up!
+* Run `qsub runEMADE.pbs` and start looking for results!

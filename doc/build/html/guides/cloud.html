@@ -1,0 +1,384 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Running on the Cloud &mdash; FELLOW_project 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Guide to Running on TPU using Google Cloud Platform" href="tpu.html" />
+    <link rel="prev" title="Guide to Debugging Individual Algorithms" href="debug.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> FELLOW_project
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">This is an introduction to my documentation!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../guides.html">Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="errors.html">Common Emade Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emadeCode.html">Guide to EMADE Code Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xmlInput.html">Guide to XML EMADE Input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debug.html">Guide to Debugging Individual Algorithms</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Running on the Cloud</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#running-on-google-cloud">Running on Google Cloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#making-an-aws-educate-account">Making an AWS Educate Account</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#about-aws">About AWS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#operating-system">Operating System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-an-aws-node-via-ssh">Accessing an AWS Node Via SSH</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#emade-installation">EMADE Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#database-initialization-collaborating-with-several-aws-accounts">Database Initialization // Collaborating with Several AWS Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#necessary-packages">Necessary Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-manipulation">File Manipulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#changing-instance-resources">Changing Instance Resources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#daemonizing-processes-with-screen">Daemonizing Processes with Screen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#faq">FAQ</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tpu.html">Guide to Running on TPU using Google Cloud Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tpu.html#about-tpu">About TPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tpu.html#how-to-get-started-with-google-cloud">How to get started with Google Cloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tpu.html#create-a-project">Create a Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tpu.html#creating-a-google-cloud-storage-bucket">Creating a Google Cloud Storage Bucket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tpu.html#tpu-initialization-and-connecting-to-the-cloud-vm">TPU Initialization and Connecting to the Cloud VM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tpu.html#emade-on-your-virtual-machine">EMADE on Your Virtual Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tpu.html#code-changes-to-run-tensorflow-with-tpu-support">Code Changes to Run Tensorflow With TPU Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tpu.html#connecting-to-google-cloud-vm-from-local-machine">Connecting to Google Cloud VM from Local Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tpu.html#cleaning-up-google-cloud-resources">Cleaning up Google Cloud Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tpu.html#common-problems-and-their-solutions">Common Problems and Their Solutions</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">FELLOW_project</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../guides.html">Guides</a> &raquo;</li>
+        
+      <li>Running on the Cloud</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/guides/cloud.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="running-on-the-cloud">
+<span id="id1"></span><h1>Running on the Cloud<a class="headerlink" href="#running-on-the-cloud" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="running-on-google-cloud">
+<span id="id2"></span><h2>Running on Google Cloud<a class="headerlink" href="#running-on-google-cloud" title="Permalink to this headline">¶</a></h2>
+<p>To run on Google Cloud, make a single virtual machine (VM) using
+Google’s precompiled deep-learning image that they developed to be
+optimized for their processors with Intel. Access the platform via the
+“SSH” button on the VM control panel. Do not install anaconda, but
+rather install all needed packages using pip3, taking care not to
+reinstall a non-optimized version of tensorflow, keras, numpy or scipy.
+Also start a local mySQL server. Run EMADE as a local run within a
+“screen” daemon as described below. Start workers on a separate deamon.</p>
+</div>
+<div class="section" id="making-an-aws-educate-account">
+<span id="id3"></span><h2>Making an AWS Educate Account<a class="headerlink" href="#making-an-aws-educate-account" title="Permalink to this headline">¶</a></h2>
+<p>You can apply for an AWS Educate account
+<a class="reference external" href="https://www.awseducate.com/registration?refid=Qe5oPnjlwk6UyeRP88DLWK8GIxfK5Ipt">here</a>,
+and you should receive a preliminary $100 credit immediately.</p>
+</div>
+<div class="section" id="about-aws">
+<span id="id4"></span><h2>About AWS<a class="headerlink" href="#about-aws" title="Permalink to this headline">¶</a></h2>
+<p>Amazon Web Services (AWS) is a massively scalable service. Therefore, there are lots of ways you could use AWS to run EMADE; you could choose to run EMADE with centralized storage for very large datasets on the S3 service  or as a containerized docker service, for example. However, because an individual Linux instance on the Amazon Elastic Compute Cloud (EC2) is cost-effective, relatively standard across current industry practices as a <a href="#id5"><span class="problematic" id="id6">*</span></a>nix system, and scalable to include up to 16 GPUs and local storage on an SSD, this guide will proceed with a machine instance running Amazon Linux. This service is called EC2 in Amazon’s nomenclature. This offers the added advantage that you can create an image of your base instance—software installation and data included—and have it to share with your teammates. Contact Scott Heston for access to a pre-configured machine image or follow <a class="reference external" href="https://datanextsolutions.com/blog/aws-how-to-copy-ec2-instances-to-another-account/">this guide</a> to clone your own image.</p>
+</div>
+<div class="section" id="operating-system">
+<span id="id7"></span><h2>Operating System<a class="headerlink" href="#operating-system" title="Permalink to this headline">¶</a></h2>
+<p>Amazon Linux offers optimization for AWS, and uses the yum package
+manager. By using Amazon Linux instead of a standard distribution like
+Ubuntu, you can avoid installing specific drivers like is necessary on a
+VM-Ware host, for example.</p>
+</div>
+<div class="section" id="accessing-an-aws-node-via-ssh">
+<span id="id8"></span><h2>Accessing an AWS Node Via SSH<a class="headerlink" href="#accessing-an-aws-node-via-ssh" title="Permalink to this headline">¶</a></h2>
+<p>SSH is used to access your node, and the corresponding push/pull tool to
+exchange files is SCP. You can read more about these tools by typing man
+ssh or man scp on a *nix system. On windows, you must install an SSH
+client, like PuTTY. Note that you will need to use the -i flag with both
+ssh and scp to provide your local key—which you must download from the
+AWS console—for access to AWS. The user for an Amazon Linux instance is
+always ec2-user. For example:</p>
+<p><code class="docutils literal notranslate"><span class="pre">scp -r -i CERTIFICATE.pem LOCALDIRTOPUSH ec2-user&#64;REMOTEURLFROMAWSCONSOLE:PATHTOPUSHTO</span></code></p>
+<p>Again, this command will only work on Windows after installing PuTTY,
+but comes preinstalled on Linux or macOS.</p>
+</div>
+<div class="section" id="emade-installation">
+<span id="id9"></span><h2>EMADE Installation<a class="headerlink" href="#emade-installation" title="Permalink to this headline">¶</a></h2>
+<p>EMADE should be installed through anaconda or miniconda if you intend to eventually implement any primitive that needs a GPU to train efficiently. This is because one instance of Python cannot have tensorflow compiled for CUDA and tensorflow compiled for CPU execution. (This will give a libcuda.so not found error.) For example, a premade image might include one conda environment called gpu and another called noGPU, so that you can only pay for GPU access when you need it.</p>
+</div>
+<div class="section" id="database-initialization-collaborating-with-several-aws-accounts">
+<span id="id10"></span><h2>Database Initialization // Collaborating with Several AWS Accounts<a class="headerlink" href="#database-initialization-collaborating-with-several-aws-accounts" title="Permalink to this headline">¶</a></h2>
+<p>Because our lab is structured into sub-teams, it is likely that you will want to set up a DB that everyone can access via their instances or personal computers. You can do this by creating a free-tier database through AWS’s relational database service (RBS) and configuring the security parameters appropriately; EMADE can connect to a mySQL RDS service, but the containing security group must include the IP addresses of every user. A good way to test for a connection is to try to login using MySQL Workbench, which is a free GUI for managing SQL DBs and is also useful in reading results from EMADE.
+Note that the -w flag fed into launchGTMOEP.py will run only workers. Two masters should never run at the same time on the same DB.</p>
+</div>
+<div class="section" id="necessary-packages">
+<span id="id11"></span><h2>Necessary Packages<a class="headerlink" href="#necessary-packages" title="Permalink to this headline">¶</a></h2>
+<p>Following the standard install instructions within the README.md file of
+the Git repository should be sufficient to install EMADE with the
+additional prerequisite of a C compiler:</p>
+<p><code class="docutils literal notranslate"><span class="pre">sudo yum install gcc</span></code></p>
+<p>Additionally, note that conda is designed to never be run as a
+superuser; i.e. never type “sudo conda”.</p>
+</div>
+<div class="section" id="file-manipulation">
+<span id="id12"></span><h2>File Manipulation<a class="headerlink" href="#file-manipulation" title="Permalink to this headline">¶</a></h2>
+<p>The read/write time from a local SSH to Amazon Linux instances on the
+school network is excellent. It takes about 10 minutes to push 7 GB to
+an EC2 instance, depending on network congestion. Cloning the Git
+repository is also very fast. You may need to resize your instance’s
+drive if your dataset is more than a trivial size. You can do this by
+changing the volume under elastic block store that is listed as your
+instances’ mounted drive on the AWS console. You will then need to
+either restart the instance or issue a modification command
+<a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modify-volume.html?icmpid=docs_ec2_console">here</a>.</p>
+</div>
+<div class="section" id="changing-instance-resources">
+<span id="id14"></span><h2>Changing Instance Resources<a class="headerlink" href="#changing-instance-resources" title="Permalink to this headline">¶</a></h2>
+<p>See a list of EC2 instance types <a class="reference external" href="https://aws.amazon.com/ec2/instance-types/">here</a>. Note that the free tier with only 1 GiB of RAM is equivalent to a low-end raspberry pi; it won’t load EMADE into memory. You need at least 2 GiB to start running trivial feature-data problems for validation purposes.</p>
+</div>
+<div class="section" id="daemonizing-processes-with-screen">
+<span id="id16"></span><h2>Daemonizing Processes with Screen<a class="headerlink" href="#daemonizing-processes-with-screen" title="Permalink to this headline">¶</a></h2>
+<p>If you run an instance of EMADE through an SSH instance, it may time out
+and requires the client to maintain a connection. Use the Linux command
+screen to daemonize an EMADE run. “screen” will start a session. “screen
+-r” restores the same terminal session to a later SSH instance.</p>
+</div>
+<div class="section" id="faq">
+<h2>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h2>
+<p><strong>Why is “sudo yum install” not installing where I can see the files?</strong>
+By executing yum as super user, you are repointing your HOME
+environmental to the root user folder. Without root access, you cannot
+read from or write to this folder. You can become root by running the
+“sudo su” command, but you must be careful to not override engineering
+safeguards as superuser. Note that during some installations (e.g.
+mysql, miniconda) it may be helpful to force installation into your home
+folder instead of the root user folder.</p>
+<p><strong>How do I get AWS credit?</strong></p>
+<p>If you apply with your .edu account
+<a class="reference external" href="https://aws.amazon.com/grants/">here</a>, you’ll be approved for an
+instant $100. Beyond that, OIT recommends undergraduates apply for
+additional education grants. Consult
+<a class="reference external" href="https://support.cc.gatech.edu/facilities/research-clusters">here</a>
+Emory’s IT department also recommends AWS education grants.</p>
+<p><strong>Are there other Amazon services I could use besides EC2?</strong></p>
+<p>AWS has been around since 2004, and has grown to include a massive
+amount of services. You can research different ways to store your data:
+S3 and EFS offer different advantages. It is unlikely that you would
+need another DB service besides a MySQL database. It may be worth
+researching how EMADE could be run on an Elastic Beanstock, Docker
+container, or maybe even incorporating Amazon lambda functions only for
+functions that need to run on a GPU.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tpu.html" class="btn btn-neutral float-right" title="Guide to Running on TPU using Google Cloud Platform" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="debug.html" class="btn btn-neutral float-left" title="Guide to Debugging Individual Algorithms" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, John Lewis Corker
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

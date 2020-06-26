@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Guide to XML EMADE Input &mdash; FELLOW_project 0.0.1 documentation</title>
+  <title>Guide to Debugging Individual Algorithms &mdash; FELLOW_project 0.0.1 documentation</title>
   
 
   
@@ -39,8 +39,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Guide to Debugging Individual Algorithms" href="debug.html" />
-    <link rel="prev" title="Guide to EMADE Code Structure" href="emadeCode.html" /> 
+    <link rel="prev" title="Guide to XML EMADE Input" href="xmlInput.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -92,17 +91,13 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../guides.html">Guides</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="errors.html">Common Emade Errors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="emadeCode.html">Guide to EMADE Code Structure</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Guide to XML EMADE Input</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#objectives">objectives</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pyconfig-gridengineparameters">pyConfig/gridEngineParameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#dbconfig">dbConfig</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#dataset">dataset</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#evaluation">evaluation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#evolutionparameters">evolutionParameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#paretofitness-parentsadult-paretofrontadult">paretoFitness / parentsAdult / paretoFrontAdult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xmlInput.html">Guide to XML EMADE Input</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Guide to Debugging Individual Algorithms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#evaluating-individual-algorithms">Evaluating Individual Algorithms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#seeding-your-own-algorithms">Seeding Your Own Algorithms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#common-reasons-why-algorithms-fail">Common Reasons Why Algorithms Fail</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="debug.html">Guide to Debugging Individual Algorithms</a></li>
 </ul>
 </li>
 </ul>
@@ -153,13 +148,13 @@
         
           <li><a href="../guides.html">Guides</a> &raquo;</li>
         
-      <li>Guide to XML EMADE Input</li>
+      <li>Guide to Debugging Individual Algorithms</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/guides/xmlInput.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/guides/debug.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -196,57 +191,57 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="guide-to-xml-emade-input">
-<span id="id1"></span><h1>Guide to XML EMADE Input<a class="headerlink" href="#guide-to-xml-emade-input" title="Permalink to this headline">¶</a></h1>
-<p>EMADE accepts problem definitions via the XML input fed into
-launchGTMOEP.py. To better understand how your problem definition is
-parsed from the XML and ultimately fed into the main evolutionary loop,
-consult the <a class="reference internal" href="emadeCode.html#guide-to-emade-code-structure"><span class="std std-ref">Guide to EMADE Code Structure</span></a>.</p>
-<div class="section" id="objectives">
-<h2>objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">¶</a></h2>
-<p>EMADE is capable of handling an arbitrary number of objectives, but all
-of them must be minimization. The weight of the objective function must
-therefore be negative, but it may be a decimal percentage. The
-achievable and goal attributes affect selection, where individuals
-behind the achievable point are not likely to be selected for crossover.
-Lastly, the upper and lower tags are bounds for the calculation of
-hypervolume.</p>
+<div class="section" id="guide-to-debugging-individual-algorithms">
+<span id="id1"></span><h1>Guide to Debugging Individual Algorithms<a class="headerlink" href="#guide-to-debugging-individual-algorithms" title="Permalink to this headline">¶</a></h1>
+<p>When you first create a random population of individuals (i.e.
+algorithms), many are likely to die. You can see why they have died in
+the error_string column of the individuals database table. For example,
+if there is not the possibility of outputting the correct datatype,
+EMADE will automatically kill that individual to speed up overall
+evaluation time, and will display that “The primitives cannot
+categorically convert from input of desired type to desired type of
+output.”</p>
+<p>As EMADE progresses beyond its first generation, only the algorithms
+that return finite values on all objectives will be propagated forward
+to be chosen for mutation or crossover; this should lead to a normal and
+productive evolutionary run. But what happens if an algorithm that you
+think should execute correctly returns all NULL objective values? Or,
+worse yet, all of your algorithms return NULL values? Well, then it is
+time to debug using the following technique(s).</p>
+<div class="section" id="evaluating-individual-algorithms">
+<span id="id2"></span><h2>Evaluating Individual Algorithms<a class="headerlink" href="#evaluating-individual-algorithms" title="Permalink to this headline">¶</a></h2>
+<p>Because string representations of algorithms are stored as pickled
+objectives in the individuals table of the database, you can actually
+unpickle them yourself to run them on a local instance of EMADE. The
+database_tree_evaluator.py file takes the path to an XML and an
+individual’s hash from the DB as command-line arguments to set up a
+gtMOEP instance and the appropriate function pointers to run your
+individual for you. The database connection information is read from the
+XML, <strong>but make sure to set use/reuse according to your intention.</strong></p>
 </div>
-<div class="section" id="pyconfig-gridengineparameters">
-<h2>pyConfig/gridEngineParameters<a class="headerlink" href="#pyconfig-gridengineparameters" title="Permalink to this headline">¶</a></h2>
-<p>These two sections provide the path to Python and other attributes for
-server-side execution. launchGTMOEP.py creates a file in the main
-directory called gridEngineJobSubmit_master_SOMEPROCESSID.sh. This is a
-script to run your problem on a Unix server. If you are running EMADE
-locally, this file is unused.</p>
+<div class="section" id="seeding-your-own-algorithms">
+<span id="id3"></span><h2>Seeding Your Own Algorithms<a class="headerlink" href="#seeding-your-own-algorithms" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes the initial algorithms are simply not apt for solving complex
+problems. You can introduce candidate algorithms by simply typing them
+as string representations of a valid individual, and using the
+seeding_from_file.py file. The text file with your individuals is
+new-line delineated, and will not accept individuals that are already
+present in the database.</p>
+<p>For example, to start the process of classifying stream data, you may
+wish to feed the output of an FFT into a machine learner. Example
+seeding code is included in the SeedingFiles of the main directory.</p>
+<p>The syntax is thus:</p>
+<p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">seeding_from_file.py</span> <span class="pre">templates/input_file.xml</span> <span class="pre">seeding_test_1</span></code></p>
 </div>
-<div class="section" id="dbconfig">
-<h2>dbConfig<a class="headerlink" href="#dbconfig" title="Permalink to this headline">¶</a></h2>
-<p>This section is used if you create a local MySQL database with EMADE by
-running the didLaunch.py file without a “-d” flag. If you are using a
-pre-instantiated or remote database, this option is unused.</p>
-</div>
-<div class="section" id="dataset">
-<h2>dataset<a class="headerlink" href="#dataset" title="Permalink to this headline">¶</a></h2>
-<p>This is where you provide both your test and training data. If you
-provide k files for each within the montecarlo subsection, then EMADE
-will perform k-fold cross-validation. Note however that you must fold
-the data yourself. You must also specify the type of your data, which
-can be “featuredata”, “streamdata”, “filterdata”, or “imagedata”. These
-labels determine how your data will be read in and fed to classifiers.</p>
-</div>
-<div class="section" id="evaluation">
-<h2>evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">¶</a></h2>
-<p>This section specifies the file that contains methods to evaluate
-individual fitness.</p>
-</div>
-<div class="section" id="evolutionparameters">
-<h2>evolutionParameters<a class="headerlink" href="#evolutionparameters" title="Permalink to this headline">¶</a></h2>
-<p>These are parameters that control the evolutionary loop.</p>
-</div>
-<div class="section" id="paretofitness-parentsadult-paretofrontadult">
-<span id="id2"></span><h2>paretoFitness / parentsAdult / paretoFrontAdult<a class="headerlink" href="#paretofitness-parentsadult-paretofrontadult" title="Permalink to this headline">¶</a></h2>
-<p>These are used to define the output that EMADE writes as .txt files.</p>
+<div class="section" id="common-reasons-why-algorithms-fail">
+<span id="id4"></span><h2>Common Reasons Why Algorithms Fail<a class="headerlink" href="#common-reasons-why-algorithms-fail" title="Permalink to this headline">¶</a></h2>
+<p>If all of your algorithms fail, it is most likely the result of
+malformed data, XML input, or an incorrectly installed instance of
+EMADE. If you wish to debug individuals, here is a list of common
+error_strings.</p>
+<p>libcuda.so not found: this individual tried to use tensorflow or keras
+on an installation that expects a GPU, but there is no GPU available.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Found</span> <span class="pre">array</span> <span class="pre">with</span> <span class="pre">0</span> <span class="pre">feature(s)...</span></code></p>
 </div>
 </div>
 
@@ -258,10 +253,8 @@ individual fitness.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="debug.html" class="btn btn-neutral float-right" title="Guide to Debugging Individual Algorithms" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-      
-        <a href="emadeCode.html" class="btn btn-neutral float-left" title="Guide to EMADE Code Structure" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="xmlInput.html" class="btn btn-neutral float-left" title="Guide to XML EMADE Input" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

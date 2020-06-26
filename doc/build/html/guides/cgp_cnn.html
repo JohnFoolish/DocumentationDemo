@@ -1,0 +1,374 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Guide to Using GCP-CNN &mdash; FELLOW_project 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Guide to Installing Dependencies" href="dependencies.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> FELLOW_project
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">This is an introduction to my documentation!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../guides.html">Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="errors.html">Common Emade Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emadeCode.html">Guide to EMADE Code Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xmlInput.html">Guide to XML EMADE Input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debug.html">Guide to Debugging Individual Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud.html">Running on the Cloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tpu.html">Guide to Running on TPU using Google Cloud Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependencies.html">Guide to Installing Dependencies</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Guide to Using GCP-CNN</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#about-cgp-cnn">About CGP-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-get-started-with-cgp-cnn">How to get started with CGP-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-it-works">How it works</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#defining-layers">Defining layers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluation">Evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dataset">Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#faq">FAQ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">FELLOW_project</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../guides.html">Guides</a> &raquo;</li>
+        
+      <li>Guide to Using GCP-CNN</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/guides/cgp_cnn.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="guide-to-using-gcp-cnn">
+<span id="id1"></span><h1>Guide to Using GCP-CNN<a class="headerlink" href="#guide-to-using-gcp-cnn" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="about-cgp-cnn">
+<span id="id2"></span><h2>About CGP-CNN<a class="headerlink" href="#about-cgp-cnn" title="Permalink to this headline">¶</a></h2>
+<p>CGP-CNN is a tool that uses evolutionary techniques to optimize the
+structure of a deep neural network for a given dataset (i.e. order of
+the layers, types of layers, hyperparameters, preprocessing). The
+process of designing an accurate deep neural network is often a lot of
+trial and error or experience. With CGP-CNN, we aim to use Cartesian
+Genetic Programming to efficiently explore the space of deep structures.
+CGP-CNN is a separate program from EMADE, though it uses several of the
+data structures and libraries of EMADE.</p>
+</div>
+<div class="section" id="how-to-get-started-with-cgp-cnn">
+<span id="id3"></span><h2>How to get started with CGP-CNN<a class="headerlink" href="#how-to-get-started-with-cgp-cnn" title="Permalink to this headline">¶</a></h2>
+<p>On this repository, each branch is for a different dataset. So far, we
+have</p>
+<ol class="arabic simple">
+<li><p>mnist - a set of black and white hand drawn images of numbers 0-9:
+<a class="reference external" href="http://yann.lecun.com/exdb/mnist/">http://yann.lecun.com/exdb/mnist/</a></p></li>
+<li><p>quickdraw - a set of black and white hand drawn images of animals,
+plants, and objects: <a class="reference external" href="https://quickdraw.withgoogle.com/data">https://quickdraw.withgoogle.com/data</a></p></li>
+</ol>
+<p>First, make sure to read the README for technical details on setting up
+your environment. To get started, choose a branch and run src/main.py
+This will start the evolutionary process on the data set. On the command
+prompt, you will be able to see a print of the mutated structures as
+well as their accuracy as they are being trained. At the end of each
+generation, the dominant individuals will be reevaluated and printed to
+the screen for you to see. The evaluation log folder will also contain a
+copy of the command prompt print. From its output, you will be able to
+see the models that are on the pareto front</p>
+</div>
+<div class="section" id="how-it-works">
+<span id="id4"></span><h2>How it works<a class="headerlink" href="#how-it-works" title="Permalink to this headline">¶</a></h2>
+<p>We built this project in two steps.</p>
+<ol class="arabic simple">
+<li><p>Starting from EMADE, a Cartesian Genetic Programming framework was
+created as a sister to EMADE. You can check this out at the cgp
+branch of rtalebi3/emade.</p></li>
+<li><p>Using this framework, we designed the program to specifically
+optimize deep networks.</p></li>
+</ol>
+<p>To gain an understanding of how Cartesian Genetic Programming works and
+how it is different from the GP that EMADE uses, please check out the
+github wiki page pf rtalebi3/emade.
+<a class="reference external" href="https://github.gatech.edu/rtalebi3/emade/wiki">https://github.gatech.edu/rtalebi3/emade/wiki</a></p>
+<p>In its implementation for deep neural networks, most of the code we
+changed was in the fromGPFramework/methods_v4.py, individual.py,
+operators_v2.py, and problem_v2.py</p>
+</div>
+<div class="section" id="defining-layers">
+<span id="id5"></span><h2>Defining layers<a class="headerlink" href="#defining-layers" title="Permalink to this headline">¶</a></h2>
+<p>The primitives in the evolutionary process are the types of layers
+possible and their hyperparameters. These are defined in methods_v4.py
+as functions. Note, these functions all input a tensor and output a
+tensor. Their hyperparameters are set by arguments that are passed to
+them and also evolutionarily optimized. Also, layers are declared as
+operators (and their arguments and inputs are specified) in the
+operators_v2.py. To add a primitive, simply define the function in
+methods_v4.py under its commented classification type, and declare it in
+operators_v2.py. It will automatically be used in the evolution process.</p>
+</div>
+<div class="section" id="evaluation">
+<h2>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">¶</a></h2>
+<p>The networks are evaluated by training them for a set number of epochs
+with a training subset of the dataset, and then evaluated on the
+validation set. It is then assigned a fitness which is (1-accuracy, time
+taken). You can change the objectives in problem_v2.py by adding a
+metric and concatenating/replacing the fitness values. This works by
+passing batches through self.x, which is a tensorflow placeholder object
+that is used in the other functions throughout cgp-cnn as the input to
+the model, and then training on self.y which is a placeholder for the
+output of the deep neural network. The tensorflow graph (self.g),
+self.x, and self.y are all part of the problem object, that is inherited
+by individual.</p>
+</div>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>Instead of the XML that EMADE uses, CGP-CNN uses a configuration.py file
+that contains global variables for the run. For example, batch size,
+number of epochs, size of convolutional filters, etc. These are
+basically hyperparemeters for the CGP-CNN run. They are often dependent
+on the size and complexity of the dataset.</p>
+</div>
+<div class="section" id="dataset">
+<h2>Dataset<a class="headerlink" href="#dataset" title="Permalink to this headline">¶</a></h2>
+<p>To change the dataset, follow the following steps.</p>
+<ol class="arabic simple">
+<li><p>Obtain the dataset and determine the size of the input data.</p></li>
+<li><p>Update configuration.py with the correct data information.</p></li>
+<li><p>Determine the objective function, and rewrite the getFitness function
+within problem.py.</p></li>
+<li><p>Update the deepemade hyperparameters in configuration.py,this is done
+in lieu of updating an .xml file for normal emade.</p></li>
+</ol>
+</div>
+<div class="section" id="faq">
+<h2>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Does CGP-CNN work with GPU optimization?</p></li>
+</ol>
+<p>Yes. In the beginning of the run, CGP-CNN will output whether it has
+detected and is using GPU optimization.</p>
+<ol class="arabic simple">
+<li><p>How does CGP-CNN deal with very large networks?</p></li>
+</ol>
+<p>If the system runs out of a memory limit/time limit that is set in
+configuration.py, the individual is killed and assigned a bad fitness.</p>
+<ol class="arabic simple">
+<li><p>Can you save the dominant deep network structure after it is trained?</p></li>
+</ol>
+<p>Yes. But the code for this is in the armemade branch of emade under the
+CGPFramework, and hasn’t yet been checked into the CGP-CNN repository.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="dependencies.html" class="btn btn-neutral float-left" title="Guide to Installing Dependencies" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, John Lewis Corker
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

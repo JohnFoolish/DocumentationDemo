@@ -1,0 +1,385 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Guide to Installing Dependencies &mdash; FELLOW_project 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Guide to Running on TPU using Google Cloud Platform" href="tpu.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> FELLOW_project
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">This is an introduction to my documentation!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../guides.html">Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="errors.html">Common Emade Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emadeCode.html">Guide to EMADE Code Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xmlInput.html">Guide to XML EMADE Input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debug.html">Guide to Debugging Individual Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud.html">Running on the Cloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tpu.html">Guide to Running on TPU using Google Cloud Platform</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Guide to Installing Dependencies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction-to-git-version-control-system-and-faq">Introduction to Git Version Control System and FAQ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#git-large-file-system">Git Large File System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#windows">Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mac">Mac</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linux">Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recommended-package-versions">Recommended Package Versions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">FELLOW_project</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../guides.html">Guides</a> &raquo;</li>
+        
+      <li>Guide to Installing Dependencies</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/guides/dependencies.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="guide-to-installing-dependencies">
+<span id="id1"></span><h1>Guide to Installing Dependencies<a class="headerlink" href="#guide-to-installing-dependencies" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction-to-git-version-control-system-and-faq">
+<span id="id2"></span><h2>Introduction to Git Version Control System and FAQ<a class="headerlink" href="#introduction-to-git-version-control-system-and-faq" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://rogerdudler.github.io/git-guide/">Simple Introductory Guide to Git, with graphical illustrations and
+installation</a></p>
+</div>
+<div class="section" id="git-large-file-system">
+<span id="id3"></span><h2>Git Large File System<a class="headerlink" href="#git-large-file-system" title="Permalink to this headline">¶</a></h2>
+<p>After following the introduction to Git installation and basic commands,
+it is also recommended to install git-lfs to handle EMADE installation.</p>
+</div>
+<div class="section" id="windows">
+<h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
+<p>Follow the manual installation on the <a class="reference external" href="https://git-lfs.github.com/">Git
+website.</a></p>
+</div>
+<div class="section" id="mac">
+<h2>Mac<a class="headerlink" href="#mac" title="Permalink to this headline">¶</a></h2>
+<p>Install either Homebrew or MacPorts package manager for MacOS. Either
+one is sufficient for EMADE and related Python packages.</p>
+<p><a class="reference external" href="https://www.howtogeek.com/211541/homebrew-for-os-x-easily-installs-desktop-apps-and-terminal-utilities/">Installing Homebrew
+(recommended)</a></p>
+<p><a class="reference external" href="https://www.macports.org/install.php">Installing MacPorts</a></p>
+<p>Then, install Git Large File System (LFS) by running the following
+commands in Terminal (sudo may be required):</p>
+<p>Homebrew: <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">git-lfs</span></code></p>
+<p>MacPorts: <code class="docutils literal notranslate"><span class="pre">port</span> <span class="pre">install</span> <span class="pre">git-lfs</span></code></p>
+</div>
+<div class="section" id="linux">
+<h2>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h2>
+<p>For Debian distributions (particularly Ubuntu 16.04), run the following:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh <span class="p">|</span> sudo bash
+sudo apt-get install git-lfs
+</pre></div>
+</div>
+<p><a class="reference external" href="https://askubuntu.com/questions/799341/how-to-install-git-lfs-on-ubuntu-16-04">Source</a></p>
+</div>
+<div class="section" id="recommended-package-versions">
+<span id="id4"></span><h2>Recommended Package Versions<a class="headerlink" href="#recommended-package-versions" title="Permalink to this headline">¶</a></h2>
+<p>While other versions may work, to be consistent with EMADE and the first
+semester projects, it is recommended to install these software versions.</p>
+<p>Generally, use Anaconda’s virtual environment if possible. Otherwise,
+use pip and your preferred package manager.</p>
+<p>For Windows users, the GUI installers are recommended.</p>
+<p><strong>NOTE: The minor versions (e.g. 3.5.xx) generally do not matter.</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 14%" />
+<col style="width: 59%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Version</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Python</p></td>
+<td><p>3.5.0</p></td>
+<td><p>Very important, later versions may
+not work with Scikit-learn or
+Tensorflow</p></td>
+</tr>
+<tr class="row-odd"><td><p>Anaconda</p></td>
+<td><p>4.5</p></td>
+<td><p>Very important. Will be installing
+most packages in Conda.</p></td>
+</tr>
+<tr class="row-even"><td><p>Scikit-learn</p></td>
+<td><p>0.19</p></td>
+<td><p>Later versions do not include
+necessary packages</p></td>
+</tr>
+<tr class="row-odd"><td><p>Jupyter Notebook</p></td>
+<td><p>4.4.0</p></td>
+<td><p>Later Version should not cause any
+difficulties. <a class="reference external" href="https://jupyter.readthedocs.io/en/latest/install.html">Official installation
+guide</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Numpy</p></td>
+<td><p>1.15</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Matplotlib</p></td>
+<td><p>3.1</p></td>
+<td><p>Use 2.1 if issues arise. Used for
+visualizing pareto fronts graphs</p></td>
+</tr>
+<tr class="row-even"><td><p>Pandas</p></td>
+<td><p>0.23</p></td>
+<td><p>Contains good input parsing functions
+(read_csv)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Deap</p></td>
+<td><p>1.2.2</p></td>
+<td><p>If you get a message saying that the
+package cannot be found, try adding
+the <em>conda-forge</em> channel to your
+list of channels with this
+command: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">c</span>
+<span class="pre">onfig</span> <span class="pre">--append</span> <span class="pre">channels</span> <span class="pre">conda-forge</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>PyGraphViz</p></td>
+<td><p>1.5</p></td>
+<td><p>Also used to visualize graphs</p></td>
+</tr>
+<tr class="row-odd"><td><p>MySQL</p></td>
+<td><p>8.0.12</p></td>
+<td><p>For MacOS: If suffering from remote
+access difficulties, please refer to
+<a class="reference external" href="https://stackoverflow.com/questions/24729077/how-to-enable-remote-access-from-mac-osx-to-mysql-server-on-windows-server">here</a>
+and
+<a class="reference external" href="https://dba.stackexchange.com/questions/55958/cant-remote-access-mysql-server-running-on-mac-os-x">here</a></p></td>
+</tr>
+<tr class="row-even"><td><p>MariaDB</p></td>
+<td><p>10.1.37</p></td>
+<td><p>Alternative to MySQL</p></td>
+</tr>
+<tr class="row-odd"><td><p>TensorFlow</p></td>
+<td><p>1.12.0</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The above list may not be a complete list of all necessary packages. If
+you encounter any new difficulties, please share!</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="tpu.html" class="btn btn-neutral float-left" title="Guide to Running on TPU using Google Cloud Platform" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, John Lewis Corker
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
