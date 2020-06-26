@@ -1,0 +1,1410 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Preprocessing Data in EMADE &mdash; FELLOW_project 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="OneMax Problem" href="OneMax.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> FELLOW_project
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">This is an introduction to my documentation!</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="OneMax.html">OneMax Problem</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Preprocessing Data in EMADE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#XML-Formatting">XML Formatting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">FELLOW_project</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../tutorials.html">Tutorials</a> &raquo;</li>
+        
+      <li>Preprocessing Data in EMADE</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tutorials/Preprocessing.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Preprocessing-Data-in-EMADE">
+<h1>Preprocessing Data in EMADE<a class="headerlink" href="#Preprocessing-Data-in-EMADE" title="Permalink to this headline">¶</a></h1>
+<p>In this notebook I am going to cover the processing of cleaning and formatting a specific dataset for EMADE.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+
+<span class="kn">import</span> <span class="nn">nltk</span>
+<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+<span class="kn">from</span> <span class="nn">nltk.stem.porter</span> <span class="kn">import</span> <span class="n">PorterStemmer</span>
+
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">gzip</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">math</span>
+</pre></div>
+</div>
+</div>
+<p>We will start by importing all the libraries we will need. The most important libraries are numpy and pandas because we will use their data types to store and manipulate our dataset.</p>
+<p>Note: Make sure you have nltk’s corpus downloaded. You can check by running nltk.download() in a Python shell.</p>
+<p>Next, we will import our dataset into a pandas dataframe object.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;datasets/winemag-data_first150k.csv&quot;</span><span class="p">)</span>
+
+<span class="c1"># Print first 5 examples</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># remove all rows except for the first 25,000</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">25000</span><span class="p">:])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+  country                                        description  \
+0      US  This tremendous 100% varietal wine hails from ...
+1   Spain  Ripe aromas of fig, blackberry and cassis are ...
+2      US  Mac Watson honors the memory of a wine once ma...
+3      US  This spent 20 months in 30% new French oak, an...
+4  France  This is the top wine from La Bégude, named aft...
+
+                            designation  points  price        province  \
+0                     Martha&#39;s Vineyard      96  235.0      California
+1  Carodorum Selección Especial Reserva      96  110.0  Northern Spain
+2         Special Selected Late Harvest      96   90.0      California
+3                               Reserve      96   65.0          Oregon
+4                            La Brûlade      95   66.0        Provence
+
+            region_1           region_2             variety  \
+0        Napa Valley               Napa  Cabernet Sauvignon
+1               Toro                NaN       Tinta de Toro
+2     Knights Valley             Sonoma     Sauvignon Blanc
+3  Willamette Valley  Willamette Valley          Pinot Noir
+4             Bandol                NaN  Provence red blend
+
+                    winery
+0                    Heitz
+1  Bodega Carmen Rodríguez
+2                 Macauley
+3                    Ponzi
+4     Domaine de la Bégude
+(150930, 10)
+(25000, 10)
+</pre></div></div>
+</div>
+<p>The original link to the dataset can be found here: <a class="reference external" href="https://www.kaggle.com/zynicide/wine-reviews">https://www.kaggle.com/zynicide/wine-reviews</a></p>
+<p>However, I removed the index column from the csv in Excel.</p>
+<p>The dataset consists of 10 features. Most of these are string values, which machine learning algorithms and data transformations will not accept. The dataset also has columns with missing values. We will either have to remove those columns or replace the missing values.</p>
+<p>We also cut the dataset size down to 25,000 examples to reduce the size of our final dataset and RAM usage.</p>
+<p>Note: if your computer does not have at least 8 GB of RAM, you might need to reduce the size of the data even more</p>
+<p>Next, we will separate a column for labels and modify its values.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">labels</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s2">&quot;price&quot;</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">labels</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># Fill in all missing values with mean of column</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">labels</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+
+<span class="c1"># Set all values greater or equal to 50 to 1</span>
+<span class="n">labels</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">labels</span><span class="o">.</span><span class="n">price</span> <span class="o">&gt;=</span> <span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">labels</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">labels</span><span class="o">.</span><span class="n">price</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(25000, 1)
+</pre></div></div>
+</div>
+<p>In this case, we will choose to classify whether a wine has a price greater than or equal to 50. It is important to learn how to recognize potential labels and classification problems when you find a dataset. Most datasets will not have pre-defined labels and even those with labels you can tweak into a different problem.</p>
+<p>We also fill in the missing price values with the mean of all price values. There are many different methods of dealing with missing values. You could remove all missing value rows or replace missing values with the median instead.</p>
+<p>Next, we will remove irrelevant and/or unuseful features.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;price&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;region_2&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;winery&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;designation&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>I removed these features for a specific reason. Price needs to be removed because we will add it back as labels later. Region 2 is similar enough to region_1 to not add useful information. Winery and designation have too many unique values.</p>
+<p>When we one-hot encode some of our features in the next section, too many unique values will matter. If most of the strings in a feature are unique, we get very little useful or relevant information and only make the dimensions of our data unnecessarily large. This also applies to region 2. We do not want to double our dimensions with overlapping information.</p>
+<p>Next, we will one-hot encoding on our remaining string features to extract relevant information from them.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;country&quot;</span><span class="p">,</span> <span class="s2">&quot;province&quot;</span><span class="p">,</span> <span class="s2">&quot;variety&quot;</span><span class="p">,</span> <span class="s2">&quot;region_1&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<p>An explanation of one-hot encoding can be found here: <a class="reference external" href="https://www.quora.com/What-is-one-hot-encoding-and-when-is-it-used-in-data-science">https://www.quora.com/What-is-one-hot-encoding-and-when-is-it-used-in-data-science</a></p>
+<p>Next, we will separate the descriptions column and clean up the text data. One-hot encoding does not work well on columns with unique sentences or paragraphs because all of the items in the column will end up being unique.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">text</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s2">&quot;description&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;description&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">text_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
+    <span class="n">text_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># Alternative</span>
+<span class="c1"># text = text.tolist()</span>
+<span class="c1"># text = [i[0] for i in text]</span>
+
+<span class="c1"># For debugging</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">stemmer</span> <span class="o">=</span> <span class="n">PorterStemmer</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">text_list</span><span class="p">:</span>
+    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;[!@#$.,?]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+    <span class="n">words</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span> <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">)]</span>
+    <span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="n">stemmer</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">]</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;line &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">count</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; processed&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+This tremendous 100% varietal wine hails from Oakville and was aged over three years in oak. Juicy red-cherry fruit and a compelling hint of caramel greet the palate, framed by elegant, fine tannins and a subtle minty tone in the background. Balanced and rewarding from start to finish, it has years ahead of it to develop further nuance. Enjoy 2022–2030.
+line 1 processed
+line 2 processed
+line 3 processed
+line 4 processed
+line 5 processed
+line 6 processed
+line 7 processed
+line 8 processed
+line 9 processed
+line 10 processed
+line 11 processed
+line 12 processed
+line 13 processed
+line 14 processed
+line 15 processed
+line 16 processed
+line 17 processed
+line 18 processed
+line 19 processed
+line 20 processed
+line 21 processed
+line 22 processed
+line 23 processed
+line 24 processed
+line 25 processed
+line 26 processed
+line 27 processed
+line 28 processed
+line 29 processed
+line 30 processed
+line 31 processed
+line 32 processed
+line 33 processed
+line 34 processed
+line 35 processed
+line 36 processed
+line 37 processed
+line 38 processed
+line 39 processed
+line 40 processed
+line 41 processed
+line 42 processed
+line 43 processed
+line 44 processed
+line 45 processed
+line 46 processed
+line 47 processed
+line 48 processed
+line 49 processed
+line 50 processed
+line 51 processed
+line 52 processed
+line 53 processed
+line 54 processed
+line 55 processed
+line 56 processed
+line 57 processed
+line 58 processed
+line 59 processed
+line 60 processed
+line 61 processed
+line 62 processed
+line 63 processed
+line 64 processed
+line 65 processed
+line 66 processed
+line 67 processed
+line 68 processed
+line 69 processed
+line 70 processed
+line 71 processed
+line 72 processed
+line 73 processed
+line 74 processed
+line 75 processed
+line 76 processed
+line 77 processed
+line 78 processed
+line 79 processed
+line 80 processed
+line 81 processed
+line 82 processed
+line 83 processed
+line 84 processed
+line 85 processed
+line 86 processed
+line 87 processed
+line 88 processed
+line 89 processed
+line 90 processed
+line 91 processed
+line 92 processed
+line 93 processed
+line 94 processed
+line 95 processed
+line 96 processed
+line 97 processed
+line 98 processed
+line 99 processed
+line 100 processed
+line 101 processed
+line 102 processed
+line 103 processed
+line 104 processed
+line 105 processed
+line 106 processed
+line 107 processed
+line 108 processed
+line 109 processed
+line 110 processed
+line 111 processed
+line 112 processed
+line 113 processed
+line 114 processed
+line 115 processed
+line 116 processed
+line 117 processed
+line 118 processed
+line 119 processed
+line 120 processed
+line 121 processed
+line 122 processed
+line 123 processed
+line 124 processed
+line 125 processed
+line 126 processed
+line 127 processed
+line 128 processed
+line 129 processed
+line 130 processed
+line 131 processed
+line 132 processed
+line 133 processed
+line 134 processed
+line 135 processed
+line 136 processed
+line 137 processed
+line 138 processed
+line 139 processed
+line 140 processed
+line 141 processed
+line 142 processed
+line 143 processed
+line 144 processed
+line 145 processed
+line 146 processed
+line 147 processed
+line 148 processed
+line 149 processed
+line 150 processed
+line 151 processed
+line 152 processed
+line 153 processed
+line 154 processed
+line 155 processed
+line 156 processed
+line 157 processed
+line 158 processed
+line 159 processed
+line 160 processed
+line 161 processed
+line 162 processed
+line 163 processed
+line 164 processed
+line 165 processed
+line 166 processed
+line 167 processed
+line 168 processed
+line 169 processed
+line 170 processed
+line 171 processed
+line 172 processed
+line 173 processed
+line 174 processed
+line 175 processed
+line 176 processed
+line 177 processed
+line 178 processed
+line 179 processed
+line 180 processed
+line 181 processed
+line 182 processed
+line 183 processed
+line 184 processed
+line 185 processed
+line 186 processed
+line 187 processed
+line 188 processed
+line 189 processed
+line 190 processed
+line 191 processed
+line 192 processed
+line 193 processed
+line 194 processed
+line 195 processed
+line 196 processed
+line 197 processed
+line 198 processed
+line 199 processed
+line 200 processed
+line 201 processed
+line 202 processed
+line 203 processed
+line 204 processed
+line 205 processed
+line 206 processed
+line 207 processed
+line 208 processed
+line 209 processed
+line 210 processed
+line 211 processed
+line 212 processed
+line 213 processed
+line 214 processed
+line 215 processed
+line 216 processed
+line 217 processed
+line 218 processed
+line 219 processed
+line 220 processed
+line 221 processed
+line 222 processed
+line 223 processed
+line 224 processed
+line 225 processed
+line 226 processed
+line 227 processed
+line 228 processed
+line 229 processed
+line 230 processed
+line 231 processed
+line 232 processed
+line 233 processed
+line 234 processed
+line 235 processed
+line 236 processed
+line 237 processed
+line 238 processed
+line 239 processed
+line 240 processed
+line 241 processed
+line 242 processed
+line 243 processed
+line 244 processed
+line 245 processed
+line 246 processed
+line 247 processed
+line 248 processed
+line 249 processed
+line 250 processed
+line 251 processed
+line 252 processed
+line 253 processed
+line 254 processed
+line 255 processed
+line 256 processed
+line 257 processed
+line 258 processed
+line 259 processed
+line 260 processed
+line 261 processed
+line 262 processed
+line 263 processed
+line 264 processed
+line 265 processed
+line 266 processed
+line 267 processed
+line 268 processed
+line 269 processed
+line 270 processed
+line 271 processed
+line 272 processed
+line 273 processed
+line 274 processed
+line 275 processed
+line 276 processed
+line 277 processed
+line 278 processed
+line 279 processed
+line 280 processed
+line 281 processed
+line 282 processed
+line 283 processed
+line 284 processed
+line 285 processed
+line 286 processed
+line 287 processed
+line 288 processed
+line 289 processed
+line 290 processed
+line 291 processed
+line 292 processed
+line 293 processed
+line 294 processed
+line 295 processed
+line 296 processed
+line 297 processed
+line 298 processed
+line 299 processed
+line 300 processed
+line 301 processed
+line 302 processed
+line 303 processed
+line 304 processed
+line 305 processed
+line 306 processed
+line 307 processed
+line 308 processed
+line 309 processed
+line 310 processed
+line 311 processed
+line 312 processed
+line 313 processed
+line 314 processed
+line 315 processed
+line 316 processed
+line 317 processed
+line 318 processed
+line 319 processed
+line 320 processed
+line 321 processed
+line 322 processed
+line 323 processed
+line 324 processed
+line 325 processed
+line 326 processed
+line 327 processed
+line 328 processed
+line 329 processed
+line 330 processed
+line 331 processed
+line 332 processed
+line 333 processed
+line 334 processed
+line 335 processed
+line 336 processed
+line 337 processed
+line 338 processed
+line 339 processed
+line 340 processed
+line 341 processed
+line 342 processed
+line 343 processed
+line 344 processed
+line 345 processed
+line 346 processed
+line 347 processed
+line 348 processed
+line 349 processed
+line 350 processed
+line 351 processed
+line 352 processed
+line 353 processed
+line 354 processed
+line 355 processed
+line 356 processed
+line 357 processed
+line 358 processed
+line 359 processed
+line 360 processed
+line 361 processed
+line 362 processed
+line 363 processed
+line 364 processed
+line 365 processed
+line 366 processed
+line 367 processed
+line 368 processed
+line 369 processed
+line 370 processed
+line 371 processed
+line 372 processed
+line 373 processed
+line 374 processed
+line 375 processed
+line 376 processed
+line 377 processed
+line 378 processed
+line 379 processed
+line 380 processed
+line 381 processed
+line 382 processed
+line 383 processed
+line 384 processed
+line 385 processed
+line 386 processed
+line 387 processed
+line 388 processed
+line 389 processed
+line 390 processed
+line 391 processed
+line 392 processed
+line 393 processed
+line 394 processed
+line 395 processed
+line 396 processed
+line 397 processed
+line 398 processed
+line 399 processed
+line 400 processed
+line 401 processed
+line 402 processed
+line 403 processed
+line 404 processed
+line 405 processed
+line 406 processed
+line 407 processed
+line 408 processed
+line 409 processed
+line 410 processed
+line 411 processed
+line 412 processed
+line 413 processed
+</pre></div></div>
+</div>
+<p>First, we separate the text column into its own numpy array. Then, we convert the numpy array into a list. This puts our data into a universal list format for when we clean the data.</p>
+<p>Next, we initialize variables we need and start looping over the individual text descriptions.</p>
+<p>We start by using regular expressions to get rid of punctuation and symbols, and we also make all of the text lower case. This makes sure repeated words are recognized in our text.</p>
+<p>Next, we split our description string into words by splitting on the spaces between words. This allows us to modify individual words in our text.</p>
+<p>Then, we remove stop words from our text and stem all our words. Stop words are words such as “and”, “the”, and “of” which do not have a lot of sentimental value to our machine learning. You can think of it as removing noise. However, you have to be careful. Removing stop words on a dataset with short phrases such as “On the blue river” and “Over the mountain” can cause a loss of important information.</p>
+<p>When we stem all the words we are removing irrelevant part of words such as prefixes and suffixes which are similar. We use the Porter Stemmer, which is well known to be a good solution to stemming words. Stemming also tends to reduce the amount of words in our bag of words model later on, which can help lower the dimensionality of our input data. However, we need to be careful to not stem useful information like with removing stop words.</p>
+<p>Finally, we join the modified words back together with spaces and keep track of our progress.</p>
+<p>Next, we will vectorize our text descriptions and add our text features back into our input data.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">text_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">text_list</span><span class="p">)</span>
+<span class="n">data_array</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">values</span>
+
+<span class="n">tfidf</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">()</span>
+<span class="n">text_vect</span> <span class="o">=</span> <span class="n">tfidf</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">text_array</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">data_array</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text_vect</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="n">full_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">text_vect</span><span class="o">.</span><span class="n">toarray</span><span class="p">(),</span> <span class="n">data_array</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">full_data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>First, we convert the main dataframe into a numpy array and the modified text list we made into a numpy array. Then, we use sklearn’s term frequency vectorizer to vectorize our text data. Rather than simply counting the words in each description, we weight words based on term frequency. This vectorizer keeps less useful repeated words from overshadowing more useful unique words.</p>
+<p>Then, we append our vectorized text data onto our input data and observe the new shape of the data. The feature count may look very large compared to the number of examples. However, this is due to us having to cut down the number of examples from 150,000 to 25,000. The final feature count with 150,000 examples is only around 31,000, which suggests a good amount of repeated words.</p>
+<p>You can find more information about tf-idf term weighting here: <a class="reference external" href="http://scikit-learn.org/stable/modules/feature_extraction.html">http://scikit-learn.org/stable/modules/feature_extraction.html</a></p>
+<p>Next, we will split our data into train and test data concat the input data and labels together to fit EMADE’s format.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">full_data</span><span class="p">,</span> <span class="n">labels</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.33</span><span class="p">)</span>
+
+<span class="n">data_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">data_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">data_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>We split the data into training and test data with 67% as training and 33% as testing data. Then, we append the labels columns to the end of the input data columns to put the data into the format EMADE expects.</p>
+<p>Next, we will test out the performance of our dataset on a logistic regression classifier to get a rough benchmark. Logistic Regression works well on text datasets and any datasets with a lot of discrete and/or Boolean (1,0) values.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">classifier</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+
+<span class="n">classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">y_train</span><span class="p">))</span>
+
+<span class="n">predicted</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Classification report for classifier </span><span class="si">%s</span><span class="s2">:</span><span class="se">\n</span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span>
+      <span class="o">%</span> <span class="p">(</span><span class="n">classifier</span><span class="p">,</span> <span class="n">metrics</span><span class="o">.</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predicted</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Confusion matrix:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">metrics</span><span class="o">.</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predicted</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<p>Next, we will convert our train and test data back into pandas dataframes and export it in the proper format for EMADE.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_train</span><span class="p">)</span>
+<span class="n">test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_test</span><span class="p">)</span>
+
+<span class="n">divisor_train</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">train</span><span class="p">)</span> <span class="o">/</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">divisor_test</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">test</span><span class="p">)</span> <span class="o">/</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">g</span><span class="p">,</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">train</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">train</span><span class="p">))</span> <span class="o">//</span> <span class="n">divisor_train</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+    <span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s2">&quot;datasets/wine_data_set_train_</span><span class="si">%i</span><span class="s2">.txt&quot;</span> <span class="o">%</span> <span class="n">count</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%.5f</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;datasets/wine_data_set_train_</span><span class="si">%i</span><span class="s2">.txt&quot;</span> <span class="o">%</span> <span class="n">count</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_in</span><span class="p">,</span> <span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;datasets/wine_data_set_train_</span><span class="si">%i</span><span class="s2">.dat.gz&quot;</span> <span class="o">%</span> <span class="n">count</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_out</span><span class="p">:</span>
+        <span class="n">shutil</span><span class="o">.</span><span class="n">copyfileobj</span><span class="p">(</span><span class="n">f_in</span><span class="p">,</span> <span class="n">f_out</span><span class="p">)</span>
+
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;datasets/wine_data_set_train_</span><span class="si">%i</span><span class="s2">.txt&quot;</span> <span class="o">%</span> <span class="n">count</span><span class="p">)</span>
+
+    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">g</span><span class="p">,</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">test</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">test</span><span class="p">))</span> <span class="o">//</span> <span class="n">divisor_test</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+    <span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s2">&quot;datasets/wine_data_set_test_</span><span class="si">%i</span><span class="s2">.txt&quot;</span> <span class="o">%</span> <span class="n">count</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%.5f</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;datasets/wine_data_set_test_</span><span class="si">%i</span><span class="s2">.txt&quot;</span> <span class="o">%</span> <span class="n">count</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_in</span><span class="p">,</span> <span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;datasets/wine_data_set_test_</span><span class="si">%i</span><span class="s2">.dat.gz&quot;</span> <span class="o">%</span> <span class="n">count</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_out</span><span class="p">:</span>
+        <span class="n">shutil</span><span class="o">.</span><span class="n">copyfileobj</span><span class="p">(</span><span class="n">f_in</span><span class="p">,</span> <span class="n">f_out</span><span class="p">)</span>
+
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;datasets/wine_data_set_test_</span><span class="si">%i</span><span class="s2">.txt&quot;</span> <span class="o">%</span> <span class="n">count</span><span class="p">)</span>
+
+    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="n">small_train</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">1675</span><span class="p">:])</span>
+<span class="n">small_test</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">825</span><span class="p">:])</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s2">&quot;datasets/wine_data_set_train_small.txt&quot;</span><span class="p">,</span> <span class="n">small_train</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%.5f</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;datasets/wine_data_set_train_small.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_in</span><span class="p">,</span> <span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;datasets/wine_data_set_train_small.dat.gz&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_out</span><span class="p">:</span>
+    <span class="n">shutil</span><span class="o">.</span><span class="n">copyfileobj</span><span class="p">(</span><span class="n">f_in</span><span class="p">,</span> <span class="n">f_out</span><span class="p">)</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;datasets/wine_data_set_train_small.txt&quot;</span><span class="p">)</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s2">&quot;datasets/wine_data_set_test_small.txt&quot;</span><span class="p">,</span> <span class="n">small_train</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%.5f</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;datasets/wine_data_set_test_small.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_in</span><span class="p">,</span> <span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;datasets/wine_data_set_test_small.dat.gz&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_out</span><span class="p">:</span>
+    <span class="n">shutil</span><span class="o">.</span><span class="n">copyfileobj</span><span class="p">(</span><span class="n">f_in</span><span class="p">,</span> <span class="n">f_out</span><span class="p">)</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;datasets/wine_data_set_test_small.txt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>We split the dataset into 5 chunks each with 20% of the data. Then, we set aside one chunk of 10% to be our small dataset in EMADE.</p>
+<p>The final step for preprocessing is to compress all the .dat files into .dat.gz files and place them in a folder under the datasets directory of EMADE.</p>
+<p>There are other datasets already implemented into EMADE in this format.</p>
+<div class="section" id="XML-Formatting">
+<h2>XML Formatting<a class="headerlink" href="#XML-Formatting" title="Permalink to this headline">¶</a></h2>
+<p>Below is an example xml template for the dataset we preprocessed. This template is used to setup parameters for EMADE. You can change the objectives, crossover probability, and mutation probability from here.</p>
+<p>Make sure to make an xml file and store it in the templates directory when you implement a new dataset into EMADE.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>&lt;?xml version=&quot;1.0&quot;?&gt;
+
+&lt;input&gt;
+
+    &lt;datasets&gt;
+        &lt;dataset&gt;
+            &lt;name&gt;SmallDataSet&lt;/name&gt;
+            &lt;type&gt;featuredata&lt;/type&gt;
+            &lt;MonteCarlo&gt;
+                &lt;trial&gt;
+                    &lt;trainFilename&gt;datasets/wine/wine_data_set_train_small.dat.gz&lt;/trainFilename&gt;
+                    &lt;testFilename&gt;datasets/wine/wine_data_set_test_small.dat.gz&lt;/testFilename&gt;
+                &lt;/trial&gt;
+            &lt;/MonteCarlo&gt;
+        &lt;/dataset&gt;
+        &lt;dataset&gt;
+            &lt;name&gt;FullDataSet&lt;/name&gt;
+            &lt;type&gt;featuredata&lt;/type&gt;
+            &lt;MonteCarlo&gt;
+                &lt;trial&gt;
+                    &lt;trainFilename&gt;datasets/wine/wine_data_set_train_0.dat.gz&lt;/trainFilename&gt;
+                    &lt;testFilename&gt;datasets/wine/wine_data_set_test_0.dat.gz&lt;/testFilename&gt;
+                &lt;/trial&gt;
+                &lt;trial&gt;
+                    &lt;trainFilename&gt;datasets/wine/wine_data_set_train_1.dat.gz&lt;/trainFilename&gt;
+                    &lt;testFilename&gt;datasets/wine/wine_data_set_test_1.dat.gz&lt;/testFilename&gt;
+                &lt;/trial&gt;
+                &lt;trial&gt;
+                    &lt;trainFilename&gt;datasets/wine/wine_data_set_train_2.dat.gz&lt;/trainFilename&gt;
+                    &lt;testFilename&gt;datasets/wine/wine_data_set_test_2.dat.gz&lt;/testFilename&gt;
+                &lt;/trial&gt;
+                &lt;trial&gt;
+                    &lt;trainFilename&gt;datasets/wine/wine_data_set_train_3.dat.gz&lt;/trainFilename&gt;
+                    &lt;testFilename&gt;datasets/wine/wine_data_set_test_3.dat.gz&lt;/testFilename&gt;
+                &lt;/trial&gt;
+                &lt;trial&gt;
+                    &lt;trainFilename&gt;datasets/wine/wine_data_set_train_4.dat.gz&lt;/trainFilename&gt;
+                    &lt;testFilename&gt;datasets/wine/wine_data_set_test_4.dat.gz&lt;/testFilename&gt;
+                &lt;/trial&gt;
+            &lt;/MonteCarlo&gt;
+        &lt;/dataset&gt;
+    &lt;/datasets&gt;
+
+    &lt;objectives&gt;
+        &lt;objective&gt;
+            &lt;name&gt;False Positives&lt;/name&gt;
+            &lt;weight&gt;-1.0&lt;/weight&gt;
+            &lt;achievable&gt;4971.8&lt;/achievable&gt;
+            &lt;goal&gt;0&lt;/goal&gt;
+            &lt;evaluationFunction&gt;false_positive&lt;/evaluationFunction&gt;
+            &lt;lower&gt;0&lt;/lower&gt;
+            &lt;upper&gt;1&lt;/upper&gt;
+        &lt;/objective&gt;
+        &lt;objective&gt;
+            &lt;name&gt;False Negatives&lt;/name&gt;
+            &lt;weight&gt;-1.0&lt;/weight&gt;
+            &lt;achievable&gt;1541.2&lt;/achievable&gt;
+            &lt;goal&gt;0&lt;/goal&gt;
+            &lt;evaluationFunction&gt;false_negative&lt;/evaluationFunction&gt;
+            &lt;lower&gt;0&lt;/lower&gt;
+            &lt;upper&gt;1&lt;/upper&gt;
+        &lt;/objective&gt;
+        &lt;objective&gt;
+            &lt;name&gt;F1-Score&lt;/name&gt;
+            &lt;weight&gt;-1.0&lt;/weight&gt;
+            &lt;achievable&gt;0.2&lt;/achievable&gt;
+            &lt;goal&gt;0&lt;/goal&gt;
+            &lt;evaluationFunction&gt;f1_score_min&lt;/evaluationFunction&gt;
+            &lt;lower&gt;0&lt;/lower&gt;
+            &lt;upper&gt;1&lt;/upper&gt;
+        &lt;/objective&gt;
+        &lt;objective&gt;
+            &lt;name&gt;Num Elements&lt;/name&gt;
+            &lt;weight&gt;-1.0&lt;/weight&gt;
+            &lt;achievable&gt;100.0&lt;/achievable&gt;
+            &lt;goal&gt;0&lt;/goal&gt;
+            &lt;evaluationFunction&gt;num_elements_eval_function&lt;/evaluationFunction&gt;
+            &lt;lower&gt;0&lt;/lower&gt;
+            &lt;upper&gt;1&lt;/upper&gt;
+        &lt;/objective&gt;
+
+    &lt;/objectives&gt;
+
+    &lt;evaluation&gt;
+        &lt;module&gt;evalFunctions&lt;/module&gt;
+        &lt;memoryLimit&gt;30&lt;/memoryLimit&gt; &lt;!-- In Percent --&gt;
+    &lt;/evaluation&gt;
+
+    &lt;scoopParameters&gt;
+        &lt;host&gt;
+            &lt;name&gt;localhost&lt;/name&gt;
+            &lt;workers&gt;24&lt;/workers&gt;
+        &lt;/host&gt;
+        &lt;!--&lt;host&gt;
+            &lt;name&gt;localhost&lt;/name&gt;
+            &lt;workers&gt;3&lt;/workers&gt;
+        &lt;/host&gt;
+        &lt;host&gt;
+            &lt;name&gt;localhost&lt;/name&gt;
+            &lt;workers&gt;3&lt;/workers&gt;
+        &lt;/host&gt;
+        &lt;host&gt;
+            &lt;name&gt;localhost&lt;/name&gt;
+            &lt;workers&gt;3&lt;/workers&gt;
+        &lt;/host&gt;
+        &lt;host&gt;
+            &lt;name&gt;localhost&lt;/name&gt;
+            &lt;workers&gt;3&lt;/workers&gt;
+        &lt;/host&gt;
+        &lt;host&gt;
+            &lt;name&gt;localhost&lt;/name&gt;
+            &lt;workers&gt;3&lt;/workers&gt;
+        &lt;/host&gt;--&gt;
+    &lt;/scoopParameters&gt;
+
+    &lt;evolutionParameters&gt;
+        &lt;initialPopulationSize&gt;512&lt;/initialPopulationSize&gt;
+        &lt;elitePoolSize&gt;512&lt;/elitePoolSize&gt;
+        &lt;launchSize&gt;300&lt;/launchSize&gt;
+        &lt;minQueueSize&gt;200&lt;/minQueueSize&gt;
+
+        &lt;matings&gt;
+            &lt;mating&gt;
+                &lt;name&gt;crossover&lt;/name&gt;
+                &lt;probability&gt;0.50&lt;/probability&gt;
+            &lt;/mating&gt;
+            &lt;mating&gt;
+                &lt;name&gt;crossoverEphemeral&lt;/name&gt;
+                &lt;probability&gt;0.50&lt;/probability&gt;
+            &lt;/mating&gt;
+            &lt;mating&gt;
+                &lt;name&gt;headlessChicken&lt;/name&gt;
+                &lt;probability&gt;0.10&lt;/probability&gt;
+            &lt;/mating&gt;
+            &lt;mating&gt;
+                &lt;name&gt;headlessChickenEphemeral&lt;/name&gt;
+                &lt;probability&gt;0.10&lt;/probability&gt;
+            &lt;/mating&gt;
+        &lt;/matings&gt;
+
+        &lt;mutations&gt;
+            &lt;mutation&gt;
+                &lt;name&gt;insert&lt;/name&gt;
+                &lt;probability&gt;0.05&lt;/probability&gt;
+            &lt;/mutation&gt;
+            &lt;mutation&gt;
+                &lt;name&gt;insert modify&lt;/name&gt;
+                &lt;probability&gt;0.10&lt;/probability&gt;
+            &lt;/mutation&gt;
+            &lt;mutation&gt;
+                &lt;name&gt;ephemeral&lt;/name&gt;
+                &lt;probability&gt;0.25&lt;/probability&gt;
+            &lt;/mutation&gt;
+            &lt;mutation&gt;
+                &lt;name&gt;node replace&lt;/name&gt;
+                &lt;probability&gt;0.05&lt;/probability&gt;
+            &lt;/mutation&gt;
+            &lt;mutation&gt;
+                &lt;name&gt;uniform&lt;/name&gt;
+                &lt;probability&gt;0.05&lt;/probability&gt;
+            &lt;/mutation&gt;
+            &lt;mutation&gt;
+                &lt;name&gt;shrink&lt;/name&gt;
+                &lt;probability&gt;0.05&lt;/probability&gt;
+            &lt;/mutation&gt;
+        &lt;/mutations&gt;
+
+        &lt;selections&gt;
+            &lt;selection&gt;
+                &lt;name&gt;NSGA2&lt;/name&gt;
+            &lt;/selection&gt;
+        &lt;/selections&gt;
+
+    &lt;/evolutionParameters&gt;
+
+    &lt;seedFile&gt;
+
+    &lt;/seedFile&gt;
+
+    &lt;genePoolFitness&gt;
+        &lt;prefix&gt;genePoolFitnessWine&lt;/prefix&gt;
+    &lt;/genePoolFitness&gt;
+    &lt;paretoFitness&gt;
+        &lt;prefix&gt;paretoFitnessWine&lt;/prefix&gt;
+    &lt;/paretoFitness&gt;
+    &lt;parentsOutput&gt;
+        &lt;prefix&gt;parentsWine&lt;/prefix&gt;
+    &lt;/parentsOutput&gt;
+
+
+
+    &lt;paretoOutput&gt;
+        &lt;prefix&gt;paretoFrontWine&lt;/prefix&gt;
+    &lt;/paretoOutput&gt;
+&lt;/input&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="OneMax.html" class="btn btn-neutral float-left" title="OneMax Problem" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, John Lewis Corker
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
