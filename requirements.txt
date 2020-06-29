@@ -1,3 +1,5 @@
 # -*- coding: utf-8 -*-
 numpy 
 matplotlib
+
+pydot~=1.4.1

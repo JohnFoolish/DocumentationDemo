@@ -26,5 +26,9 @@ Current modules!
 
    basic_code
 
+   displayIndividual
+
+   updatePickleFile
+
 .. automodule:: basic_code
    :members:
