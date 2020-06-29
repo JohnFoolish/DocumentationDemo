@@ -8,3 +8,4 @@ ipython
 ipykernel
 jupyter_client
 deap
+pathlib
