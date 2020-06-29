@@ -13,7 +13,7 @@ Welcome to FELLOW_project's documentation!
    :caption: Contents:
 
    intro
-
+   sphinx_intro
 
 
 

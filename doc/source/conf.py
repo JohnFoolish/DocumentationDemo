@@ -26,8 +26,8 @@ else:
 # -- Project information -----------------------------------------------------
 
 project = 'FELLOW_project'
-copyright = '2020, John Lewis Corker'
-author = 'John Lewis Corker'
+copyright = '2020, GTRI EMADE Fellows'
+author = 'William Samuelson, Hoa Luu, John Lewis Corker'
 
 # The full version, including alpha/beta/rc tags
 release = '0.0.1'

@@ -1,4 +1,4 @@
-This is an introduction to my documentation!
+This is an introduction to the Fellow's documentation!
 ============================================
 
 Here you can find a list of the current packages I have written for
@@ -24,7 +24,9 @@ Current modules!
    :maxdepth: 1
    :caption: Contents:
 
+   sphinx_intro
    basic_code
+   
 
 .. automodule:: basic_code
    :members:
