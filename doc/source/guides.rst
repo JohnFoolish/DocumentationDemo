@@ -7,6 +7,9 @@ Guides
    :maxdepth: 1
    :caption: Contents:
 
+   guides/linux_install
+   guides/mac_install
+   guides/windows_install
    guides/errors
    guides/emadeCode
    guides/xmlInput

@@ -1,0 +1,366 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>EMADE Installation on Linux &mdash; FELLOW_project 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="EMADE Installation on Mac" href="mac_install.html" />
+    <link rel="prev" title="Guides" href="../guides.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> FELLOW_project
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">This is an introduction to my documentation!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../guides.html">Guides</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">EMADE Installation on Linux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#instructions">Instructions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mac_install.html">EMADE Installation on Mac</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows_install.html">EMADE Installation on Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="errors.html">Common Emade Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emadeCode.html">Guide to EMADE Code Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xmlInput.html">Guide to XML EMADE Input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debug.html">Guide to Debugging Individual Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud.html">Running on the Cloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tpu.html">Guide to Running on TPU using Google Cloud Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependencies.html">Guide to Installing Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cgp_cnn.html">Guide to Using GCP-CNN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pace_ice.html">Guide to Using PACE-ICE</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">FELLOW_project</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../guides.html">Guides</a> &raquo;</li>
+        
+      <li>EMADE Installation on Linux</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/guides/linux_install.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="emade-installation-on-linux">
+<h1>EMADE Installation on Linux<a class="headerlink" href="#emade-installation-on-linux" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p>EMADE requires Python v3.4+ EMADE requires the following Python
+Libraries - numpy - pandas - sklearn - tensorflow - keras - deap - scipy
+- psutil - lxml - matplotlib - opencv (cv2) - hmmlearn - PyWavelets -
+multiprocess - sqlalchemy</p>
+</div>
+<div class="section" id="instructions">
+<h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Install <a class="reference external" href="https://git-scm.com/">Git</a> &gt; Git is a tool to deal and
+manage repositories in GitHub. The EMADE source files are located in
+a GitHub repository, therefore we’ll need a tool to easily download
+it (i.e. clone the repository)</p>
+<ul class="simple">
+<li><p>For Ubuntu/Debian, <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">git</span></code>. For other Linux
+distributions, click
+<a class="reference external" href="https://git-scm.com/download/linux">here</a></p></li>
+</ul>
+</li>
+<li><p>Install <a class="reference external" href="https://git-lfs.github.com/">GIT LFS</a>. Official
+instructions can be found
+<a class="reference external" href="https://help.github.com/articles/installing-git-large-file-storage/">here</a>
+&gt;<em>We will be downloading about ~5GB of files. Since GitHub doesn’t
+allow one to have such big repositories. Therefore, we need Git LFS
+in order to download large repositories</em></p>
+<ul class="simple">
+<li><p>Navigate to <a class="reference external" href="https://git-lfs.github.com/">https://git-lfs.github.com/</a> and click <strong>Download</strong></p></li>
+<li><p>On your computer, unzip the downloaded file anywhere you like</p></li>
+<li><p>Open Terminal</p></li>
+<li><p>Change to working directory to the folder to which you unzipped
+the files with <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">~/Downloads/git-lfs-1.X.X</span></code></p></li>
+<li><p>Install it by running the command <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">./install.sh</span></code></p></li>
+<li><p>Verify the installation was successful with
+<code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">lfs</span> <span class="pre">install</span></code>, which should yield you
+<code class="docutils literal notranslate"><span class="pre">Git</span> <span class="pre">LFS</span> <span class="pre">initialized</span></code></p></li>
+</ul>
+</li>
+<li><p>(Optional) Run the command below in order to reduce username and
+password prompts <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">credential.helper</span> <span class="pre">cache</span></code></p></li>
+<li><p>Clone the <a class="reference external" href="https://github.gatech.edu/emade/emade/">git
+repository</a> at your
+/home/ directory &gt; Now we will clone (i.e. download) the repository</p>
+<ul class="simple">
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.gatech.edu/emade/emade</span></code></p></li>
+<li><p>You will need to enter your GT Username and GT Password</p></li>
+</ul>
+</li>
+<li><p>Install <a class="reference external" href="https://www.anaconda.com/">Anaconda 3</a> &gt;<em>Anaconda is
+an open source distribution of Python and R programming languages
+for large-scale data processing, predictive analytics, and
+scientific computing</em></p>
+<ul class="simple">
+<li><p>Download the .sh file
+<a class="reference external" href="https://www.anaconda.com/download/">here</a>, and click on
+<strong>Download</strong> for Python 3.* version</p></li>
+<li><p>Change your working directory to where you downloaded the file
+with <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">~/Downloads</span></code></p></li>
+<li><p>Make sure that the file is executable with
+<code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">Anaconda3-*.sh</span></code></p></li>
+<li><p>Make sure to type <code class="docutils literal notranslate"><span class="pre">yes</span></code> when it asks if you would like the
+‘installer to prepend the Anaconda3 install location to PATH’</p></li>
+<li><p>Close the current Terminal and open a new one in order to change
+the default python version.</p></li>
+<li><p><strong>Note:</strong> <em>As of 2018-03-20, when trying to run
+``$ anaconda-navigator``, it will not be able to run, and you
+will have to downgrade pip to the version 9.0.1 with
+``$ pip install pip==9.0.1``</em> &gt; By this point, you should have
+your Home folder as [Step 6]({{
+“/assets/images/linux_instructions/step6.png” | absolute_url }})</p></li>
+</ul>
+</li>
+<li><p>Change to the EMADE directory with <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">emade</span></code></p></li>
+<li><p>Install <a class="reference external" href="https://opencv.org/">OpenCV</a> with
+<code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">install</span> <span class="pre">opencv</span></code> &gt; This is a super nice library that is
+widely used for computer vision applications</p></li>
+<li><p>Install <a class="reference external" href="https://github.com/hmmlearn/hmmlearn">Hidden Markov Models for Python
+(hmmlearn)</a> with
+<code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">hmmlearn</span></code> &gt; This is a library that is used to
+develop Hidden Markov Models</p></li>
+<li><p>Install <a class="reference external" href="https://www.tensorflow.org/">TensorFlow</a> with
+<code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">tensorflow</span></code> or with <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">install</span> <span class="pre">tensorflow</span></code>
+&gt; TensorFlow is an open-source library for numerical computation
+using data flow graphs. The graph nodes represent mathematical
+operations, while the graph edges represent the multidimensional
+data arrays (tensors) that flow between them. This flexible
+architecture lets you deploy computation to one or more CPUs or GPUs
+in a desktop, server, or mobile device without rewriting code.</p></li>
+<li><p>Install <a class="reference external" href="https://keras.io/">Keras</a>, a high-level neural networks
+API, with <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">keras</span></code> or with <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">install</span> <span class="pre">keras</span></code>
+&gt; This is an API used to develop neural networks in a high-level.</p></li>
+<li><p>Now you should be almost set! At this point, you will be on the Git
+Branch <em>``python3_conve``</em>. This is not the branch we’re looking
+for. The one we want to work with is the <em>``Image``</em> branch. So
+change the branch it with <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">Image</span></code></p></li>
+<li><p>Build all of the required files with <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">bash</span> <span class="pre">reinstall.sh</span></code></p></li>
+<li><p>Install <a class="reference external" href="https://www.mysql.com/">MySQL</a> with
+<code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">update</span></code> and
+<code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">mysql-server</span></code>. After the installation is
+complete, the <code class="docutils literal notranslate"><span class="pre">mysql_secure_installation</span></code> utility will run,
+prompting you to define the mysql root password. [Step12]({{
+“/assets/images/linux_instructions/step12.png” | absolute_url }})</p></li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mac_install.html" class="btn btn-neutral float-right" title="EMADE Installation on Mac" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../guides.html" class="btn btn-neutral float-left" title="Guides" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, John Lewis Corker
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

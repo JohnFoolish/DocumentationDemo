@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Guide to Debugging Individual Algorithms &mdash; FELLOW_project 0.0.1 documentation</title>
+  <title>EMADE Installation on Windows &mdash; FELLOW_project 0.0.1 documentation</title>
   
 
   
@@ -39,8 +39,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Running on the Cloud" href="cloud.html" />
-    <link rel="prev" title="Guide to XML EMADE Input" href="xmlInput.html" /> 
+    <link rel="next" title="Common Emade Errors" href="errors.html" />
+    <link rel="prev" title="EMADE Installation on Mac" href="mac_install.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -91,15 +91,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../guides.html">Guides</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="linux_install.html">EMADE Installation on Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mac_install.html">EMADE Installation on Mac</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">EMADE Installation on Windows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#instructions">Instructions</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="errors.html">Common Emade Errors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="emadeCode.html">Guide to EMADE Code Structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xmlInput.html">Guide to XML EMADE Input</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Guide to Debugging Individual Algorithms</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#evaluating-individual-algorithms">Evaluating Individual Algorithms</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#seeding-your-own-algorithms">Seeding Your Own Algorithms</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#common-reasons-why-algorithms-fail">Common Reasons Why Algorithms Fail</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="debug.html">Guide to Debugging Individual Algorithms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cloud.html">Running on the Cloud</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tpu.html">Guide to Running on TPU using Google Cloud Platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dependencies.html">Guide to Installing Dependencies</a></li>
@@ -155,13 +156,13 @@
         
           <li><a href="../guides.html">Guides</a> &raquo;</li>
         
-      <li>Guide to Debugging Individual Algorithms</li>
+      <li>EMADE Installation on Windows</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/guides/debug.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/guides/windows_install.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -198,57 +199,77 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="guide-to-debugging-individual-algorithms">
-<span id="id1"></span><h1>Guide to Debugging Individual Algorithms<a class="headerlink" href="#guide-to-debugging-individual-algorithms" title="Permalink to this headline">¶</a></h1>
-<p>When you first create a random population of individuals (i.e.
-algorithms), many are likely to die. You can see why they have died in
-the error_string column of the individuals database table. For example,
-if there is not the possibility of outputting the correct datatype,
-EMADE will automatically kill that individual to speed up overall
-evaluation time, and will display that “The primitives cannot
-categorically convert from input of desired type to desired type of
-output.”</p>
-<p>As EMADE progresses beyond its first generation, only the algorithms
-that return finite values on all objectives will be propagated forward
-to be chosen for mutation or crossover; this should lead to a normal and
-productive evolutionary run. But what happens if an algorithm that you
-think should execute correctly returns all NULL objective values? Or,
-worse yet, all of your algorithms return NULL values? Well, then it is
-time to debug using the following technique(s).</p>
-<div class="section" id="evaluating-individual-algorithms">
-<span id="id2"></span><h2>Evaluating Individual Algorithms<a class="headerlink" href="#evaluating-individual-algorithms" title="Permalink to this headline">¶</a></h2>
-<p>Because string representations of algorithms are stored as pickled
-objectives in the individuals table of the database, you can actually
-unpickle them yourself to run them on a local instance of EMADE. The
-database_tree_evaluator.py file takes the path to an XML and an
-individual’s hash from the DB as command-line arguments to set up a
-gtMOEP instance and the appropriate function pointers to run your
-individual for you. The database connection information is read from the
-XML, <strong>but make sure to set use/reuse according to your intention.</strong></p>
+<div class="section" id="emade-installation-on-windows">
+<h1>EMADE Installation on Windows<a class="headerlink" href="#emade-installation-on-windows" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p>EMADE requires Python v3.4+ EMADE requires the following Python
+Libraries - numpy - pandas - sklearn - tensorflow - keras - deap - scipy
+- psutil - lxml - matplotlib - opencv (cv2) - hmmlearn - PyWavelets -
+multiprocess - sqlalchemy</p>
 </div>
-<div class="section" id="seeding-your-own-algorithms">
-<span id="id3"></span><h2>Seeding Your Own Algorithms<a class="headerlink" href="#seeding-your-own-algorithms" title="Permalink to this headline">¶</a></h2>
-<p>Sometimes the initial algorithms are simply not apt for solving complex
-problems. You can introduce candidate algorithms by simply typing them
-as string representations of a valid individual, and using the
-seeding_from_file.py file. The text file with your individuals is
-new-line delineated, and will not accept individuals that are already
-present in the database.</p>
-<p>For example, to start the process of classifying stream data, you may
-wish to feed the output of an FFT into a machine learner. Example
-seeding code is included in the SeedingFiles of the main directory.</p>
-<p>The syntax is:</p>
-<p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">seeding_from_file.py</span> <span class="pre">templates/input_file.xml</span> <span class="pre">seeding_test_1</span></code></p>
-</div>
-<div class="section" id="common-reasons-why-algorithms-fail">
-<span id="id4"></span><h2>Common Reasons Why Algorithms Fail<a class="headerlink" href="#common-reasons-why-algorithms-fail" title="Permalink to this headline">¶</a></h2>
-<p>If all of your algorithms fail, it is most likely the result of
-malformed data, XML input, or an incorrectly installed instance of
-EMADE. If you wish to debug individuals, here is a list of common
-error_strings.</p>
-<p>libcuda.so not found: this individual tried to use tensorflow or keras
-on an installation that expects a GPU, but there is no GPU available.</p>
-<p><code class="docutils literal notranslate"><span class="pre">Found</span> <span class="pre">array</span> <span class="pre">with</span> <span class="pre">0</span> <span class="pre">feature(s)...</span></code></p>
+<div class="section" id="instructions">
+<h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>Install Anaconda</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Installation link <a class="reference external" href="https://www.anaconda.com/download/#windows">https://www.anaconda.com/download/#windows</a></p></li>
+<li><p>Choose the proper installer for your operating system</p></li>
+<li><p>conda-cheatsheet link</p></li>
+</ul>
+<blockquote>
+<div><p><a class="reference external" href="https://conda.io/docs/_downloads/conda-cheatsheet.pdf">https://conda.io/docs/_downloads/conda-cheatsheet.pdf</a></p>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p>Install Git</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Installation link <a class="reference external" href="https://git-scm.com/download/win">https://git-scm.com/download/win</a></p></li>
+<li><p>github-git-cheatsheet link
+<a class="reference external" href="https://services.github.com/on-demand/downloads/github-git-cheatsheet.pdf">https://services.github.com/on-demand/downloads/github-git-cheatsheet.pdf</a></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Add Git to Environment Variables</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Right Click PC icon -&gt; Select Properties</p></li>
+<li><p>Select Advanced System Settings -&gt; Click Environment Variables</p></li>
+<li><p>Select the Path that has <code class="docutils literal notranslate"><span class="pre">Anaconda3</span></code> -&gt; Click Edit</p></li>
+<li><p>Click New -&gt; Paste <code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files\Git\cmd</span></code> -&gt; Click OK</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Open Command Window (cmd)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">version</span></code> to verify Git Installation</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">--name</span> <span class="pre">py35</span> <span class="pre">python=3.5</span></code> to create a new
+environemnt (env)</p></li>
+<li><p>Activate the new env by running <code class="docutils literal notranslate"><span class="pre">activate</span> <span class="pre">py35</span></code></p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">pip</span></code> to install the required libraries referenced above (e.g.,
+<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pywt</span></code>)</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-cmenpo</span> <span class="pre">opencv3</span></code> to install opencv</p></li>
+<li><p>Note: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">intall</span></code> does not work with some libraries, better use
+<code class="docutils literal notranslate"><span class="pre">pip</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Clone EMADE and checkout the Image branch</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Note: This step requires a minimium of three hours to complete</p></li>
+<li><p>Open cmd</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.gatech.edu/emade/emade</span></code></p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">emade</span></code></p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">Image</span></code></p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">reinstall.sh</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
 </div>
 </div>
 
@@ -260,10 +281,10 @@ on an installation that expects a GPU, but there is no GPU available.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="cloud.html" class="btn btn-neutral float-right" title="Running on the Cloud" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="errors.html" class="btn btn-neutral float-right" title="Common Emade Errors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="xmlInput.html" class="btn btn-neutral float-left" title="Guide to XML EMADE Input" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="mac_install.html" class="btn btn-neutral float-left" title="EMADE Installation on Mac" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
