@@ -26,17 +26,20 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="This is an introduction to my documentation!" href="intro.html" /> 
+    <link rel="next" title="Directory for Getting Sphinx Documentation Set-up" href="setup_intro.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -83,7 +86,10 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="intro.html">This is an introduction to my documentation!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_intro.html">Directory for Getting Sphinx Documentation Set-up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">This is an introduction to the Fellow’s documentation!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides.html">Guides</a></li>
 </ul>
 
             
@@ -149,13 +155,64 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="welcome-to-fellow-project-s-documentation">
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="welcome-to-fellow-project-s-documentation">
 <h1>Welcome to FELLOW_project’s documentation!<a class="headerlink" href="#welcome-to-fellow-project-s-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="intro.html">This is an introduction to my documentation!</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="setup_intro.html">Directory for Getting Sphinx Documentation Set-up</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="setup_docs/sphinx_intro.html">How to set up Sphinx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup_docs/best_practices.html">Best Practices with Sphinx Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup_docs/website_hosting.html">Hosting Documentation Online</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">This is an introduction to the Fellow’s documentation!</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="intro.html#current-modules">Current modules!</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/OneMax.html">OneMax Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/Preprocessing.html">Preprocessing Data in EMADE</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guides.html">Guides</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/linux_install.html">EMADE Installation on Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/mac_install.html">EMADE Installation on Mac</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/windows_install.html">EMADE Installation on Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/autohooks.html">Git Hooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/errors.html">Common Emade Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/emadeCode.html">Guide to EMADE Code Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/xmlInput.html">Guide to XML EMADE Input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/debug.html">Guide to Debugging Individual Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/cloud.html">Running on the Cloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/tpu.html">Guide to Running on TPU using Google Cloud Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/dependencies.html">Guide to Installing Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/cgp_cnn.html">Guide to Using GCP-CNN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/pace_ice.html">Guide to Using PACE-ICE</a></li>
 </ul>
 </li>
 </ul>
@@ -178,7 +235,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="intro.html" class="btn btn-neutral float-right" title="This is an introduction to my documentation!" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="setup_intro.html" class="btn btn-neutral float-right" title="Directory for Getting Sphinx Documentation Set-up" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>
@@ -189,7 +246,7 @@
   <div role="contentinfo">
     <p>
         
-        &copy; Copyright 2020, John Lewis Corker
+        &copy; Copyright 2020, GTRI EMADE Fellows
 
     </p>
   </div>

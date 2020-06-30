@@ -1,6 +1,13 @@
 # -*- coding: utf-8 -*-
 numpy 
 matplotlib
-
+sphinx
+sphinx_rtd_theme
+nbsphinx
+ipython
+ipykernel
+jupyter_client
+deap
+pathlib
 pydot~=1.4.1
 graphviz

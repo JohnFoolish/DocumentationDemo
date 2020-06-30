@@ -1,0 +1,615 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Guide to Running on TPU using Google Cloud Platform &mdash; FELLOW_project 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Guide to Installing Dependencies" href="dependencies.html" />
+    <link rel="prev" title="Running on the Cloud" href="cloud.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> FELLOW_project
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../setup_intro.html">Directory for Getting Sphinx Documentation Set-up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">This is an introduction to the Fellow’s documentation!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../guides.html">Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="linux_install.html">EMADE Installation on Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mac_install.html">EMADE Installation on Mac</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows_install.html">EMADE Installation on Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autohooks.html">Git Hooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="errors.html">Common Emade Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emadeCode.html">Guide to EMADE Code Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xmlInput.html">Guide to XML EMADE Input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debug.html">Guide to Debugging Individual Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud.html">Running on the Cloud</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Guide to Running on TPU using Google Cloud Platform</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#about-tpu">About TPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-get-started-with-google-cloud">How to get started with Google Cloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-a-project">Create a Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-google-cloud-storage-bucket">Creating a Google Cloud Storage Bucket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tpu-initialization-and-connecting-to-the-cloud-vm">TPU Initialization and Connecting to the Cloud VM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#emade-on-your-virtual-machine">EMADE on Your Virtual Machine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#code-changes-to-run-tensorflow-with-tpu-support">Code Changes to Run Tensorflow With TPU Support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#connecting-to-google-cloud-vm-from-local-machine">Connecting to Google Cloud VM from Local Machine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cleaning-up-google-cloud-resources">Cleaning up Google Cloud Resources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#common-problems-and-their-solutions">Common Problems and Their Solutions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dependencies.html">Guide to Installing Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cgp_cnn.html">Guide to Using GCP-CNN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pace_ice.html">Guide to Using PACE-ICE</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">FELLOW_project</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../guides.html">Guides</a> &raquo;</li>
+        
+      <li>Guide to Running on TPU using Google Cloud Platform</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/guides/tpu.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="guide-to-running-on-tpu-using-google-cloud-platform">
+<span id="id1"></span><h1>Guide to Running on TPU using Google Cloud Platform<a class="headerlink" href="#guide-to-running-on-tpu-using-google-cloud-platform" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="about-tpu">
+<span id="id2"></span><h2>About TPU<a class="headerlink" href="#about-tpu" title="Permalink to this headline">¶</a></h2>
+<p>Google’s Tensor Processing Unit, or TPU, can be used to accelerate
+Tensorflow neural network computations behind the scenes. The TPU was
+announced last year and recently followed up with a detailed study of
+its performance and architecture. In short, they found that the TPU
+delivered 15–30X higher performance and 30–80X higher
+performance-per-watt than contemporary CPUs and GPUs. These advantages
+help many of Google’s services run state-of-the-art neural networks at
+scale and at an affordable cost. In this guide, we will walk you through
+running any process that involves Tensorflow computation on a Google
+Cloud Virtual Machine that leverages TPU processing power. You can read
+more about the TPU
+<a class="reference external" href="https://cloud.google.com/blog/products/gcp/an-in-depth-look-at-googles-first-tensor-processing-unit-tpu">here</a>.</p>
+</div>
+<div class="section" id="how-to-get-started-with-google-cloud">
+<span id="id3"></span><h2>How to get started with Google Cloud<a class="headerlink" href="#how-to-get-started-with-google-cloud" title="Permalink to this headline">¶</a></h2>
+<p>Using the Google Cloud Platform services is very easy. Here are the
+instructions</p>
+<ol class="arabic simple">
+<li><p>Go to <a class="reference external" href="cloud.google.com">cloud.google.com</a></p></li>
+<li><p>Login with a gmail address.</p></li>
+<li><p>Click on “console” - you should be directed to a dashboard.</p></li>
+</ol>
+</div>
+<div class="section" id="create-a-project">
+<span id="id4"></span><h2>Create a Project<a class="headerlink" href="#create-a-project" title="Permalink to this headline">¶</a></h2>
+<p>Steps to create a project:</p>
+<ol class="arabic simple">
+<li><p>Click on the “Select A Project” option.</p></li>
+<li><p>Select “New Project” and follow instructions (it may take few minutes
+for this project to show up on your dashboard).</p></li>
+<li><p>Click the ≡ symbol in the top left corner and select “billing”. This
+will allow you to link your project to a payment method. This is
+where you will want to add your google cloud credits.</p></li>
+</ol>
+</div>
+<div class="section" id="creating-a-google-cloud-storage-bucket">
+<span id="id5"></span><h2>Creating a Google Cloud Storage Bucket<a class="headerlink" href="#creating-a-google-cloud-storage-bucket" title="Permalink to this headline">¶</a></h2>
+<p><strong>Note:</strong> the following instructions are based on <a class="reference external" href="https://cloud.google.com/tpu/docs/quickstart">this quickstart
+tutorial</a></p>
+<p>In this step, we will create a Cloud Storage bucket, which will serve as
+your interface to move data in and out of your Cloud VM:</p>
+<ol class="arabic">
+<li><p>Sign into your google account, select your project and ensure billing
+is enabled for the project.</p></li>
+<li><p>Go to the <a class="reference external" href="https://console.cloud.google.com/storage/browser">Cloud Storage Page on the GCP
+Console</a></p></li>
+<li><p>Create a new bucket with:</p>
+<ul class="simple">
+<li><p>a unique name of your choosing</p></li>
+<li><p>Default storage class: <code class="docutils literal notranslate"><span class="pre">Regional</span></code></p></li>
+<li><p>Location: <code class="docutils literal notranslate"><span class="pre">us-central1</span></code></p></li>
+</ul>
+</li>
+<li><p>If may take a few minutes for your bucket to show up.</p></li>
+<li><p>Select [your bucket name]</p>
+<ul class="simple">
+<li><p>if starting from the dashboard, do Resources &gt; Cloud Storage &gt;
+[your bucket’s name]</p></li>
+</ul>
+</li>
+<li><p>Select “Upload Folder” and upload the folder that contains “emade”.
+This process may take few minutes. <strong>DO NOT BEGIN THE NEXT STEP UNTIL
+THIS IS COMPLETELY FINISHED.</strong></p>
+<ul>
+<li><p>If the files are too large to upload all at once, set up git-lfs
+by running the following commands in a Cloud Shell</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh <span class="p">|</span> sudo bash
+sudo apt-get install git-lfs
+</pre></div>
+</div>
+</li>
+<li><p>Now clone from github and copy to an empty bucket using
+<code class="docutils literal notranslate"><span class="pre">gsutil</span> <span class="pre">-m</span> <span class="pre">cp</span> <span class="pre">-r</span> <span class="pre">[git_folder]</span> <span class="pre">[bucket_link]</span></code></p></li>
+<li><p>Consider reading this
+<a class="reference external" href="https://cloud.google.com/solutions/transferring-big-data-sets-to-gcp">guide</a>
+for more information on uploading large datasets to google cloud</p></li>
+<li><p>It may also be useful to <a class="reference external" href="https://cloud.google.com/storage/docs/gsutil_install#deb">install
+gsutil</a>
+on your personal device to upload files</p></li>
+<li><p><strong>NOTE: For deep learning subteam working on CGP-CNN, please use
+the vip_shell.sh file in CGP-CNN GitHub repository. Relevant
+documentation is contained in the README. It will install and
+configure Git-LFS, download EMADE, and install all relevant pip
+dependencies. You may continue onto the next TPU step after script
+concludes.</strong></p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="tpu-initialization-and-connecting-to-the-cloud-vm">
+<span id="id6"></span><h2>TPU Initialization and Connecting to the Cloud VM<a class="headerlink" href="#tpu-initialization-and-connecting-to-the-cloud-vm" title="Permalink to this headline">¶</a></h2>
+<p>For this part, we will be using the cloud shell and Cloud TPU
+Provisioning Utility (<code class="docutils literal notranslate"><span class="pre">ctpu</span></code>). This guide uses <code class="docutils literal notranslate"><span class="pre">ctpu</span></code> as a simple
+tool for setting up and managing your Cloud TPU. The guide
+runs <code class="docutils literal notranslate"><span class="pre">ctpu</span></code> from a Cloud Shell. The <code class="docutils literal notranslate"><span class="pre">ctpu</span></code> tool is pre-installed in
+your Cloud Shell. Follow these steps to set up your TPU:</p>
+<p>1. Open a <a class="reference external" href="https://console.cloud.google.com/?cloudshell=true">Cloud
+Shell</a> window.</p>
+<p>2. Type the following into your Cloud Shell, to check
+your <code class="docutils literal notranslate"><span class="pre">ctpu</span></code> configuration do the following.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ctpu print-config
+</pre></div>
+</div>
+<p>You should see a message like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>2018/04/29 05:23:03 WARNING: Setting zone to &quot;us-central1-b&quot;
+ctpu configuration:
+       name: [your TPU&#39;s name]
+       project: [your-project-name]
+       zone: us-central1-b
+If you would like to change the configuration for a single command invocation, please use the command line flags.
+</pre></div>
+</div>
+<p>3. You can see a list of ctpu commands by typing <code class="docutils literal notranslate"><span class="pre">ctpu</span></code> in the Cloud
+Shell</p>
+<p>4. Run the command <code class="docutils literal notranslate"><span class="pre">cptu</span> <span class="pre">up</span></code> to set up a Compute Engine virtual
+machine (VM) and a Cloud TPU with associated services.
+The <code class="docutils literal notranslate"><span class="pre">--tpu-size</span></code> parameter is an optional parameter that you can use
+to specify the size of your Cloud TPU configuration, a single Cloud TPU
+device or slices from a Cloud TPU Pod <em>(alpha)</em>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ctpu will use the following configuration:
+
+    Name: [your TPU&#39;s name]
+    Zone: [your project&#39;s zone]
+    GCP Project: [your project&#39;s name]
+    TensorFlow Version: 1.11
+    VM:
+        Machine Type: [your machine type]
+        Disk Size: [your disk size]
+        Preemptible: [true or false]
+    Cloud TPU:
+        Size: [your TPU size]
+        Preemptible: [true or false]
+
+OK to create your Cloud TPU resources with the above configuration? [Yn]:
+</pre></div>
+</div>
+<p>5. Press y to create your Cloud TPU resources. <strong>This process will take
+a few minutes</strong> the first time you connect to the TPU - every subsequent
+time should be almost instantaneous. To learn more about what ctpu
+up does, check out <a class="reference external" href="https://cloud.google.com/tpu/docs/quickstart">this
+link</a></p>
+<p>6. Verify your computing engine VM. When the <code class="docutils literal notranslate"><span class="pre">ctpu</span> <span class="pre">up</span></code> command has
+finished executing, verify that your shell prompt has changed
+from <code class="docutils literal notranslate"><span class="pre">username&#64;project</span></code> to <code class="docutils literal notranslate"><span class="pre">username&#64;tpuname</span></code>. This change shows
+that you are now logged into your Compute Engine VM.</p>
+<ul class="simple">
+<li><p>WARNING: The TPU can use minor computing resources when idle. To
+avoid loosing credits see “Cleaning Up Cloud Resources”</p></li>
+</ul>
+</div>
+<div class="section" id="emade-on-your-virtual-machine">
+<span id="id7"></span><h2>EMADE on Your Virtual Machine<a class="headerlink" href="#emade-on-your-virtual-machine" title="Permalink to this headline">¶</a></h2>
+<p>Here are the instructions to get the EMADE code onto your virtual
+machine (<strong>note:</strong> this process is not specific to EMADE, and can be
+used for any codebases).</p>
+<ol class="arabic simple">
+<li><p>Download emade from your GCP Bucket using the following command that
+performs a parallel multi-threaded/multi-processing copy:
+<code class="docutils literal notranslate"><span class="pre">gsutil</span> <span class="pre">-m</span> <span class="pre">cp</span> <span class="pre">-r</span> <span class="pre">[bucket_link]</span> <span class="pre">.</span></code> You can find your [bucket_link]
+by clicking on your bucket, selecting the overview tab and copying
+the “Link for gsutil”. This command copies the contents of your
+entire bucket to the current directory on your Cloud VM. Click here
+to learn more on <a class="reference external" href="https://cloud.google.com/storage/docs/gsutil/commands/cp">gsutil
+cp</a>. If
+you want to only copy a certain directory, then append the directory
+path to the end of your link.</p></li>
+<li><p>Python3 can be accessed with the command “python3”.</p></li>
+<li><p>Several packages should already be on your virtual machine - however,
+not all packages come installed.</p>
+<ul class="simple">
+<li><p>Run your code and see if it works.</p></li>
+<li><p>In the event of a missing package, simply “pip3 install” it.</p></li>
+<li><p>When we did it, we were missing pandas, scoop and psutil, but your
+code may be missing different dependencies,</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="code-changes-to-run-tensorflow-with-tpu-support">
+<span id="id8"></span><h2>Code Changes to Run Tensorflow With TPU Support<a class="headerlink" href="#code-changes-to-run-tensorflow-with-tpu-support" title="Permalink to this headline">¶</a></h2>
+<p>As of now, your code is running on a Cloud VM that has access to TPUs,
+but is not actually leveraging TPU power. Below are the steps necessary
+to run your tensorflow code with TPU support:</p>
+<p>In the file where your tensorflow session is instantiated:</p>
+<ol class="arabic simple">
+<li><p>Add the following import statements:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">tensorflow.contrib</span> <span class="kn">import</span> <span class="n">tpu</span>
+<span class="kn">from</span> <span class="nn">tensorflow.contrib.cluster_resolver</span> <span class="kn">import</span> <span class="n">TPUClusterResolver</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Directly before instantiating your session, add:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tpu_grpc_url</span> <span class="o">=</span> <span class="n">TPUClusterResolver</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;&lt;your-project-name&gt;&quot;</span><span class="p">,</span> <span class="n">zone</span><span class="o">=</span><span class="s2">&quot;us-central1-b&quot;</span><span class="p">,</span> <span class="n">tpu_names</span><span class="o">=</span><span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;TPU_NAME&#39;</span><span class="p">]])</span><span class="o">.</span><span class="n">get_master</span>
+</pre></div>
+</div>
+<p>3. Instantiate your session with the target set to <code class="docutils literal notranslate"><span class="pre">tpu_grpc_url</span></code>. For
+instance, instantiate it like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">(</span><span class="n">tpu_grpc_url</span><span class="p">)</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
+   <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>4. Congrats - If you run your code now, you will be using the power of
+TPUs to run your tensorflow code.</p>
+</div>
+<div class="section" id="connecting-to-google-cloud-vm-from-local-machine">
+<span id="id9"></span><h2>Connecting to Google Cloud VM from Local Machine<a class="headerlink" href="#connecting-to-google-cloud-vm-from-local-machine" title="Permalink to this headline">¶</a></h2>
+<p>Everything done till now has been on the google cloud shell. If you want
+to run it from your own system, here are the steps (taken from <a class="reference external" href="https://github.com/tensorflow/tpu/tree/master/tools/ctpu">this git
+repo</a>):</p>
+<ol class="arabic">
+<li><p>Download cptu onto your local machine</p>
+<ul>
+<li><dl>
+<dt>Linux:</dt><dd><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget https://dl.google.com/cloud_tpu/ctpu/latest/linux/ctpu
+chmod a+X ctpu
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Mac:</dt><dd><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -O https://dl.google.com/cloud_tpu/ctpu/latest/darwin/ctpu
+chmod a+x ctpu
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p>Windows: No support as of 11/12/2018.</p></li>
+</ul>
+</li>
+<li><p>While you can use ctpu in your local directory (by prefixing all
+commands with ./; example: ./ctpu print-config), Google recommends
+installing it somewhere on your $PATH. (example: cp ctpu ~/bin/ to
+install for just yourself, or sudo cp ctpu /usr/bin/ for all users of
+your machine.)</p></li>
+<li><p>Configure gcloud credentials: If you have never used gcloud before,
+you will need to configure it. Run gcloud auth login to allocate
+credentials for gcloud to use when operating on your behalf.</p></li>
+<li><p>Configure ctpu credentials: ctpu uses the “application default”
+credentials set up by the Google SDK. In order to allocate your
+application default credentials, run: gcloud auth application-default
+login.</p></li>
+<li><p>Now your local machine shell should be able to support the same ctpu
+commands as the cloud shell.</p></li>
+</ol>
+</div>
+<div class="section" id="cleaning-up-google-cloud-resources">
+<span id="id10"></span><h2>Cleaning up Google Cloud Resources<a class="headerlink" href="#cleaning-up-google-cloud-resources" title="Permalink to this headline">¶</a></h2>
+<p>To avoid incurring charges to your GCP account for the resources used in
+this quickstart</p>
+<ol class="arabic simple">
+<li><p>If still connected, disconnect from the Compute Engine VM:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>vm<span class="o">)</span>$ <span class="nb">exit</span>
+</pre></div>
+</div>
+<p>2. Run the following command to delete your Compute Engine VM and your
+Cloud TPU:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ctpu delete
+</pre></div>
+</div>
+<p>3. Run <code class="docutils literal notranslate"><span class="pre">ctpu</span> <span class="pre">status</span></code> to make sure you have no instances allocated to
+avoid unnecessary charges for TPU usage. The deletion might take several
+minutes. A response like the one below indicates there are no more
+allocated instances:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">2018</span>/04/28 <span class="m">16</span>:16:23 WARNING: Setting zone to <span class="s2">&quot;us-central1-b&quot;</span>
+No instances currently exist.
+        Compute Engine VM:     --
+        Cloud TPU:             --
+</pre></div>
+</div>
+<p>4. When you no longer need the Cloud Storage bucket you created during
+this tutorial, use the <code class="docutils literal notranslate"><span class="pre">gsutil</span></code> command to delete it.
+Replace <code class="docutils literal notranslate"><span class="pre">YOUR-BUCKET-NAME</span></code> with the name of your Cloud Storage bucket:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gsutil rm -r gs://YOUR-BUCKET-NAME
+</pre></div>
+</div>
+<p>This is not necessary every time, as you can keep your bucket alive at a
+very low cost. This will save time in future uses as you will not have
+to upload emade again. See the Cloud Storage pricing guide for free
+storage limits and other pricing information.</p>
+<p>However, <strong>IT IS HIGHLY RECOMMENDED TO DELETE YOUR VM AND TPU AS THEY
+ARE MORE PRICEY</strong>.</p>
+</div>
+<div class="section" id="common-problems-and-their-solutions">
+<span id="id11"></span><h2>Common Problems and Their Solutions<a class="headerlink" href="#common-problems-and-their-solutions" title="Permalink to this headline">¶</a></h2>
+<p><strong>SSH Error 255 and Permission Denied (Publickey)</strong></p>
+<p>1. Manually create a VM using the google cloud console (Compute
+Engine&gt;VM Instances&gt;Create)</p>
+<ul class="simple">
+<li><p>Make sure the name is the same as your username, or the TPU you
+create later won’t use this VM</p></li>
+<li><p>Give the VM sufficient disk space ~250GB should work</p></li>
+<li><p>Under “Firewall” allow HTTP/HTTPS traffic. This is the main issue
+causing the problem</p></li>
+</ul>
+<p>2. Use the command <code class="docutils literal notranslate"><span class="pre">ctpu</span> <span class="pre">up</span></code> to initialize the CTPU, it should run on
+the VM you just made.</p>
+<p>3. Manually creating a VM means there are less packages preinstalled, so
+you may want to install git and pip with the following commands</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get install git
+sudo apt-get install python3-setuptools
+sudo easy_install3 pip
+</pre></div>
+</div>
+<p><strong>KeyError TPU_NAME</strong></p>
+<p>1. The environment variable is not initialized so you must export it
+with the following command: <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">TPU_NAME=</span></code></p>
+<p>2. Your VM is also likely to be missing some package dependencies, so
+run the following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo pip install --upgrade google-api-python-client
+sudo pip install --upgrade oauth2client
+</pre></div>
+</div>
+<p><strong>psutil Import Errors</strong> (<strong>Note:</strong> only seen after SSH Error 255 fix)</p>
+<p>Python3-dev is not set up, so you must install it with the command</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get install python3-dev
+</pre></div>
+</div>
+<p><strong>cv2 Import Errors</strong></p>
+<p>There are several dependencies that could cause this, so here are a few
+things to try:</p>
+<p>1. Older versions of opencv-python have less dependencies, so you can
+try reverting to version 3.3.0.9</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>There are other distros with less dependencies, like opencv-python-headless which may help</p></li>
+</ul>
+</div></blockquote>
+<p>2. If you can’t get around installing extra libraries, then you will
+have to install whatever the error says you are missing</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>For example <code class="docutils literal notranslate"><span class="pre">ImportError:</span> <span class="pre">libgthread-2.2.so.0</span> <span class="pre">...</span></code> means you need to run the command <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">libglib2.0-0</span></code></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="dependencies.html" class="btn btn-neutral float-right" title="Guide to Installing Dependencies" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="cloud.html" class="btn btn-neutral float-left" title="Running on the Cloud" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, GTRI EMADE Fellows
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

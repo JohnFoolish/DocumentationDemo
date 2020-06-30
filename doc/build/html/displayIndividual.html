@@ -26,16 +26,21 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="updateNoteTypes module" href="updateNoteTypes.html" />
+    <link rel="prev" title="basic_code module" href="basic_code.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -81,8 +86,20 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="intro.html">This is an introduction to my documentation!</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup_intro.html">Directory for Getting Sphinx Documentation Set-up</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="intro.html">This is an introduction to the Fellow’s documentation!</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="intro.html#current-modules">Current modules!</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="basic_code.html">basic_code module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">displayIndividual module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="updateNoteTypes.html">updateNoteTypes module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="intro.html#why-is-this-function-useful">Why is this function useful?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides.html">Guides</a></li>
 </ul>
 
             
@@ -129,6 +146,8 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
+          <li><a href="intro.html">This is an introduction to the Fellow’s documentation!</a> &raquo;</li>
+        
       <li>displayIndividual module</li>
     
     
@@ -148,11 +167,35 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-displayIndividual">
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-displayIndividual">
 <span id="displayindividual-module"></span><h1>displayIndividual module<a class="headerlink" href="#module-displayIndividual" title="Permalink to this headline">¶</a></h1>
 <p>This module is use to generate a png image from a tree_string.</p>
 <dl>
-<dt>Usage below:</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree_string</span> <span class="o">=</span> <span class="s2">&quot;Learner(ARG0, ModifyLearnerList(LearnerType(&#39;LIGHTGBM&#39;, {&#39;max_depth&#39;: -1, &#39;learning_rate&#39;: 0.1, &#39;boosting_type&#39;: 0, &#39;num_leaves&#39;: 31}), myListAppend(myIntToList(32), passList([-3, 1])), passInt(4)), ModifyEnsembleFloat(EnsembleType(&#39;ADABOOST&#39;, {&#39;n_estimators&#39;: 50, &#39;learning_rate&#39;: 1.0}), myFloatIntAdd(0.01, 7), 3))&quot;</span>
+<dt>Usage below:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree_string</span> <span class="o">=</span> <span class="s2">&quot;Learner(ARG0, ModifyLearnerList(LearnerType(&#39;LIGHTGBM&#39;, {&#39;max_depth&#39;: -1, &#39;learning_rate&#39;: 0.1, &#39;boosting_type&#39;: 0, &#39;num_leaves&#39;: 31}), myListAppend(myIntToList(32), passList([-3, 1])), passInt(4)), ModifyEnsembleFloat(EnsembleType(&#39;ADABOOST&#39;, {&#39;n_estimators&#39;: 50, &#39;learning_rate&#39;: 1.0}), myFloatIntAdd(0.01, 7), 3))&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree_string_parser</span><span class="p">(</span><span class="n">tree_string</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -169,9 +212,9 @@
 If need to update the pickle file use <a class="reference internal" href="updateNoteTypes.html"><span class="doc">updateNoteTypes module</span></a></p>
 </div>
 <p>Written by ADF team, Modified by Hoa V Luu</p>
-<dl class="function">
+<dl class="py function">
 <dt id="displayIndividual.create_hash">
-<code class="sig-prename descclassname">displayIndividual.</code><code class="sig-name descname">create_hash</code><span class="sig-paren">(</span><em class="sig-param">tree_string</em><span class="sig-paren">)</span><a class="headerlink" href="#displayIndividual.create_hash" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">displayIndividual.</code><code class="sig-name descname">create_hash</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tree_string</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/displayIndividual.html#create_hash"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#displayIndividual.create_hash" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate a hash from the tree_string</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -183,9 +226,9 @@ If need to update the pickle file use <a class="reference internal" href="update
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="displayIndividual.fix_up_tree">
-<code class="sig-prename descclassname">displayIndividual.</code><code class="sig-name descname">fix_up_tree</code><span class="sig-paren">(</span><em class="sig-param">tree_dict</em><span class="sig-paren">)</span><a class="headerlink" href="#displayIndividual.fix_up_tree" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">displayIndividual.</code><code class="sig-name descname">fix_up_tree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tree_dict</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/displayIndividual.html#fix_up_tree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#displayIndividual.fix_up_tree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fix any edge cases of the tree_dict</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -197,9 +240,9 @@ If need to update the pickle file use <a class="reference internal" href="update
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="displayIndividual.get_node_color">
-<code class="sig-prename descclassname">displayIndividual.</code><code class="sig-name descname">get_node_color</code><span class="sig-paren">(</span><em class="sig-param">node_label</em><span class="sig-paren">)</span><a class="headerlink" href="#displayIndividual.get_node_color" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">displayIndividual.</code><code class="sig-name descname">get_node_color</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node_label</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/displayIndividual.html#get_node_color"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#displayIndividual.get_node_color" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the color of a node in the tree</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -211,9 +254,9 @@ If need to update the pickle file use <a class="reference internal" href="update
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="displayIndividual.plot_tree">
-<code class="sig-prename descclassname">displayIndividual.</code><code class="sig-name descname">plot_tree</code><span class="sig-paren">(</span><em class="sig-param">tree</em>, <em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#displayIndividual.plot_tree" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">displayIndividual.</code><code class="sig-name descname">plot_tree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tree</span></em>, <em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/displayIndividual.html#plot_tree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#displayIndividual.plot_tree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot and generate a png image of a tree with the tree hashed name</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -225,9 +268,9 @@ If need to update the pickle file use <a class="reference internal" href="update
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="displayIndividual.tree_string_parser">
-<code class="sig-prename descclassname">displayIndividual.</code><code class="sig-name descname">tree_string_parser</code><span class="sig-paren">(</span><em class="sig-param">tree_string</em><span class="sig-paren">)</span><a class="headerlink" href="#displayIndividual.tree_string_parser" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">displayIndividual.</code><code class="sig-name descname">tree_string_parser</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tree_string</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/displayIndividual.html#tree_string_parser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#displayIndividual.tree_string_parser" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parse a tree_string to a dictionary</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -236,9 +279,9 @@ If need to update the pickle file use <a class="reference internal" href="update
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="displayIndividual.walk_dictionary">
-<code class="sig-prename descclassname">displayIndividual.</code><code class="sig-name descname">walk_dictionary</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">dictionary</em>, <em class="sig-param">parent_node=None</em><span class="sig-paren">)</span><a class="headerlink" href="#displayIndividual.walk_dictionary" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">displayIndividual.</code><code class="sig-name descname">walk_dictionary</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">graph</span></em>, <em class="sig-param"><span class="n">dictionary</span></em>, <em class="sig-param"><span class="n">parent_node</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/displayIndividual.html#walk_dictionary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#displayIndividual.walk_dictionary" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -249,13 +292,22 @@ If need to update the pickle file use <a class="reference internal" href="update
           </div>
           <footer>
   
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="updateNoteTypes.html" class="btn btn-neutral float-right" title="updateNoteTypes module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="basic_code.html" class="btn btn-neutral float-left" title="basic_code module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
         
-        &copy; Copyright 2020, John Lewis Corker
+        &copy; Copyright 2020, GTRI EMADE Fellows
 
     </p>
   </div>

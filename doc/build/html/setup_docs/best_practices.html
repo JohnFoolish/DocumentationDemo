@@ -1,0 +1,435 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Best Practices with Sphinx Documentation &mdash; FELLOW_project 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Hosting Documentation Online" href="website_hosting.html" />
+    <link rel="prev" title="How to set up Sphinx" href="sphinx_intro.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> FELLOW_project
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../setup_intro.html">Directory for Getting Sphinx Documentation Set-up</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sphinx_intro.html">How to set up Sphinx</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Best Practices with Sphinx Documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setting-up-the-python-file">Setting up the Python file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#docstrings-doctests-with-sphinx">Docstrings/Doctests with Sphinx</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#setting-up-the-docstrings-doctests">Setting up the Docstrings/Doctests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#integrating-the-documentation">Integrating the Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#putting-it-all-together">Putting it all Together</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#the-makefile-method">The Makefile Method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-sphinx-build-method">The Sphinx-build method</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#conclusions">Conclusions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="website_hosting.html">Hosting Documentation Online</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">This is an introduction to the Fellow’s documentation!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides.html">Guides</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">FELLOW_project</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../setup_intro.html">Directory for Getting Sphinx Documentation Set-up</a> &raquo;</li>
+        
+      <li>Best Practices with Sphinx Documentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/setup_docs/best_practices.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="best-practices-with-sphinx-documentation">
+<h1>Best Practices with Sphinx Documentation<a class="headerlink" href="#best-practices-with-sphinx-documentation" title="Permalink to this headline">¶</a></h1>
+<p>This section will be discussing how to properly ensure that all of
+your code is properly documented, and how to take advantage of all
+of Sphinx’s powerful tools to create fantastic documentation for it.
+(If you think that this documentation looks fantastic, read on!
+Otherwise … I don’t think that this will be much help)</p>
+<div class="section" id="setting-up-the-python-file">
+<h2>Setting up the Python file<a class="headerlink" href="#setting-up-the-python-file" title="Permalink to this headline">¶</a></h2>
+<p>First and foremost, in order to document your python scripts, you
+need to ensure that your scripts are properly formatted. There are
+two main ways that you can ensure this.</p>
+<p>1) Since Sphinx is written using python, it first has to import your
+scripts before generating the autodocs for them. Because of this, if
+you have parts of your script that are outside of a</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="c1">#your code here</span>
+</pre></div>
+</div>
+<p>block, they will run when generating your sphinx documentation. This
+can cause a lot of problems, since you don’t want to run your
+code every time you try to build the documentation.</p>
+<p>2) Sphinx’s autodocs tools will grab out any comments surrounded by
+triple quotes and interpret them as restructured text. Due to this,
+you can include a triple quote comment block at the beginning of your
+script, and it will be displayed by the autodocs tools before showing
+any of the functions/classes/methods documented. Do not write
+anything in the</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">comment</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>format that you do not want included inside of your documentation.</p>
+</div>
+<div class="section" id="docstrings-doctests-with-sphinx">
+<h2>Docstrings/Doctests with Sphinx<a class="headerlink" href="#docstrings-doctests-with-sphinx" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="setting-up-the-docstrings-doctests">
+<h3>Setting up the Docstrings/Doctests<a class="headerlink" href="#setting-up-the-docstrings-doctests" title="Permalink to this headline">¶</a></h3>
+<p>The most powerful part of using Sphinx comes from their autodoc
+generation. For EMADE, we concluded that the best practice would be
+to use <a class="reference external" href="https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html">Google docstrings</a>
+to document our python scripts. Inside of these docstrings, you can
+also use pycharm to generate doctests. By including a ‘ &gt;&gt;&gt; ‘ inside
+the docstring, you can run tests from within the docstrings in the
+following manner:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; A simple function to add two numbers together.</span>
+
+<span class="sd">    This function is designed purely as a demonstration for the</span>
+<span class="sd">    doctest formatting. The first use of &gt;&gt;&gt; is where you can give</span>
+<span class="sd">    the function with a set of parameters, and the second use of &gt;&gt;&gt;</span>
+<span class="sd">    should contain the expected result. By adding the sphinx</span>
+<span class="sd">    extension *sphinx.ext.doctest* in the **conf.py** file, you can</span>
+<span class="sd">    also add doctests into the restructured text itself.</span>
+
+<span class="sd">    &gt;&gt;&gt; add(5, 4)</span>
+<span class="sd">    &gt;&gt;&gt; 9</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        x (int): The first number</span>
+<span class="sd">            y (int): The second number</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    int: The result of adding x and y together</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>Using Sphinx’s napoleon extension, it will automatically generate
+the documentation in restructured text format from the Google
+docstring. (This also is the case for Numpy docstrings)</p>
+<p>You can see an example of the restructured text output at the bottom
+of <a class="reference internal" href="../intro.html"><span class="doc">This is an introduction to the Fellow’s documentation!</span></a>.</p>
+</div>
+<div class="section" id="integrating-the-documentation">
+<h3>Integrating the Documentation<a class="headerlink" href="#integrating-the-documentation" title="Permalink to this headline">¶</a></h3>
+<p>In order to generate the autodocs using Sphinx, you first must make
+sure you have set the path to your source directory properly inside
+of <strong>conf.py</strong>. After that, you can very easily reference the code
+by adding the following to your restructured text document</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">automodule</span><span class="p">::</span> <span class="p">[</span><span class="n">name</span> <span class="n">of</span> <span class="n">python</span> <span class="n">file</span><span class="p">]</span>
+       <span class="p">:[</span><span class="n">options</span><span class="p">]:</span>
+</pre></div>
+</div>
+<p>An important note is that you should just put the name of the python
+file without the <strong>.py</strong> extension there. There are many different
+options that can be included underneath automodule. You can include
+<code class="docutils literal notranslate"><span class="pre">:members:</span></code> to include all functions/methods that do not start with
+“_”. If you want to include those private functions as well, you can
+add in the option <code class="docutils literal notranslate"><span class="pre">`:undoc-members:`</span></code>. You can find more options on
+the official <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html#module-sphinx.ext.autodoc">Sphinx autodoc documentation</a>.</p>
+<p>Alternatively, you can generate restructured text files that will
+automatically include all private, public, and inherited functions or
+methods by running</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sphinx-apidoc -o <span class="o">[</span>output<span class="o">]</span> <span class="o">[</span>source<span class="o">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>This will loop over all python files in the source directory and put
+their restructured text version in the output directory. More
+information can be seen here: <a class="reference external" href="https://www.sphinx-doc.org/en/master/man/sphinx-apidoc.html">Sphinx Apidoc</a>.</p>
+</div>
+</div>
+<div class="section" id="putting-it-all-together">
+<h2>Putting it all Together<a class="headerlink" href="#putting-it-all-together" title="Permalink to this headline">¶</a></h2>
+<p>Well, now we’ve discussed how to properly prepare the python
+scripts for documentation and how to integrate the documentation into
+restructured text documents. The next step is in actually generating
+the html documentation from the restructured text. First, make sure
+that all of your files are listed in toctrees. If they are not, then
+you will not be easily able to visit those files. Think of them as
+nodes that haven’t been connected to the rest of the restructured
+text tree. Once you have made sure your restructured text structure
+is how you want it, go back to your command line of choice.</p>
+<div class="section" id="the-makefile-method">
+<h3>The Makefile Method<a class="headerlink" href="#the-makefile-method" title="Permalink to this headline">¶</a></h3>
+<p>To generate the html, you can go to the directory where Sphinx
+created the Makefile. From there, run</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">html</span>
+</pre></div>
+</div>
+<p>in order to generate the html file. They will be automatically
+saved inside of <em>build/html</em> if you chose separate build and source
+directories at Sphinx startup.</p>
+</div>
+<div class="section" id="the-sphinx-build-method">
+<h3>The Sphinx-build method<a class="headerlink" href="#the-sphinx-build-method" title="Permalink to this headline">¶</a></h3>
+<p>Alternatively, you can go to the directory where Sphinx created
+the <strong>conf.py</strong> file and run</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sphinx</span><span class="o">-</span><span class="n">build</span> <span class="p">[</span><span class="n">source</span> <span class="n">directory</span><span class="p">]</span> <span class="p">[</span><span class="n">output</span> <span class="n">directory</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>This will take the <strong>conf.py</strong> file located in the source directory,
+then output the html file inside of the output directory.</p>
+<div class="section" id="sidenote-jupyter-notebooks">
+<h4>Sidenote: Jupyter Notebooks<a class="headerlink" href="#sidenote-jupyter-notebooks" title="Permalink to this headline">¶</a></h4>
+<p>For a quick sidenote, you can also use Sphinx to generate html files
+for Jupyter Notebook tutorials, complete with inline matplotlib plots
+and line numbers. In order to do this, you need to also create a
+‘requirements.txt’ file in the root directory of your project. This
+text file should be in the following format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+    <span class="p">[</span><span class="n">required</span> <span class="n">module</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="p">[</span><span class="n">required</span> <span class="n">module</span> <span class="mi">2</span><span class="p">]</span>
+    <span class="n">etc</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Where the required modules are the names of any dependencies that the
+Jupyter Notebooks require to run. You should also include the
+extension <em>nbsphinx</em> in order to get the Jupyter Notebook to
+display. See the following link for more examples:
+<a class="reference external" href="https://nbsphinx.readthedocs.io/en/0.7.1/">https://nbsphinx.readthedocs.io/en/0.7.1/</a></p>
+</div>
+</div>
+</div>
+<div class="section" id="conclusions">
+<h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">¶</a></h2>
+<p>Now you should be able to generate a local build of your
+documentation straight from the python source code. There are many
+more ways to beef up the documentation with fancy extensions or
+website styles. If you want to read a more in depth tutorial which
+teaches the basics of getting set up with Sphinx as well as how to
+get into more advanced topics, read through the tutorial created by
+the matplotlib team <a class="reference external" href="https://matplotlib.org/sampledoc/index.html">here</a>.</p>
+<p>If you want to learn how to host your documentation online with a
+hosting service such as <a class="reference external" href="https://readthedocs.org/">Readthedocs</a> or</p>
+<blockquote>
+<div><p><a class="reference external" href="https://matplotlib.org/sampledoc/index.html">Netlify</a> , then read</p>
+</div></blockquote>
+<p>on.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="website_hosting.html" class="btn btn-neutral float-right" title="Hosting Documentation Online" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sphinx_intro.html" class="btn btn-neutral float-left" title="How to set up Sphinx" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, GTRI EMADE Fellows
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

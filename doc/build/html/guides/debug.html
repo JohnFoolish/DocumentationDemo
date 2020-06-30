@@ -1,0 +1,315 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Guide to Debugging Individual Algorithms &mdash; FELLOW_project 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Running on the Cloud" href="cloud.html" />
+    <link rel="prev" title="Guide to XML EMADE Input" href="xmlInput.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> FELLOW_project
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../setup_intro.html">Directory for Getting Sphinx Documentation Set-up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">This is an introduction to the Fellow’s documentation!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../guides.html">Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="linux_install.html">EMADE Installation on Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mac_install.html">EMADE Installation on Mac</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows_install.html">EMADE Installation on Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autohooks.html">Git Hooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="errors.html">Common Emade Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emadeCode.html">Guide to EMADE Code Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xmlInput.html">Guide to XML EMADE Input</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Guide to Debugging Individual Algorithms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#evaluating-individual-algorithms">Evaluating Individual Algorithms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#seeding-your-own-algorithms">Seeding Your Own Algorithms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#common-reasons-why-algorithms-fail">Common Reasons Why Algorithms Fail</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cloud.html">Running on the Cloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tpu.html">Guide to Running on TPU using Google Cloud Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependencies.html">Guide to Installing Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cgp_cnn.html">Guide to Using GCP-CNN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pace_ice.html">Guide to Using PACE-ICE</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">FELLOW_project</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../guides.html">Guides</a> &raquo;</li>
+        
+      <li>Guide to Debugging Individual Algorithms</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/guides/debug.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="guide-to-debugging-individual-algorithms">
+<span id="id1"></span><h1>Guide to Debugging Individual Algorithms<a class="headerlink" href="#guide-to-debugging-individual-algorithms" title="Permalink to this headline">¶</a></h1>
+<p>When you first create a random population of individuals (i.e.
+algorithms), many are likely to die. You can see why they have died in
+the error_string column of the individuals database table. For example,
+if there is not the possibility of outputting the correct datatype,
+EMADE will automatically kill that individual to speed up overall
+evaluation time, and will display that “The primitives cannot
+categorically convert from input of desired type to desired type of
+output.”</p>
+<p>As EMADE progresses beyond its first generation, only the algorithms
+that return finite values on all objectives will be propagated forward
+to be chosen for mutation or crossover; this should lead to a normal and
+productive evolutionary run. But what happens if an algorithm that you
+think should execute correctly returns all NULL objective values? Or,
+worse yet, all of your algorithms return NULL values? Well, then it is
+time to debug using the following technique(s).</p>
+<div class="section" id="evaluating-individual-algorithms">
+<span id="id2"></span><h2>Evaluating Individual Algorithms<a class="headerlink" href="#evaluating-individual-algorithms" title="Permalink to this headline">¶</a></h2>
+<p>Because string representations of algorithms are stored as pickled
+objectives in the individuals table of the database, you can actually
+unpickle them yourself to run them on a local instance of EMADE. The
+database_tree_evaluator.py file takes the path to an XML and an
+individual’s hash from the DB as command-line arguments to set up a
+gtMOEP instance and the appropriate function pointers to run your
+individual for you. The database connection information is read from the
+XML, <strong>but make sure to set use/reuse according to your intention.</strong></p>
+</div>
+<div class="section" id="seeding-your-own-algorithms">
+<span id="id3"></span><h2>Seeding Your Own Algorithms<a class="headerlink" href="#seeding-your-own-algorithms" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes the initial algorithms are simply not apt for solving complex
+problems. You can introduce candidate algorithms by simply typing them
+as string representations of a valid individual, and using the
+seeding_from_file.py file. The text file with your individuals is
+new-line delineated, and will not accept individuals that are already
+present in the database.</p>
+<p>For example, to start the process of classifying stream data, you may
+wish to feed the output of an FFT into a machine learner. Example
+seeding code is included in the SeedingFiles of the main directory.</p>
+<p>The syntax is:</p>
+<p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">seeding_from_file.py</span> <span class="pre">templates/input_file.xml</span> <span class="pre">seeding_test_1</span></code></p>
+</div>
+<div class="section" id="common-reasons-why-algorithms-fail">
+<span id="id4"></span><h2>Common Reasons Why Algorithms Fail<a class="headerlink" href="#common-reasons-why-algorithms-fail" title="Permalink to this headline">¶</a></h2>
+<p>If all of your algorithms fail, it is most likely the result of
+malformed data, XML input, or an incorrectly installed instance of
+EMADE. If you wish to debug individuals, here is a list of common
+error_strings.</p>
+<p>libcuda.so not found: this individual tried to use tensorflow or keras
+on an installation that expects a GPU, but there is no GPU available.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Found</span> <span class="pre">array</span> <span class="pre">with</span> <span class="pre">0</span> <span class="pre">feature(s)...</span></code></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="cloud.html" class="btn btn-neutral float-right" title="Running on the Cloud" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="xmlInput.html" class="btn btn-neutral float-left" title="Guide to XML EMADE Input" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, GTRI EMADE Fellows
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
