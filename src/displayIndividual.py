@@ -7,8 +7,8 @@ Usage below:
 
 .. image:: _static/exampleOutput.png
 
-.. todo::
-    Install graphiz for this module to work
+.. error::
+    Install graphiz for this module to work if not then the plot_tree will cause error
 
 Note:
     This module is based on a pickle file called node_typesV2.pkl.
