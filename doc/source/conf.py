@@ -20,7 +20,7 @@ paths = [Path('..') / '..' / 'src', Path('.') / '_ext']
 
 sys.path.insert(0, os.path.abspath('.'))
 for path in paths:
-	sys.path.append(str(path.absolute))
+	sys.path.append(str(path.absolute()))
 
 # -- Project information -----------------------------------------------------
 

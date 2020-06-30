@@ -91,7 +91,8 @@
 <li class="toctree-l2"><a class="reference internal" href="sphinx_intro.html">How to set up Sphinx</a></li>
 <li class="toctree-l2"><a class="reference internal" href="best_practices.html">Best Practices with Sphinx Documentation</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Hosting Documentation Online</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#comparisons-between-hosting-options">Comparisons between Hosting Options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#comparisons-between-hosting-options">Comparisons between Hosting Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#private-github-addendum">Private GitHub Addendum</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#setting-up-with-readthedocs">Setting up with Readthedocs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#setting-up-with-netlify">Setting up with Netlify</a></li>
 </ul>
@@ -228,11 +229,65 @@ whereas Netlify ran into quite a few issues. It is our
 recommendation that if you are trying to host your documentation on a
 website, Readthedocs is the better option, however Netlify will also
 work with some extra effort.</p>
+</div>
+<div class="section" id="private-github-addendum">
+<h2>Private GitHub Addendum<a class="headerlink" href="#private-github-addendum" title="Permalink to this headline">¶</a></h2>
+<p>Currently, hosting documentation on a service such as Netlify or
+Readthedocs is easiest when using a public git repo. Sadly,
+Enterprise GitHub does not count as a public git repo. In our
+attempts to set up the online hosting from a Enterprise GitHub, we
+encountered many problems along the way. We found a few websites
+where people had configured it to work, but doing so took a lot of
+extra hoops and techinical experience. We were not able to make this
+work for the documentation demo.</p>
 <div class="section" id="setting-up-with-readthedocs">
 <h3>Setting up with Readthedocs<a class="headerlink" href="#setting-up-with-readthedocs" title="Permalink to this headline">¶</a></h3>
+<p>To set up your public documentation, follow the below steps:</p>
+<dl class="simple">
+<dt># Create a Readthedocs account at <a class="reference external" href="https://Readthedocs.org">https://Readthedocs.org</a>, linking</dt><dd><p>this to your GitHub account makes later steps easier.</p>
+</dd>
+<dt># Go to import a repository, and then you can past the link to the</dt><dd><p>Git repo into the Repository URL area.</p>
+</dd>
+</dl>
+<p># Add a GitHub incoming webhook in the integrations tab
+# Add the webhook url (listed in the integrations tab) to the</p>
+<blockquote>
+<div><p>Webhook tab of your git repo.</p>
+</div></blockquote>
+<dl class="simple">
+<dt># Now, your website should automatically be updated whenever you</dt><dd><p>push to the remote repo.</p>
+</dd>
+<dt># You can add collaborators by including their names in the</dt><dd><p>maintainer tab.</p>
+</dd>
+<dt># You can deploy many different branches by navigating to the</dt><dd><p>Versions tab and then making the branches you want published
+public and active.</p>
+</dd>
+</dl>
 </div>
 <div class="section" id="setting-up-with-netlify">
 <h3>Setting up with Netlify<a class="headerlink" href="#setting-up-with-netlify" title="Permalink to this headline">¶</a></h3>
+<p>To host your documentation with Netlify, follow the below steps:</p>
+<p># Create a Netlify account at <a class="reference external" href="https://app.netlify.com">https://app.netlify.com</a>
+# Set the GitHub directory as the Repository under build settings
+# Include the following for your build command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">sphinx</span><span class="o">-</span><span class="n">build</span> <span class="o">-</span><span class="n">b</span> <span class="n">html</span> <span class="p">[</span><span class="n">source</span> <span class="nb">dir</span><span class="p">]</span> <span class="p">[</span><span class="n">output</span> <span class="nb">dir</span><span class="p">]</span>
+
+<span class="n">where</span> <span class="n">the</span> <span class="n">source</span> <span class="nb">dir</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">path</span> <span class="kn">from</span> <span class="nn">your</span> <span class="n">root</span> <span class="n">directory</span> <span class="n">to</span> <span class="n">your</span>
+<span class="n">Sphinx</span> <span class="o">**</span><span class="n">conf</span><span class="o">.</span><span class="n">py</span><span class="o">**</span> <span class="n">file</span><span class="p">,</span> <span class="ow">and</span> <span class="n">output</span> <span class="nb">dir</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">path</span> <span class="n">that</span> <span class="n">you</span> <span class="n">will</span>
+<span class="n">have</span> <span class="n">the</span> <span class="n">output</span> <span class="n">html</span> <span class="n">files</span> <span class="n">under</span><span class="o">.</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt># Set your Publish directory as the output directory from the</dt><dd><p>previous step.</p>
+</dd>
+<dt># If you want to publish multiple branches, then you can edit the</dt><dd><p>Contexts section. Production branch should be set to your main
+branch, and then you can select other branches you want to include.
+This step caused us multple issues in contrast to Readthedocs, as
+Netlify is not as set up for building with Sphinx.</p>
+</dd>
+<dt># Without a paid subscription, you are unable to add additional</dt><dd><p>collaborators.</p>
+</dd>
+</dl>
 </div>
 </div>
 </div>

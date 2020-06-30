@@ -158,7 +158,10 @@ text file should be in the following format: ::
 	etc.
 	
 Where the required modules are the names of any dependencies that the
-Jupyter Notebooks require to run. 	
+Jupyter Notebooks require to run. You should also include the 
+extension *nbsphinx* in order to get the Jupyter Notebook to 
+display. See the following link for more examples: 
+`<https://nbsphinx.readthedocs.io/en/0.7.1/>`_
  
 
 
