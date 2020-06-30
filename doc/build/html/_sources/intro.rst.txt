@@ -24,11 +24,7 @@ Current modules!
    :maxdepth: 1
    :caption: Contents:
 
-   basic_code
-
-   displayIndividual
-
-   updatePickleFile
+    modules
 
 .. automodule:: basic_code
    :members:

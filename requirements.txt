@@ -3,3 +3,4 @@ numpy
 matplotlib
 
 pydot~=1.4.1
+graphiz

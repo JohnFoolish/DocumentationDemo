@@ -1,5 +1,5 @@
 displayIndividual module
-==================
+========================
 
 .. automodule:: displayIndividual
    :members:

@@ -35,9 +35,7 @@
 
     
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="updatePickleFile module" href="updatePickleFile.html" />
-    <link rel="prev" title="basic_code module" href="basic_code.html" /> 
+    <link rel="search" title="Search" href="search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -83,17 +81,8 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="intro.html">This is an introduction to my documentation!</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="intro.html#current-modules">Current modules!</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="basic_code.html">basic_code module</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">displayIndividual module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="updatePickleFile.html">updatePickleFile module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="intro.html#why-is-this-function-useful">Why is this function useful?</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">This is an introduction to my documentation!</a></li>
 </ul>
 
             
@@ -140,8 +129,6 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="intro.html">This is an introduction to my documentation!</a> &raquo;</li>
-        
       <li>displayIndividual module</li>
     
     
@@ -161,9 +148,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="displayindividual-module">
-<h1>displayIndividual module<a class="headerlink" href="#displayindividual-module" title="Permalink to this headline">¶</a></h1>
-<span class="target" id="module-displayIndividual"></span><p>This module is use to generate a png image from a tree_string</p>
+  <div class="section" id="module-displayIndividual">
+<span id="displayindividual-module"></span><h1>displayIndividual module<a class="headerlink" href="#module-displayIndividual" title="Permalink to this headline">¶</a></h1>
+<p>This module is use to generate a png image from a tree_string.</p>
 <dl>
 <dt>Usage below:</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree_string</span> <span class="o">=</span> <span class="s2">&quot;Learner(ARG0, ModifyLearnerList(LearnerType(&#39;LIGHTGBM&#39;, {&#39;max_depth&#39;: -1, &#39;learning_rate&#39;: 0.1, &#39;boosting_type&#39;: 0, &#39;num_leaves&#39;: 31}), myListAppend(myIntToList(32), passList([-3, 1])), passInt(4)), ModifyEnsembleFloat(EnsembleType(&#39;ADABOOST&#39;, {&#39;n_estimators&#39;: 50, &#39;learning_rate&#39;: 1.0}), myFloatIntAdd(0.01, 7), 3))&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree_string_parser</span><span class="p">(</span><span class="n">tree_string</span><span class="p">)</span>
@@ -171,10 +158,11 @@
 </div>
 </dd>
 </dl>
-<img alt="doc/source/_static/exampleOutput.png" src="doc/source/_static/exampleOutput.png" />
+<img alt="_images/exampleOutput.png" src="_images/exampleOutput.png" />
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Install graphiz for this def to work</p>
+<p>This module is based on a pickle file called node_typesV2.pkl.
+If need to update the pickle file use <a class="reference internal" href="updateNoteTypes.html"><span class="doc">updateNoteTypes module</span></a></p>
 </div>
 <p>Written by ADF team, Modified by Hoa V Luu</p>
 <dl class="function">
@@ -256,15 +244,6 @@
            
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="updatePickleFile.html" class="btn btn-neutral float-right" title="updatePickleFile module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="basic_code.html" class="btn btn-neutral float-left" title="basic_code module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>

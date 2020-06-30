@@ -1,14 +1,18 @@
 """
-This module is use to generate a png image from a tree_string
+This module is use to generate a png image from a tree_string.
 
 Usage below:
     >>> tree_string = "Learner(ARG0, ModifyLearnerList(LearnerType('LIGHTGBM', {'max_depth': -1, 'learning_rate': 0.1, 'boosting_type': 0, 'num_leaves': 31}), myListAppend(myIntToList(32), passList([-3, 1])), passInt(4)), ModifyEnsembleFloat(EnsembleType('ADABOOST', {'n_estimators': 50, 'learning_rate': 1.0}), myFloatIntAdd(0.01, 7), 3))"
     >>> tree_string_parser(tree_string)
 
-.. image:: doc/source/_static/exampleOutput.png
+.. image:: _static/exampleOutput.png
+
+.. todo::
+    Install graphiz for this module to work
 
 Note:
-    Install graphiz for this def to work
+    This module is based on a pickle file called node_typesV2.pkl.
+    If need to update the pickle file use :doc:`updateNoteTypes`
 Written by ADF team, Modified by Hoa V Luu
 """
 
