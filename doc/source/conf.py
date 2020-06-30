@@ -25,8 +25,8 @@ for path in paths:
 # -- Project information -----------------------------------------------------
 
 project = 'FELLOW_project'
-copyright = '2020, John Lewis Corker'
-author = 'John Lewis Corker'
+copyright = '2020, GTRI EMADE Fellows'
+author = 'William Samuelson, Hoa Luu, John Lewis Corker'
 
 # The full version, including alpha/beta/rc tags
 release = '0.0.1'
@@ -37,7 +37,7 @@ release = '0.0.1'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.napoleon', 'nbsphinx']
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.napoleon', 'sphinx.ext.viewcode', 'nbsphinx']
 
 master_doc = 'index'
 
