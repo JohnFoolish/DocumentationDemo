@@ -7,7 +7,7 @@ Usage below:
 
 .. image:: _static/exampleOutput.png
 
-.. error::
+.. warning::
     Install graphiz for this module to work if not then the plot_tree will cause error
 
 Note:

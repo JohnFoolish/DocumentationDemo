@@ -24,7 +24,9 @@ Current modules!
    :maxdepth: 1
    :caption: Contents:
 
-    modules
+   basic_code
+   displayIndividual
+   updateNoteTypes
 
 .. automodule:: basic_code
    :members:
