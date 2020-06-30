@@ -25,7 +25,8 @@ Current modules!
    :caption: Contents:
 
    basic_code
-   
+   displayIndividual
+   updateNoteTypes
 
 .. automodule:: basic_code
    :members:

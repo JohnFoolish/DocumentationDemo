@@ -1,0 +1,451 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>displayIndividual &mdash; FELLOW_project 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> FELLOW_project
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../setup_intro.html">Directory for Getting Sphinx Documentation Set-up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">This is an introduction to the Fellow’s documentation!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides.html">Guides</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">FELLOW_project</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Module code</a> &raquo;</li>
+        
+      <li>displayIndividual</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for displayIndividual</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module is use to generate a png image from a tree_string.</span>
+
+<span class="sd">Usage below:</span>
+<span class="sd">    &gt;&gt;&gt; tree_string = &quot;Learner(ARG0, ModifyLearnerList(LearnerType(&#39;LIGHTGBM&#39;, {&#39;max_depth&#39;: -1, &#39;learning_rate&#39;: 0.1, &#39;boosting_type&#39;: 0, &#39;num_leaves&#39;: 31}), myListAppend(myIntToList(32), passList([-3, 1])), passInt(4)), ModifyEnsembleFloat(EnsembleType(&#39;ADABOOST&#39;, {&#39;n_estimators&#39;: 50, &#39;learning_rate&#39;: 1.0}), myFloatIntAdd(0.01, 7), 3))&quot;</span>
+<span class="sd">    &gt;&gt;&gt; tree_string_parser(tree_string)</span>
+
+<span class="sd">.. image:: _static/exampleOutput.png</span>
+
+<span class="sd">.. warning::</span>
+<span class="sd">    Install graphiz for this module to work if not then the plot_tree will cause error</span>
+
+<span class="sd">Note:</span>
+<span class="sd">    This module is based on a pickle file called node_typesV2.pkl.</span>
+<span class="sd">    If need to update the pickle file use :doc:`updateNoteTypes`</span>
+<span class="sd">Written by ADF team, Modified by Hoa V Luu</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">re</span><span class="o">,</span> <span class="nn">json</span><span class="o">,</span> <span class="nn">pydot</span><span class="o">,</span> <span class="nn">hashlib</span><span class="o">,</span> <span class="nn">pickle</span>
+
+
+<div class="viewcode-block" id="get_node_color"><a class="viewcode-back" href="../displayIndividual.html#displayIndividual.get_node_color">[docs]</a><span class="k">def</span> <span class="nf">get_node_color</span><span class="p">(</span><span class="n">node_label</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Get the color of a node in the tree</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        node_label (str): The label of a node</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        The color that matched with the node_label</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">NODE_KEY</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">NODE_TYPES</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+        <span class="k">if</span> <span class="n">node_label</span> <span class="ow">in</span> <span class="n">NODE_TYPES</span><span class="p">[</span><span class="n">NODE_KEY</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="n">NODE_COLOR_DICT</span><span class="p">[</span><span class="n">NODE_KEY</span><span class="p">]</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">node_label</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">NODE_COLOR_DICT</span><span class="p">[</span><span class="s1">&#39;Terminals&#39;</span><span class="p">]</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">node_label</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">NODE_COLOR_DICT</span><span class="p">[</span><span class="s1">&#39;Terminals&#39;</span><span class="p">]</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">node_label</span> <span class="o">=</span> <span class="n">node_label</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\&#39;</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">tree</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">node_label</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">NODE_TYPES</span><span class="p">[</span><span class="s1">&#39;Learner Params&#39;</span><span class="p">]:</span>
+                        <span class="k">return</span> <span class="n">NODE_COLOR_DICT</span><span class="p">[</span><span class="s1">&#39;Uncategorized&#39;</span><span class="p">]</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">try</span><span class="p">:</span>
+                            <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">tree</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+                        <span class="k">except</span><span class="p">:</span>
+                            <span class="k">try</span><span class="p">:</span>
+                                <span class="n">x</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">tree</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+                            <span class="k">except</span><span class="p">:</span>
+                                <span class="k">return</span> <span class="n">NODE_COLOR_DICT</span><span class="p">[</span><span class="s1">&#39;Uncategorized&#39;</span><span class="p">]</span>
+                <span class="k">return</span> <span class="n">NODE_COLOR_DICT</span><span class="p">[</span><span class="s1">&#39;Learner Params&#39;</span><span class="p">]</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">NODE_COLOR_DICT</span><span class="p">[</span><span class="s1">&#39;Uncategorized&#39;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">NODE_COLOR_DICT</span><span class="p">[</span><span class="s1">&#39;Uncategorized&#39;</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="walk_dictionary"><a class="viewcode-back" href="../displayIndividual.html#displayIndividual.walk_dictionary">[docs]</a><span class="k">def</span> <span class="nf">walk_dictionary</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">dictionary</span><span class="p">,</span> <span class="n">parent_node</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">parent_node</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">from_name</span> <span class="o">=</span> <span class="n">parent_node</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+            <span class="n">from_label</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+            <span class="n">node_color</span> <span class="o">=</span> <span class="n">get_node_color</span><span class="p">(</span><span class="n">from_label</span><span class="p">)</span>
+            <span class="n">node_from</span> <span class="o">=</span> <span class="n">pydot</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="n">from_name</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">from_label</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;filled&quot;</span><span class="p">,</span> <span class="n">fillcolor</span><span class="o">=</span><span class="n">node_color</span><span class="p">)</span>
+            <span class="n">graph</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">node_from</span><span class="p">)</span>
+            <span class="n">graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">pydot</span><span class="o">.</span><span class="n">Edge</span><span class="p">(</span><span class="n">parent_node</span><span class="p">,</span> <span class="n">node_from</span><span class="p">))</span>
+
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="n">walk_dictionary</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">dictionary</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">node_from</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">to_name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+                <span class="n">to_label</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+                <span class="k">if</span> <span class="n">to_label</span> <span class="o">!=</span> <span class="s1">&#39;[]&#39;</span><span class="p">:</span>
+                    <span class="n">node_to</span> <span class="o">=</span> <span class="n">pydot</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="n">to_name</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">to_label</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">)</span>
+                    <span class="n">graph</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">node_to</span><span class="p">)</span>
+                    <span class="n">graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">pydot</span><span class="o">.</span><span class="n">Edge</span><span class="p">(</span><span class="n">node_from</span><span class="p">,</span> <span class="n">node_to</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">from_name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+            <span class="n">from_label</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+            <span class="n">node_color</span> <span class="o">=</span> <span class="n">get_node_color</span><span class="p">(</span><span class="n">from_label</span><span class="p">)</span>
+            <span class="n">node_from</span> <span class="o">=</span> <span class="n">pydot</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="n">from_name</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">from_label</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;filled&quot;</span><span class="p">,</span> <span class="n">fillcolor</span><span class="o">=</span><span class="n">node_color</span><span class="p">)</span>
+            <span class="n">graph</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">node_from</span><span class="p">)</span>
+            <span class="n">walk_dictionary</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">dictionary</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">node_from</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="plot_tree"><a class="viewcode-back" href="../displayIndividual.html#displayIndividual.plot_tree">[docs]</a><span class="k">def</span> <span class="nf">plot_tree</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Plot and generate a png image of a tree with the tree hashed name</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        tree (dict): A dictionary contains all information of a tree</span>
+<span class="sd">        name (str): The hashed name of the tree</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">graph</span> <span class="o">=</span> <span class="n">pydot</span><span class="o">.</span><span class="n">Dot</span><span class="p">(</span><span class="n">graph_type</span><span class="o">=</span><span class="s1">&#39;graph&#39;</span><span class="p">)</span>
+    <span class="n">tree_graph</span> <span class="o">=</span> <span class="n">pydot</span><span class="o">.</span><span class="n">Cluster</span><span class="p">(</span>
+        <span class="n">graph_name</span><span class="o">=</span><span class="s2">&quot;Learner Tree&quot;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Learner Tree&quot;</span><span class="p">,</span>
+        <span class="n">fontsize</span><span class="o">=</span><span class="s2">&quot;15&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">graphlegend</span> <span class="o">=</span> <span class="n">pydot</span><span class="o">.</span><span class="n">Cluster</span><span class="p">(</span>
+        <span class="n">graph_name</span><span class="o">=</span><span class="s2">&quot;legend&quot;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Legend&quot;</span><span class="p">,</span>
+        <span class="n">fontsize</span><span class="o">=</span><span class="s2">&quot;15&quot;</span><span class="p">,</span>
+        <span class="n">rankdir</span><span class="o">=</span><span class="s2">&quot;LR&quot;</span><span class="p">)</span>
+    <span class="n">legends</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">NODE_KEY</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">NODE_TYPES</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+        <span class="n">legend</span> <span class="o">=</span> <span class="n">pydot</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span>
+            <span class="n">NODE_KEY</span><span class="p">,</span>
+            <span class="n">style</span><span class="o">=</span><span class="s2">&quot;filled&quot;</span><span class="p">,</span>
+            <span class="n">fillcolor</span><span class="o">=</span><span class="n">NODE_COLOR_DICT</span><span class="p">[</span><span class="n">NODE_KEY</span><span class="p">],</span>
+            <span class="n">rank</span><span class="o">=</span><span class="s2">&quot;same&quot;</span>
+        <span class="p">)</span>
+        <span class="n">graphlegend</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">legend</span><span class="p">)</span>
+        <span class="n">legends</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">legend</span><span class="p">)</span>
+
+    <span class="n">walk_dictionary</span><span class="p">(</span><span class="n">tree_graph</span><span class="p">,</span> <span class="n">tree</span><span class="p">)</span>
+    <span class="n">graph</span><span class="o">.</span><span class="n">add_subgraph</span><span class="p">(</span><span class="n">tree_graph</span><span class="p">)</span>
+    <span class="n">graph</span><span class="o">.</span><span class="n">add_subgraph</span><span class="p">(</span><span class="n">graphlegend</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">legend_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">legends</span><span class="p">)):</span>
+        <span class="n">graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">pydot</span><span class="o">.</span><span class="n">Edge</span><span class="p">(</span><span class="n">legends</span><span class="p">[</span><span class="n">legend_index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">legends</span><span class="p">[</span><span class="n">legend_index</span><span class="p">],</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;invis&quot;</span><span class="p">))</span>
+    <span class="n">graph</span><span class="o">.</span><span class="n">write_png</span><span class="p">(</span><span class="s1">&#39;./&#39;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;.png&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="create_hash"><a class="viewcode-back" href="../displayIndividual.html#displayIndividual.create_hash">[docs]</a><span class="k">def</span> <span class="nf">create_hash</span><span class="p">(</span><span class="n">tree_string</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Generate a hash from the tree_string</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        tree_string: The tree_string want to hash</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        A hashed name for the tree_string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="n">tree_string</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="fix_up_tree"><a class="viewcode-back" href="../displayIndividual.html#displayIndividual.fix_up_tree">[docs]</a><span class="k">def</span> <span class="nf">fix_up_tree</span><span class="p">(</span><span class="n">tree_dict</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Fix any edge cases of the tree_dict</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        tree_dict (dict): The dictionary that contains all the information of a tree</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        A fixed dictionary that contains all the information of a tree</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tree_dict</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">tree_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s1">&#39;ARGS&#39;</span><span class="p">:</span>
+                <span class="n">tree_dict</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">tree_dict</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\&#39;</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="n">tree_dict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tree_dict</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">key</span> <span class="o">==</span> <span class="s1">&#39;LearnerType&#39;</span> <span class="ow">or</span> <span class="n">key</span> <span class="o">==</span> <span class="s2">&quot;EnsembleType&quot;</span><span class="p">):</span>
+                <span class="n">arg_dict</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="n">value_dict</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">tree_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tree_dict</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">k</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
+                        <span class="n">arg_dict</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">tree_dict</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">k</span><span class="p">]</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">try</span><span class="p">:</span>
+                            <span class="n">value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">tree_dict</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">k</span><span class="p">])</span>
+                        <span class="k">except</span><span class="p">:</span>
+                            <span class="k">try</span><span class="p">:</span>
+                                <span class="n">value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">tree_dict</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">k</span><span class="p">])</span>
+                            <span class="k">except</span><span class="p">:</span>
+                                <span class="n">value</span> <span class="o">=</span> <span class="n">tree_dict</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">k</span><span class="p">]</span>
+                        <span class="n">value_dict</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+                <span class="n">arg_dict</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">value_dict</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="n">tree_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">arg_dict</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tree_dict</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="n">tree_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">tree_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]:</span> <span class="p">[]}</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tree_dict</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">and</span> <span class="n">tree_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">!=</span> <span class="p">[]:</span>
+                <span class="n">arg_dict</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">tree_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]:</span>
+                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                        <span class="n">item</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">item</span><span class="p">]</span>
+                        <span class="n">arg_dict</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">item</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">arg_dict</span><span class="p">[</span><span class="n">item</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="n">tree_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">arg_dict</span>
+            <span class="n">fix_up_tree</span><span class="p">(</span><span class="n">tree_dict</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span></div>
+
+
+<div class="viewcode-block" id="tree_string_parser"><a class="viewcode-back" href="../displayIndividual.html#displayIndividual.tree_string_parser">[docs]</a><span class="k">def</span> <span class="nf">tree_string_parser</span><span class="p">(</span><span class="n">tree_string</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Parse a tree_string to a dictionary</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        tree_string (str): Tree_string wanted to parse</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">tree_hash</span> <span class="o">=</span> <span class="n">create_hash</span><span class="p">(</span><span class="n">tree_string</span><span class="p">)</span>
+    <span class="n">tree_string</span> <span class="o">=</span> <span class="n">tree_string</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;(&quot;</span><span class="p">,</span> <span class="s2">&quot;{&quot;</span><span class="p">)</span>
+    <span class="n">tree_string</span> <span class="o">=</span> <span class="n">tree_string</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;)&quot;</span><span class="p">,</span> <span class="s2">&quot;}&quot;</span><span class="p">)</span>
+    <span class="n">tree_string</span> <span class="o">=</span> <span class="s2">&quot;{&quot;</span> <span class="o">+</span> <span class="n">tree_string</span> <span class="o">+</span> <span class="s2">&quot;}&quot;</span>
+    <span class="n">tree_string</span> <span class="o">=</span> <span class="n">tree_string</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;([\w\.\-]+)&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;&quot;\1&quot;&#39;</span><span class="p">,</span> <span class="n">tree_string</span><span class="p">)</span>  <span class="c1"># {&quot;val1&quot; {&quot;val2&quot; {&quot;d1&quot; &quot;d2&quot; &quot;d3&quot;}}}</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;&quot;\s*{&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;&quot;: {&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>  <span class="c1"># {&quot;val1&quot;: {&quot;val2&quot;: {&quot;d1&quot; &quot;d2&quot; &quot;d3&quot;}}}</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;&quot; &quot;&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;&quot;, &quot;&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>  <span class="c1"># {&quot;val1&quot;: {&quot;val2&quot;: {&quot;d1&quot;, &quot;d2&quot;, &quot;d3&quot;}}}</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;{([^</span><span class="si">{}</span><span class="s1">]*)}&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;[\1]&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>  <span class="c1"># {&quot;val1&quot;: {&quot;val2&quot;: [&quot;d1&quot;, &quot;d2&quot;, &quot;d3&quot;]}}</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\[([\&quot;\:\, \w\.\-]+:+[\&quot;\:\, \w\.\-]+)\]&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;\1&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;({[\&quot;\w\.\-]+),&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;\1: [],&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;, (\&quot;[\&quot;\w\.\-]+\&quot;)}&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;, \1: []}&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;, (\&quot;[\&quot;\w\.\-]+\&quot;),(?![^\[]*\])&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;, \1: [],&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;, (\&quot;[\&quot;\w\.\-]+\&quot;),(?![^\[]*\])&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;, \1: [],&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;, \[(.*?)\]&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;, &quot;ARGS&quot;: [[\1]]&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">tree_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error from json.loads: &quot;</span> <span class="o">+</span> <span class="n">data</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">fix_up_tree</span><span class="p">(</span><span class="n">tree_dict</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error from fix_up_tree: &quot;</span> <span class="o">+</span> <span class="n">data</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">plot_tree</span><span class="p">(</span><span class="n">tree_dict</span><span class="p">,</span> <span class="n">tree_hash</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error from plot tree: &quot;</span> <span class="o">+</span> <span class="n">data</span><span class="p">)</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">NODE_TYPES</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">NODE_COLOR_DICT</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">NODE_COLORS</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;#D09248&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;#C0C572&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;#90EE90&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;#ACD4C0&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;#B19CD9&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;#26808A&#39;</span><span class="p">,</span>
+        <span class="s2">&quot;#FFFFFF&quot;</span>
+    <span class="p">]</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;node_typesV2.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">NODE_TYPES</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+    <span class="n">NODE_TYPES</span><span class="p">[</span><span class="s1">&#39;Uncategorized&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">NODE_KEY</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">NODE_TYPES</span><span class="o">.</span><span class="n">keys</span><span class="p">())):</span>
+        <span class="n">NODE_COLOR_DICT</span><span class="p">[</span><span class="n">NODE_KEY</span><span class="p">]</span> <span class="o">=</span> <span class="n">NODE_COLORS</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+    <span class="n">tree_string</span> <span class="o">=</span> <span class="s2">&quot;Learner(ARG0, ModifyLearnerList(LearnerType(&#39;LIGHTGBM&#39;, {&#39;max_depth&#39;: -1, &#39;learning_rate&#39;: 0.1, &#39;boosting_type&#39;: 0, &#39;num_leaves&#39;: 31}), myListAppend(myIntToList(32), passList([-3, 1])), passInt(4)), ModifyEnsembleFloat(EnsembleType(&#39;ADABOOST&#39;, {&#39;n_estimators&#39;: 50, &#39;learning_rate&#39;: 1.0}), myFloatIntAdd(0.01, 7), 3))&quot;</span>
+    <span class="n">tree_string</span> <span class="o">=</span> <span class="s2">&quot;MyDiff(Learner(EmadeDataNumpyMultiplyFloat(EmadeDataSubtractFloat(ARG0, TriState.FEATURES_TO_FEATURES, Axis.AXIS_0, 10.0), TriState.STREAM_TO_STREAM, Axis.AXIS_1, 4.290944071481347), ModifyLearnerBool(LearnerType(&#39;BAYES&#39;, None), trueBool, myIntMult(equal(1.0, 0.01), greaterThanEqual(0.1, 100.0))), ModifyEnsembleInt(EnsembleType(&#39;ADABOOST&#39;, {&#39;n_estimators&#39;: 50, &#39;learning_rate&#39;: 1.0}), 5, 9)), passTriState(passTriState(TriState.FEATURES_TO_FEATURES)), passAxis(passAxis(Axis.AXIS_0)))&quot;</span>
+    <span class="n">tree_string</span> <span class="o">=</span> <span class="s2">&quot;Learner(ARG0, ModifyLearnerList(ModifyLearnerFloat(ModifyLearnerBool(LearnerType(&#39;BOOSTING&#39;, {&#39;learning_rate&#39;: 0.1, &#39;n_estimators&#39;: 100, &#39;max_depth&#39;: 3}), trueBool, 2496), myIntToFloat(9), notEqual(0.01, 10.0)), myListAppend(passList([-13, -15]), [6, -7]), equal(10.0, myFloatIntSub(100.0, 64))), EnsembleType(&#39;BAGGED&#39;, None))&quot;</span>
+    <span class="n">tree_string_parser</span><span class="p">(</span><span class="n">tree_string</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, GTRI EMADE Fellows
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
