@@ -87,7 +87,8 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../intro.html">This is an introduction to my documentation!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup_intro.html">Directory for Getting Sphinx Documentation Set-up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">This is an introduction to the Fellow’s documentation!</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">OneMax Problem</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#Imports">Imports</a></li>
@@ -530,9 +531,9 @@ div.rendered_html tbody tr:hover {
 bit is of type &lt;class &#39;int&#39;&gt; and has value
 1
 ind is of type &lt;class &#39;deap.creator.Individual&#39;&gt; and contains 10 bits
-[0, 0, 1, 0, 1, 0, 1, 1, 1, 0]
+[1, 0, 1, 0, 1, 1, 0, 1, 1, 1]
 pop is of type &lt;class &#39;list&#39;&gt; and contains 3 individuals
-[[0, 1, 0, 0, 0, 0, 1, 0, 0, 1], [1, 0, 1, 1, 1, 1, 1, 0, 1, 0], [0, 1, 0, 0, 1, 0, 1, 0, 0, 1]]
+[[1, 0, 0, 0, 0, 1, 0, 1, 0, 0], [1, 1, 0, 0, 1, 1, 1, 0, 1, 1], [0, 1, 0, 0, 0, 1, 0, 1, 1, 1]]
 </pre></div></div>
 </div>
 </div>
@@ -585,8 +586,8 @@ pop is of type &lt;class &#39;list&#39;&gt; and contains 3 individuals
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[0, 0, 0, 1, 0, 1, 0, 0, 0, 1]
-[0, 0, 0, 1, 0, 1, 0, 0, 1, 1]
+[1, 1, 0, 0, 0, 0, 0, 1, 1, 1]
+[1, 1, 0, 1, 0, 0, 0, 1, 1, 1]
 </pre></div></div>
 </div>
 <p>The operators execute their behaviour on the individuals in place, meaning that if the individual is not copied before modified the old individual is lost. Copying an individual is done with the <code class="docutils literal notranslate"><span class="pre">clone</span></code> function available in every toolbox.</p>
@@ -665,17 +666,17 @@ finished the population contains the individuals from the last generation.</p>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 gen     nevals  avg     min     max
-0       50      5.3     1       8
-1       33      6.62    4       8
-2       35      7.34    5       9
-3       22      7.84    6       9
-4       34      8.22    6       10
-5       23      8.58    5       10
-6       33      9.16    8       10
-7       33      9.56    8       10
-8       24      9.82    8       10
-9       42      9.84    8       10
-10      35      9.94    9       10
+0       50      4.66    2       8
+1       32      5.86    3       9
+2       35      6.84    5       9
+3       34      7.46    6       9
+4       31      7.98    6       10
+5       26      8.36    6       10
+6       24      8.92    6       10
+7       31      9.12    7       10
+8       37      9.5     7       10
+9       27      9.86    8       10
+10      29      9.7     7       10
 Best individual is: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 with fitness: (10.0,)
 </pre></div></div>
@@ -711,7 +712,7 @@ with fitness: (10.0,)
   <div role="contentinfo">
     <p>
         
-        &copy; Copyright 2020, John Lewis Corker
+        &copy; Copyright 2020, GTRI EMADE Fellows
 
     </p>
   </div>

@@ -1,0 +1,359 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>How to set up Sphinx &mdash; FELLOW_project 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Best Practices with Sphinx Documentation" href="best_practices.html" />
+    <link rel="prev" title="Directory for Getting Sphinx Documentation Set-up" href="../setup_intro.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> FELLOW_project
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../setup_intro.html">Directory for Getting Sphinx Documentation Set-up</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">How to set up Sphinx</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#downloading-sphinx">Downloading Sphinx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#formatting-sphinx-s-file-structure">Formatting Sphinx’s File Structure</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#conf-py">conf.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#index-rst">index.rst</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="best_practices.html">Best Practices with Sphinx Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="website_hosting.html">Hosting Documentation Online</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">This is an introduction to the Fellow’s documentation!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides.html">Guides</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">FELLOW_project</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../setup_intro.html">Directory for Getting Sphinx Documentation Set-up</a> &raquo;</li>
+        
+      <li>How to set up Sphinx</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/setup_docs/sphinx_intro.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="how-to-set-up-sphinx">
+<h1>How to set up Sphinx<a class="headerlink" href="#how-to-set-up-sphinx" title="Permalink to this headline">¶</a></h1>
+<p>This restructured text file documents how to properly set up a
+set of sphinx documentation for use in the future. Setting up
+documentation like this isn’t as hard as you might think.</p>
+<div class="section" id="downloading-sphinx">
+<h2>Downloading Sphinx<a class="headerlink" href="#downloading-sphinx" title="Permalink to this headline">¶</a></h2>
+<p>In order to create documentation similar to this, you first need to
+go ahead and download sphinx using pip or conda by running from
+the command line:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install -c conda-forge sphinx
+</pre></div>
+</div>
+</div></blockquote>
+<dl>
+<dt>or:</dt><dd><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install sphinx
+</pre></div>
+</div>
+</dd>
+</dl>
+<p>Once you have done this, you can go ahead and start setting up your
+project’s file strucure.</p>
+</div>
+<div class="section" id="formatting-sphinx-s-file-structure">
+<h2>Formatting Sphinx’s File Structure<a class="headerlink" href="#formatting-sphinx-s-file-structure" title="Permalink to this headline">¶</a></h2>
+<p>The way that this demonstration was created was by putting a separate
+directory called <em>doc</em> inside the main git repository. This directory
+is at the same level as the <em>src</em> directory, which is where the
+majority of the source code is located.</p>
+<p>Once you have navigated to where you want to store your documentation
+you should run from the command line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span> <span class="n">bash</span>
+
+    <span class="n">sphinx</span><span class="o">-</span><span class="n">quickstart</span>
+</pre></div>
+</div>
+<p>inside that directory. This will generate a few different files which
+will be discussed below. Choose to have separate source and build
+directories.</p>
+<div class="section" id="conf-py">
+<h3>conf.py<a class="headerlink" href="#conf-py" title="Permalink to this headline">¶</a></h3>
+<p>This is the main configuration file for the sphinx documentation
+build. You will need to uncomment the</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>lines, and also go ahead and add the directory where your python
+files are located to the system path like so</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;[path]&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where [path] is the path to reach the directory your python files
+are located from the directory <strong>conf.py</strong> is located in.</p>
+<p>In order to display the autodocs and load both google and numpy
+docstrings as restructured text, make sure your extension list looks
+like the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sphinx.ext.autodoc&#39;</span><span class="p">,</span> <span class="s1">&#39;sphinx.ext.napoleon&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>if you download other sphinx extensions, be sure to link the path to
+the folder that they are stored in using the same format discussed
+above. Downloading third party extensions are essential when
+interfacing sphinx with matplotlib or jupyter notebook.</p>
+<p>You can think of the <strong>conf.py</strong> file as a the main configuration and
+setup file. Each of the variables you set here are used to determine
+how the sphinx build is configured.</p>
+<p>If you want a specific file excluded from the sphinx build, include
+the filepath inside of the <em>exclude_patterns</em> list.</p>
+<p>In order to get the documentation to build on readthedocs and also
+netlify, we need to add a variable <em>master_doc</em> set equal to ‘index’.
+This notifies the sphinx builder what it should treat as the main
+page for the documentation website.</p>
+<p>Below is an image of the current setup of <strong>conf.py</strong> for the
+<em>william</em> branch of the documentation demo:</p>
+<img alt="../_images/config.JPG" class="align-center" src="../_images/config.JPG" />
+<div class="topic">
+<p class="topic-title">IMPORTANT:</p>
+<p>Both readthedocs and netlify use a linux machine to compile sphinx,
+so in order to ensure you can build the documentation on a local
+windows machine, we added the following code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">platform</span>
+<span class="k">if</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;Windows&quot;</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;..\..\src&#39;</span><span class="p">))</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;../../src&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="index-rst">
+<h3>index.rst<a class="headerlink" href="#index-rst" title="Permalink to this headline">¶</a></h3>
+<p>This is the main page of the documentation. This serves as the first
+page that people see when going to your documentation’s website. The
+toctree is the table of contents, and the maxdepth signifies how many
+titles/sections of each listed file to show.</p>
+<p>When adding files to the table of contents, you do not need to
+include their file name extensions. You also must use the “/” to mark
+separate directories instead of the Windows way of “\”.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="best_practices.html" class="btn btn-neutral float-right" title="Best Practices with Sphinx Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../setup_intro.html" class="btn btn-neutral float-left" title="Directory for Getting Sphinx Documentation Set-up" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, GTRI EMADE Fellows
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

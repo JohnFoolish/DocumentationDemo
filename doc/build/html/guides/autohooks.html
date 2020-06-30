@@ -38,7 +38,9 @@
 
     
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Common Emade Errors" href="errors.html" />
+    <link rel="prev" title="EMADE Installation on Windows" href="windows_install.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -84,10 +86,39 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../intro.html">This is an introduction to my documentation!</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../setup_intro.html">Directory for Getting Sphinx Documentation Set-up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">This is an introduction to the Fellow’s documentation!</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guides.html">Guides</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../guides.html">Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="linux_install.html">EMADE Installation on Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mac_install.html">EMADE Installation on Mac</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows_install.html">EMADE Installation on Windows</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Git Hooks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#included-hook-scripts">Included Hook Scripts</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#check-docstrings-py">check_docstrings.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#jira-commit-msg-py">jira_commit_msg.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#run-yapf-py">run_yapf.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#supported-hook-types">Supported Hook Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="errors.html">Common Emade Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emadeCode.html">Guide to EMADE Code Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xmlInput.html">Guide to XML EMADE Input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debug.html">Guide to Debugging Individual Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud.html">Running on the Cloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tpu.html">Guide to Running on TPU using Google Cloud Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependencies.html">Guide to Installing Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cgp_cnn.html">Guide to Using GCP-CNN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pace_ice.html">Guide to Using PACE-ICE</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -133,6 +164,8 @@
   <ul class="wy-breadcrumbs">
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../guides.html">Guides</a> &raquo;</li>
         
       <li>Git Hooks</li>
     
@@ -273,13 +306,22 @@ may be changed to run on only the master branch with
           </div>
           <footer>
   
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="errors.html" class="btn btn-neutral float-right" title="Common Emade Errors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="windows_install.html" class="btn btn-neutral float-left" title="EMADE Installation on Windows" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
         
-        &copy; Copyright 2020, John Lewis Corker
+        &copy; Copyright 2020, GTRI EMADE Fellows
 
     </p>
   </div>
