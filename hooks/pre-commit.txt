@@ -1,0 +1,2 @@
+python run_yapf.py
+python check_docstrings.py

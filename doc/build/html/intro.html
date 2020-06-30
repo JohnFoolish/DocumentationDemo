@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>This is an introduction to my documentation! &mdash; FELLOW_project 0.0.1 documentation</title>
+  <title>This is an introduction to the Fellow’s documentation! &mdash; FELLOW_project 0.0.1 documentation</title>
   
 
   
@@ -30,6 +30,9 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -37,7 +40,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="basic_code module" href="basic_code.html" />
-    <link rel="prev" title="Welcome to FELLOW_project’s documentation!" href="index.html" /> 
+    <link rel="prev" title="Hosting Documentation Online" href="setup_docs/website_hosting.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -84,14 +87,17 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">This is an introduction to my documentation!</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#current-modules">Current modules</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="setup_intro.html">Directory for Getting Sphinx Documentation Set-up</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">This is an introduction to the Fellow’s documentation!</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#current-modules">Current modules!</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="basic_code.html">basic_code module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#why-is-this-function-useful">Why is this function useful?</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides.html">Guides</a></li>
 </ul>
 
             
@@ -138,7 +144,7 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>This is an introduction to my documentation!</li>
+      <li>This is an introduction to the Fellow’s documentation!</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -157,34 +163,52 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="this-is-an-introduction-to-my-documentation">
-<h1>This is an introduction to my documentation!<a class="headerlink" href="#this-is-an-introduction-to-my-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Here you can find a list of the current packages I have written for
-this project. They all include numpy docstrings!</p>
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="this-is-an-introduction-to-the-fellow-s-documentation">
+<h1>This is an introduction to the Fellow’s documentation!<a class="headerlink" href="#this-is-an-introduction-to-the-fellow-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p>Here you can find a list of the current packages written for
+this project. They all include numpy or google docstrings!</p>
 <p>Here are some helpful pointers regarding the creation of the autodocs:</p>
 <ul class="simple">
 <li><p>You need to have the extension <cite>sphinx.ext.autodocs</cite> added to the conf.py</p></li>
-<li><p>You also need to add  <cite>.. automodule:: [module_name]</cite></p></li>
-</ul>
-<blockquote>
-<div><p>to the rst file you wantto add the script’s documentation to.</p>
-</div></blockquote>
-<ul class="simple">
-<li><p>Important note: the autodocs automatically goes loads any string comment</p></li>
-</ul>
-<p>(<cite>“””[comment]”””</cite>) with restructured text when writing the documentation.</p>
-<ul class="simple">
+<li><p>You also need to add  <cite>.. automodule:: [module_name]</cite>
+to the rst file you want to add the script’s documentation to.</p></li>
+<li><p>Important note: the autodocs automatically goes loads any string comment
+(<cite>“””[comment]”””</cite>) with restructured text when writing the documentation.</p></li>
 <li><p>Also, any script being documented need to include a <cite>if __name__ == ‘__main__’</cite></p></li>
 </ul>
 <div class="section" id="current-modules">
-<h2>Current modules<a class="headerlink" href="#current-modules" title="Permalink to this headline">¶</a></h2>
+<h2>Current modules!<a class="headerlink" href="#current-modules" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="basic_code.html">basic_code module</a></li>
 </ul>
 </div>
-<span class="target" id="module-basic_code"></span><p>This first one is a basic function that includes the code you would need to
+<p>This first one is a basic function that includes the code you would need to
 add two numbers together!</p>
 <div class="section" id="why-is-this-function-useful">
 <h3>Why is this function useful?<a class="headerlink" href="#why-is-this-function-useful" title="Permalink to this headline">¶</a></h3>
@@ -196,8 +220,8 @@ extra time to type!</p></li>
 </ul>
 <p>Written by John Lewis Corker</p>
 <dl class="py function">
-<dt id="basic_code.basic_google">
-<code class="sig-prename descclassname">basic_code.</code><code class="sig-name descname">basic_google</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#basic_code.basic_google" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="sig-prename descclassname">basic_code.</code><code class="sig-name descname">basic_google</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basic_code.html#basic_google"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>A basic addition google function.</p>
 <p>This function contains a basic google docstring that we should be able to
 look at and compare.</p>
@@ -225,8 +249,8 @@ look at and compare.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="basic_code.basic_numpy">
-<code class="sig-prename descclassname">basic_code.</code><code class="sig-name descname">basic_numpy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#basic_code.basic_numpy" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="sig-prename descclassname">basic_code.</code><code class="sig-name descname">basic_numpy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basic_code.html#basic_numpy"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>A very basic addition numpy function.</p>
 <p>This function contains a basic numpy docstring that we should be able to
 look at and compare.</p>
@@ -268,7 +292,7 @@ look at and compare.</p>
         <a href="basic_code.html" class="btn btn-neutral float-right" title="basic_code module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to FELLOW_project’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="setup_docs/website_hosting.html" class="btn btn-neutral float-left" title="Hosting Documentation Online" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -278,7 +302,7 @@ look at and compare.</p>
   <div role="contentinfo">
     <p>
         
-        &copy; Copyright 2020, John Lewis Corker
+        &copy; Copyright 2020, GTRI EMADE Fellows
 
     </p>
   </div>

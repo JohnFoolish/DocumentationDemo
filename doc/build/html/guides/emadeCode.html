@@ -1,0 +1,337 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Guide to EMADE Code Structure &mdash; FELLOW_project 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Guide to XML EMADE Input" href="xmlInput.html" />
+    <link rel="prev" title="Common Emade Errors" href="errors.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> FELLOW_project
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../setup_intro.html">Directory for Getting Sphinx Documentation Set-up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">This is an introduction to the Fellow’s documentation!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../guides.html">Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="linux_install.html">EMADE Installation on Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mac_install.html">EMADE Installation on Mac</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows_install.html">EMADE Installation on Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autohooks.html">Git Hooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="errors.html">Common Emade Errors</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Guide to EMADE Code Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#about-this-guide">About this Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#xml-input">XML Input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#didlaunch-py">didLaunch.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#database-tree-evaluator-py">database_tree_evaluator.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-py">data.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gp-framework-helper-py">gp_framework_helper.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#launchgtmoep-py">launchGTMOEP.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gtmoep-py">gtMOEP.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="xmlInput.html">Guide to XML EMADE Input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debug.html">Guide to Debugging Individual Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud.html">Running on the Cloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tpu.html">Guide to Running on TPU using Google Cloud Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependencies.html">Guide to Installing Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cgp_cnn.html">Guide to Using GCP-CNN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pace_ice.html">Guide to Using PACE-ICE</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">FELLOW_project</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../guides.html">Guides</a> &raquo;</li>
+        
+      <li>Guide to EMADE Code Structure</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/guides/emadeCode.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="guide-to-emade-code-structure">
+<span id="id1"></span><h1>Guide to EMADE Code Structure<a class="headerlink" href="#guide-to-emade-code-structure" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="about-this-guide">
+<span id="id2"></span><h2>About this Guide<a class="headerlink" href="#about-this-guide" title="Permalink to this headline">¶</a></h2>
+<p>This wiki entry is to help you understand the flow of EMADE source code
+and how you can modify it yourself! In addition to this wiki, files are
+also commented according to Sphinx autodoc’ing standards, which you
+should follow if you add or change code. If you’re looking to run your
+first optimization problem with emade, check out the <a class="reference internal" href="xmlInput.html#guide-to-xml-emade-input"><span class="std std-ref">Guide to XML EMADE Input</span></a> or the <a class="reference external" href="https://github.gatech.edu/emade/emade">GitHub readme</a>.</p>
+</div>
+<div class="section" id="xml-input">
+<span id="id3"></span><h2>XML Input<a class="headerlink" href="#xml-input" title="Permalink to this headline">¶</a></h2>
+<p>The problem definition for any GP in EMADE is input as an XML file.
+Example XML files are located in the templates folder. Information
+defined in the XML file includes the objectives, datasets, functions for
+mutation, crossover, and evaluation, as well as connection information
+for the SQL database.</p>
+</div>
+<div class="section" id="didlaunch-py">
+<h2>didLaunch.py<a class="headerlink" href="#didlaunch-py" title="Permalink to this headline">¶</a></h2>
+<p>The file run from the command line is didLaunch.py. Reading through this
+file will help you understand the command-line arguments passed into
+EMADE. If a previous database is provided, it is loaded from the pickle
+file. If not, the problem definition is read from an XML file.</p>
+</div>
+<div class="section" id="database-tree-evaluator-py">
+<h2>database_tree_evaluator.py<a class="headerlink" href="#database-tree-evaluator-py" title="Permalink to this headline">¶</a></h2>
+<p>This file is used for debugging a specific individual. It pulls the
+individual from the database and reruns its evaluation so that you can
+see any errors that occur.</p>
+</div>
+<div class="section" id="data-py">
+<h2>data.py<a class="headerlink" href="#data-py" title="Permalink to this headline">¶</a></h2>
+<p>Methods to read in data from standard formats are in data.py (e.g. .csv,
+.gzip, .jpeg, .gz). The file is provided in the XML and the type of file
+is deduced from the file ending within data.py. This file also
+implements the data types used in the main loop, GTMOEPDataInstance and
+GTMOEPDataPair.</p>
+<p>There are unit tests in /src/UnitTests/data_unit_test_v3.py for this
+file.</p>
+</div>
+<div class="section" id="gp-framework-helper-py">
+<h2>gp_framework_helper.py<a class="headerlink" href="#gp-framework-helper-py" title="Permalink to this headline">¶</a></h2>
+<p>This file adds all primitives and terminals to the main evolutionary
+loop/DEAP toolkit. If you want to implement your own terminal or
+primitive, you will need to associate it here.</p>
+</div>
+<div class="section" id="launchgtmoep-py">
+<h2>launchGTMOEP.py<a class="headerlink" href="#launchgtmoep-py" title="Permalink to this headline">¶</a></h2>
+<p>This file parses the XML configuration file. These configurations are
+saved into three python dictionaries to be later passed to a master
+subprocess that will run the main evolutionary loop and worker
+subprocesses that will evaluate individuals. These dictionaries are also
+saved as a binary data file with the pickle library with a name
+determined by the original process id bound to the launchGTMOEP.py
+process. This file can be thought of as the preprocessing for
+didLaunch.py, which is the main driver script for both the master and
+worker processes.</p>
+</div>
+<div class="section" id="gtmoep-py">
+<h2>gtMOEP.py<a class="headerlink" href="#gtmoep-py" title="Permalink to this headline">¶</a></h2>
+<p>This file contains the main evolutionary loop for both the master and
+workers. The current non-dominated front, current-generation
+individuals, and statistics are saved into the database file here as the
+master algorithm progresses, and can be examined directly with a
+database client such as sqlite3. Individuals are passed between the
+master and workers through the database, and each instance of gtMOEP.py
+runs as a separate process so that resource manageme</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="xmlInput.html" class="btn btn-neutral float-right" title="Guide to XML EMADE Input" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="errors.html" class="btn btn-neutral float-left" title="Common Emade Errors" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, GTRI EMADE Fellows
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,334 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>EMADE Installation on Windows &mdash; FELLOW_project 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Git Hooks" href="autohooks.html" />
+    <link rel="prev" title="EMADE Installation on Mac" href="mac_install.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> FELLOW_project
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../setup_intro.html">Directory for Getting Sphinx Documentation Set-up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">This is an introduction to the Fellow’s documentation!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../guides.html">Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="linux_install.html">EMADE Installation on Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mac_install.html">EMADE Installation on Mac</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">EMADE Installation on Windows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#instructions">Instructions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="autohooks.html">Git Hooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="errors.html">Common Emade Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emadeCode.html">Guide to EMADE Code Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xmlInput.html">Guide to XML EMADE Input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debug.html">Guide to Debugging Individual Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud.html">Running on the Cloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tpu.html">Guide to Running on TPU using Google Cloud Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependencies.html">Guide to Installing Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cgp_cnn.html">Guide to Using GCP-CNN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pace_ice.html">Guide to Using PACE-ICE</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">FELLOW_project</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../guides.html">Guides</a> &raquo;</li>
+        
+      <li>EMADE Installation on Windows</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/guides/windows_install.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="emade-installation-on-windows">
+<h1>EMADE Installation on Windows<a class="headerlink" href="#emade-installation-on-windows" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p>EMADE requires Python v3.4+ EMADE requires the following Python
+Libraries - numpy - pandas - sklearn - tensorflow - keras - deap - scipy
+- psutil - lxml - matplotlib - opencv (cv2) - hmmlearn - PyWavelets -
+multiprocess - sqlalchemy</p>
+</div>
+<div class="section" id="instructions">
+<h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>Install Anaconda</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Installation link <a class="reference external" href="https://www.anaconda.com/download/#windows">https://www.anaconda.com/download/#windows</a></p></li>
+<li><p>Choose the proper installer for your operating system</p></li>
+<li><p>conda-cheatsheet link</p></li>
+</ul>
+<blockquote>
+<div><p><a class="reference external" href="https://conda.io/docs/_downloads/conda-cheatsheet.pdf">https://conda.io/docs/_downloads/conda-cheatsheet.pdf</a></p>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p>Install Git</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Installation link <a class="reference external" href="https://git-scm.com/download/win">https://git-scm.com/download/win</a></p></li>
+<li><p>github-git-cheatsheet link
+<a class="reference external" href="https://services.github.com/on-demand/downloads/github-git-cheatsheet.pdf">https://services.github.com/on-demand/downloads/github-git-cheatsheet.pdf</a></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Add Git to Environment Variables</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Right Click PC icon -&gt; Select Properties</p></li>
+<li><p>Select Advanced System Settings -&gt; Click Environment Variables</p></li>
+<li><p>Select the Path that has <code class="docutils literal notranslate"><span class="pre">Anaconda3</span></code> -&gt; Click Edit</p></li>
+<li><p>Click New -&gt; Paste <code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files\Git\cmd</span></code> -&gt; Click OK</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Open Command Window (cmd)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">version</span></code> to verify Git Installation</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">--name</span> <span class="pre">py35</span> <span class="pre">python=3.5</span></code> to create a new
+environemnt (env)</p></li>
+<li><p>Activate the new env by running <code class="docutils literal notranslate"><span class="pre">activate</span> <span class="pre">py35</span></code></p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">pip</span></code> to install the required libraries referenced above (e.g.,
+<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pywt</span></code>)</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-cmenpo</span> <span class="pre">opencv3</span></code> to install opencv</p></li>
+<li><p>Note: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">intall</span></code> does not work with some libraries, better use
+<code class="docutils literal notranslate"><span class="pre">pip</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Clone EMADE and checkout the Image branch</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Note: This step requires a minimium of three hours to complete</p></li>
+<li><p>Open cmd</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.gatech.edu/emade/emade</span></code></p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">emade</span></code></p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">Image</span></code></p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">reinstall.sh</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="autohooks.html" class="btn btn-neutral float-right" title="Git Hooks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mac_install.html" class="btn btn-neutral float-left" title="EMADE Installation on Mac" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, GTRI EMADE Fellows
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
