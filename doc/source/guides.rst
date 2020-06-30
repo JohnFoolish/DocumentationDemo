@@ -10,6 +10,7 @@ Guides
    guides/linux_install
    guides/mac_install
    guides/windows_install
+   guides/autohooks
    guides/errors
    guides/emadeCode
    guides/xmlInput
