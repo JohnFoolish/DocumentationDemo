@@ -11,6 +11,7 @@ Guides
    guides/mac_install
    guides/windows_install
    guides/autohooks
+   guides/pandoc
    guides/errors
    guides/emadeCode
    guides/xmlInput

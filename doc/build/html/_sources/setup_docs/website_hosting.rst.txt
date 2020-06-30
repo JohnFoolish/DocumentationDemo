@@ -15,6 +15,13 @@ customize the domain name to a degree. In our time working with both
 Netlify and Readthedocs, we found that Readthedocs was considerably
 easier to set-up, collaborate on, and integrate with GitHub. 
 
+Additionally, if you plan on hosting your documentation online, then 
+do not upload the HTML files for your build to the GitHub. The way 
+that both Readthedocs and Netlify work, they clone the git repo to 
+one of their servers and then compile the HTML files themselves with
+a build script. They do not use the HTML files that are located 
+inside the GitHub project itself.
+
 Comparisons between Hosting Options
 -----------------------------------
 The biggest downside to Netlify was the fact that their free service
