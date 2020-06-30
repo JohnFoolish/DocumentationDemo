@@ -12,8 +12,10 @@ Welcome to FELLOW_project's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   setup_intro
    intro
-
+   tutorials
+   guides
 
 
 

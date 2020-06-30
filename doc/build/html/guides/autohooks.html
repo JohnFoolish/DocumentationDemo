@@ -1,0 +1,359 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Git Hooks &mdash; FELLOW_project 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Common Emade Errors" href="errors.html" />
+    <link rel="prev" title="EMADE Installation on Windows" href="windows_install.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> FELLOW_project
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../setup_intro.html">Directory for Getting Sphinx Documentation Set-up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">This is an introduction to the Fellow’s documentation!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../guides.html">Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="linux_install.html">EMADE Installation on Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mac_install.html">EMADE Installation on Mac</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows_install.html">EMADE Installation on Windows</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Git Hooks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#included-hook-scripts">Included Hook Scripts</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#check-docstrings-py">check_docstrings.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#jira-commit-msg-py">jira_commit_msg.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#run-yapf-py">run_yapf.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#supported-hook-types">Supported Hook Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="errors.html">Common Emade Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emadeCode.html">Guide to EMADE Code Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xmlInput.html">Guide to XML EMADE Input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debug.html">Guide to Debugging Individual Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud.html">Running on the Cloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tpu.html">Guide to Running on TPU using Google Cloud Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependencies.html">Guide to Installing Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cgp_cnn.html">Guide to Using GCP-CNN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pace_ice.html">Guide to Using PACE-ICE</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">FELLOW_project</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../guides.html">Guides</a> &raquo;</li>
+        
+      <li>Git Hooks</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/guides/autohooks.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="git-hooks">
+<h1>Git Hooks<a class="headerlink" href="#git-hooks" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">hooks</span></code> directory of this project contains an implementation of a Python-based, multi-platform <a class="reference external" href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks">Git hook</a> manager based on <a class="reference external" href="https://github.com/nkantar/Autohook">Autohook</a>. This allows for developers to run code before and after issuing Git commands to improve workflow and ensure consistency.</p>
+</div>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Python &gt;= 3.5</p></li>
+<li><p>yapf to use <code class="docutils literal notranslate"><span class="pre">run_yapf.py</span></code> script</p></li>
+</ul>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>Run <code class="docutils literal notranslate"><span class="pre">install_hooks.bat</span></code> or <code class="docutils literal notranslate"><span class="pre">install_hooks.sh</span></code> depending on your
+system to install the Git hooks.</p>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>By running the install scripts, the hook manager will be installed into
+the Git hook location at <code class="docutils literal notranslate"><span class="pre">.git/hooks</span></code>, causing them to automatically
+be run when the corresponding Git commands are executed. This project
+can be integrated into any Git repository by copying the install scripts
+and the <code class="docutils literal notranslate"><span class="pre">hooks</span></code> directory.</p>
+<p>To add a new Git hook, place the script in <code class="docutils literal notranslate"><span class="pre">hooks/scripts</span></code>, and place
+the command to run in a file which is named as the appropriate
+client-side hook. For example, to add a script <code class="docutils literal notranslate"><span class="pre">check_code.py</span></code> as a
+pre-commit hook, add it to the <code class="docutils literal notranslate"><span class="pre">hooks/scripts</span></code> directory, and add
+<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">check_code.py</span></code> to the file <code class="docutils literal notranslate"><span class="pre">hooks/pre-commit.txt</span></code>. To add a
+script <code class="docutils literal notranslate"><span class="pre">log_commit.sh</span></code> as a post-commit hook, add it to the scripts
+directory, and add <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">check_code.py</span></code> to the file
+<code class="docutils literal notranslate"><span class="pre">hooks/post-commit.txt</span></code>. Scripts will be run in the order that they
+are listed.</p>
+</div>
+<div class="section" id="included-hook-scripts">
+<h2>Included Hook Scripts<a class="headerlink" href="#included-hook-scripts" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="check-docstrings-py">
+<span id="check-docstringspy"></span><h3>check_docstrings.py<a class="headerlink" href="#check-docstrings-py" title="Permalink to this headline">¶</a></h3>
+<p>This pre-commit hook checks Python files for missing docstrings. The
+script checks “public” functions, classes, and class methods for missing
+docstrings. Public in this context just means that it does not have an
+underscore “_” at the beginning of the name. The <code class="docutils literal notranslate"><span class="pre">BRANCH_REGEX</span></code>
+variable controls which branches this script will run on. The default is
+to run on all branches, but for example it may be changed to run on only
+the master branch with <code class="docutils literal notranslate"><span class="pre">re.compile(&quot;master&quot;)</span></code>. The <code class="docutils literal notranslate"><span class="pre">STRICT</span></code> variable
+controls whether the script will reject the commit if any documentation
+is missing, or just print a warning message.</p>
+</div>
+<div class="section" id="jira-commit-msg-py">
+<span id="jira-commit-msgpy"></span><h3>jira_commit_msg.py<a class="headerlink" href="#jira-commit-msg-py" title="Permalink to this headline">¶</a></h3>
+<p>This prepare-commit-msg hook automatically adds Jira ids to commit
+messages. The script will check whether the branch name has a valid Jira
+id as a prefix, and will add it to the beginning of the commit message
+if so. The <code class="docutils literal notranslate"><span class="pre">JIRA_ID_REGEX</span></code> variable controls the format which Jira ids
+can take.</p>
+</div>
+<div class="section" id="run-yapf-py">
+<span id="run-yapfpy"></span><h3>run_yapf.py<a class="headerlink" href="#run-yapf-py" title="Permalink to this headline">¶</a></h3>
+<p>This pre-commit hook runs the Google code formatter <a class="reference external" href="https://github.com/google/yapf">YAPF</a> on Python
+files. The <code class="docutils literal notranslate"><span class="pre">BRANCH_REGEX</span></code> variable controls which branches this script
+will run on. The default is to run on all branches, but for example it
+may be changed to run on only the master branch with
+<code class="docutils literal notranslate"><span class="pre">re.compile(&quot;master&quot;)</span></code>.</p>
+</div>
+</div>
+<div class="section" id="supported-hook-types">
+<h2>Supported Hook Types<a class="headerlink" href="#supported-hook-types" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>applypatch-msg</p></li>
+<li><p>commit-msg</p></li>
+<li><p>post-applypatch</p></li>
+<li><p>post-checkout</p></li>
+<li><p>post-commit</p></li>
+<li><p>post-merge</p></li>
+<li><p>post-receive</p></li>
+<li><p>post-rewrite</p></li>
+<li><p>post-update,</p></li>
+<li><p>pre-applypatch</p></li>
+<li><p>pre-auto-gc</p></li>
+<li><p>pre-commit</p></li>
+<li><p>pre-push</p></li>
+<li><p>pre-rebase,</p></li>
+<li><p>pre-receive</p></li>
+<li><p>prepare-commit-msg</p></li>
+<li><p>update</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="errors.html" class="btn btn-neutral float-right" title="Common Emade Errors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="windows_install.html" class="btn btn-neutral float-left" title="EMADE Installation on Windows" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, GTRI EMADE Fellows
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

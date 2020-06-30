@@ -30,13 +30,17 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="This is an introduction to my documentation!" href="intro.html" /> 
+    <link rel="next" title="Tutorials" href="tutorials.html" />
+    <link rel="prev" title="This is an introduction to the Fellow’s documentation!" href="intro.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -82,8 +86,17 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="intro.html">This is an introduction to my documentation!</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup_intro.html">Directory for Getting Sphinx Documentation Set-up</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="intro.html">This is an introduction to the Fellow’s documentation!</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="intro.html#current-modules">Current modules!</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">basic_code module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides.html">Guides</a></li>
 </ul>
 
             
@@ -130,7 +143,7 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="intro.html">This is an introduction to my documentation!</a> &raquo;</li>
+          <li><a href="intro.html">This is an introduction to the Fellow’s documentation!</a> &raquo;</li>
         
       <li>basic_code module</li>
     
@@ -151,78 +164,32 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-basic_code">
-<span id="basic-code-module"></span><h1>basic_code module<a class="headerlink" href="#module-basic_code" title="Permalink to this headline">¶</a></h1>
-<p>This first one is a basic function that includes the code you would need to
-add two numbers together!</p>
-<div class="section" id="why-is-this-function-useful">
-<h2>Why is this function useful?<a class="headerlink" href="#why-is-this-function-useful" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>It can replace the ‘+’ key!</p></li>
-<li><p>It can cause you to bill more hours for less work since the import takes
-extra time to type!</p></li>
-<li><p>It can serve as a helpful demo.</p></li>
-</ul>
-<p>Written by John Lewis Corker</p>
-<dl class="py function">
-<dt id="basic_code.basic_google">
-<code class="sig-prename descclassname">basic_code.</code><code class="sig-name descname">basic_google</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#basic_code.basic_google" title="Permalink to this definition">¶</a></dt>
-<dd><p>A basic addition google function.</p>
-<p>This function contains a basic google docstring that we should be able to
-look at and compare.</p>
-<dl>
-<dt>Usage below:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">basic</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="mi">13</span>
-</pre></div>
-</div>
-</dd>
-</dl>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong> (<em>int</em>) – a basic variable that will be added to the y value</p></li>
-<li><p><strong>y</strong> (<em>int</em>) – a basic variable that will be added to the x value</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The value of x and y added together</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
 
-<dl class="py function">
-<dt id="basic_code.basic_numpy">
-<code class="sig-prename descclassname">basic_code.</code><code class="sig-name descname">basic_numpy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#basic_code.basic_numpy" title="Permalink to this definition">¶</a></dt>
-<dd><p>A very basic addition numpy function.</p>
-<p>This function contains a basic numpy docstring that we should be able to
-look at and compare.</p>
-<dl>
-<dt>Usage below:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">basic</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="mi">13</span>
-</pre></div>
-</div>
-</dd>
-</dl>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong> (<em>int</em>) – This is a basic variable that will be added to the y value.</p></li>
-<li><p><strong>y</strong> (<em>int</em>) – This is a basic variable that will be added to the x value.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The value of x and y added together</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
 
-</div>
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="basic-code-module">
+<h1>basic_code module<a class="headerlink" href="#basic-code-module" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -233,8 +200,10 @@ look at and compare.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="tutorials.html" class="btn btn-neutral float-right" title="Tutorials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-        <a href="intro.html" class="btn btn-neutral float-left" title="This is an introduction to my documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+        <a href="intro.html" class="btn btn-neutral float-left" title="This is an introduction to the Fellow’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -244,7 +213,7 @@ look at and compare.</p>
   <div role="contentinfo">
     <p>
         
-        &copy; Copyright 2020, John Lewis Corker
+        &copy; Copyright 2020, GTRI EMADE Fellows
 
     </p>
   </div>

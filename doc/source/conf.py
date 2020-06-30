@@ -14,15 +14,14 @@ import os
 import sys
 #sys.path.clear()
 import platform
+from pathlib import Path
 
-if platform.system() == 'Windows':
-	sys.path.insert(0, os.path.abspath('.'))
-	sys.path.append(os.path.abspath('..\..\src'))
-	sys.path.append(os.path.abspath('.\_ext'))
-else:
-	sys.path.insert(0, os.path.abspath('.'))
-	sys.path.append(os.path.abspath('../../src'))
-	sys.path.append(os.path.abspath('./_ext'))
+paths = [Path('..') / '..' / 'src', Path('.') / '_ext']
+
+sys.path.insert(0, os.path.abspath('.'))
+for path in paths:
+	sys.path.append(str(path.absolute))
+
 # -- Project information -----------------------------------------------------
 
 project = 'FELLOW_project'
@@ -38,7 +37,7 @@ release = '0.0.1'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.napoleon', 'sphinx.ext.viewcode']
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.napoleon', 'sphinx.ext.viewcode', 'nbsphinx']
 
 master_doc = 'index'
 

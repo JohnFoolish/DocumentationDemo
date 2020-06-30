@@ -1,0 +1,10 @@
+#Compiled Files
+.vscode
+*.pyc
+
+*.out
+*.err
+
+#vim
+*.un~
+*.xml~
