@@ -1,0 +1,345 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>displayIndividual module &mdash; FELLOW_project 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="updateNoteTypes module" href="updateNoteTypes.html" />
+    <link rel="prev" title="basic_code module" href="basic_code.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> FELLOW_project
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup_intro.html">Directory for Getting Sphinx Documentation Set-up</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="intro.html">This is an introduction to the Fellow’s documentation!</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="intro.html#current-modules">Current modules!</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="basic_code.html">basic_code module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">displayIndividual module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="updateNoteTypes.html">updateNoteTypes module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="intro.html#why-is-this-function-useful">Why is this function useful?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides.html">Guides</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">FELLOW_project</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="intro.html">This is an introduction to the Fellow’s documentation!</a> &raquo;</li>
+        
+      <li>displayIndividual module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/displayIndividual.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-displayIndividual">
+<span id="displayindividual-module"></span><h1>displayIndividual module<a class="headerlink" href="#module-displayIndividual" title="Permalink to this headline">¶</a></h1>
+<p>This module is use to generate a png image from a tree_string.</p>
+<dl>
+<dt>Usage below:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree_string</span> <span class="o">=</span> <span class="s2">&quot;Learner(ARG0, ModifyLearnerList(LearnerType(&#39;LIGHTGBM&#39;, {&#39;max_depth&#39;: -1, &#39;learning_rate&#39;: 0.1, &#39;boosting_type&#39;: 0, &#39;num_leaves&#39;: 31}), myListAppend(myIntToList(32), passList([-3, 1])), passInt(4)), ModifyEnsembleFloat(EnsembleType(&#39;ADABOOST&#39;, {&#39;n_estimators&#39;: 50, &#39;learning_rate&#39;: 1.0}), myFloatIntAdd(0.01, 7), 3))&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree_string_parser</span><span class="p">(</span><span class="n">tree_string</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<img alt="_images/exampleOutput.png" src="_images/exampleOutput.png" />
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Install graphiz for this module to work if not then the plot_tree will cause error</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This module is based on a pickle file called node_typesV2.pkl.
+If need to update the pickle file use <a class="reference internal" href="updateNoteTypes.html"><span class="doc">updateNoteTypes module</span></a></p>
+</div>
+<p>Written by ADF team, Modified by Hoa V Luu</p>
+<dl class="py function">
+<dt id="displayIndividual.create_hash">
+<code class="sig-prename descclassname">displayIndividual.</code><code class="sig-name descname">create_hash</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tree_string</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/displayIndividual.html#create_hash"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#displayIndividual.create_hash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a hash from the tree_string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tree_string</strong> – The tree_string want to hash</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A hashed name for the tree_string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="displayIndividual.fix_up_tree">
+<code class="sig-prename descclassname">displayIndividual.</code><code class="sig-name descname">fix_up_tree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tree_dict</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/displayIndividual.html#fix_up_tree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#displayIndividual.fix_up_tree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fix any edge cases of the tree_dict</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tree_dict</strong> (<em>dict</em>) – The dictionary that contains all the information of a tree</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A fixed dictionary that contains all the information of a tree</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="displayIndividual.get_node_color">
+<code class="sig-prename descclassname">displayIndividual.</code><code class="sig-name descname">get_node_color</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node_label</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/displayIndividual.html#get_node_color"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#displayIndividual.get_node_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the color of a node in the tree</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>node_label</strong> (<em>str</em>) – The label of a node</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The color that matched with the node_label</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="displayIndividual.plot_tree">
+<code class="sig-prename descclassname">displayIndividual.</code><code class="sig-name descname">plot_tree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tree</span></em>, <em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/displayIndividual.html#plot_tree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#displayIndividual.plot_tree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot and generate a png image of a tree with the tree hashed name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tree</strong> (<em>dict</em>) – A dictionary contains all information of a tree</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – The hashed name of the tree</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="displayIndividual.tree_string_parser">
+<code class="sig-prename descclassname">displayIndividual.</code><code class="sig-name descname">tree_string_parser</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tree_string</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/displayIndividual.html#tree_string_parser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#displayIndividual.tree_string_parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a tree_string to a dictionary</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tree_string</strong> (<em>str</em>) – Tree_string wanted to parse</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="displayIndividual.walk_dictionary">
+<code class="sig-prename descclassname">displayIndividual.</code><code class="sig-name descname">walk_dictionary</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">graph</span></em>, <em class="sig-param"><span class="n">dictionary</span></em>, <em class="sig-param"><span class="n">parent_node</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/displayIndividual.html#walk_dictionary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#displayIndividual.walk_dictionary" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="updateNoteTypes.html" class="btn btn-neutral float-right" title="updateNoteTypes module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="basic_code.html" class="btn btn-neutral float-left" title="basic_code module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, GTRI EMADE Fellows
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

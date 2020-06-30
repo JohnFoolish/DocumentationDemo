@@ -9,3 +9,5 @@ ipykernel
 jupyter_client
 deap
 pathlib
+pydot~=1.4.1
+graphviz
